@@ -3,10 +3,16 @@ import { FloatingMenu as FloatingMenuPremitive, useCurrentEditor } from '@tiptap
 
 const FloatingMenu = () => {
   const { editor } = useCurrentEditor()
-  return <FloatingMenuPremitive editor={editor} className=''>
+  if (!editor) return null
 
-    I am floating
-    {/* <Button onPress={() => { console.log("you clicked me") }}> </Button> */}
-  </FloatingMenuPremitive >
+  return <>
+
+    <pre>{editor.getHTML()}</pre>
+  </>
+  // return <FloatingMenuPremitive editor={editor} className=''>
+  //
+  //   I am floating
+  //   {/* <Button onPress={() => { console.log("you clicked me") }}> </Button> */}
+  // </FloatingMenuPremitive >
 }
 export default FloatingMenu

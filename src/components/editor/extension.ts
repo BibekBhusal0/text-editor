@@ -1,5 +1,4 @@
-import { InputRule } from "@tiptap/core";
-import HorizontalRule from "@tiptap/extension-horizontal-rule";
+import { Extensions } from "@tiptap/core";
 import Placeholder from "@tiptap/extension-placeholder";
 import { TaskItem } from "@tiptap/extension-task-item";
 import { TaskList } from "@tiptap/extension-task-list";
@@ -8,7 +7,6 @@ import TiptapUnderline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
 import { Markdown } from "tiptap-markdown";
 import GlobalDragHandle from "tiptap-extension-global-drag-handle";
-// import TiptapImage from "@tiptap/extension-image";
 import { Color } from "@tiptap/extension-color";
 import Highlight from "@tiptap/extension-highlight";
 import TiptapLink from "@tiptap/extension-link";
@@ -42,10 +40,8 @@ export const placeholderExtension = Placeholder.configure({
   emptyNodeClass: "pre",
 });
 
-export const extensions = [
+export const extensions: Extensions = [
   GlobalDragHandle,
-  HorizontalRule,
-  InputRule,
   Markdown,
   Placeholder,
   TaskItem,
