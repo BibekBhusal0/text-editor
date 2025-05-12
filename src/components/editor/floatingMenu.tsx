@@ -1,8 +1,12 @@
-
 import { FloatingMenu as FloatingMenuPremitive, useCurrentEditor } from '@tiptap/react'
+// import { Button } from "@heroui/button"
 
-const BubbleMenu = () => {
+const FloatingMenu = () => {
   const { editor } = useCurrentEditor()
-  return <FloatingMenuPremitive editor={editor}>This is the floating menu</FloatingMenuPremitive>
+  return <FloatingMenuPremitive editor={editor} className=''>
+
+    I am floating
+    {/* <Button onPress={() => { console.log("you clicked me") }}> </Button> */}
+  </FloatingMenuPremitive >
 }
-export default BubbleMenu
+export default FloatingMenu

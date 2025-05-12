@@ -1,4 +1,5 @@
 import { Link } from "@heroui/link";
+import { ThemeSwitch } from "@/components/theme-switch";
 
 export default function DefaultLayout({
   children,
@@ -7,7 +8,8 @@ export default function DefaultLayout({
 }) {
   return (
     <div className="relative flex flex-col h-screen">
-      <main className="container mx-auto max-w-7xl px-6 flex-grow pt-16">
+      <div className='pl-5 pt-3'>        <ThemeSwitch />      </div>
+      <main className="container mx-auto max-w-7xl px-6 flex-grow">
         {children}
       </main>
       <footer className="w-full flex items-center justify-center py-3">

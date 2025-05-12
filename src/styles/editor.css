@@ -1,0 +1,7 @@
+.ProseMirror {
+  outline: none !important;
+
+  .pointer-events-none {
+    background: red !important
+  }
+}
