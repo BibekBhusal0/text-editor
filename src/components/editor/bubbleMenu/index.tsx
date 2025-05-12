@@ -3,6 +3,7 @@ import { Divider } from "@heroui/divider"
 import { TextButtons } from './textButtons';
 import { NodeSelector } from './nodeSelector';
 import { LinkSelector } from './link-selector';
+import { ColorSelector } from './colorSelector';
 
 
 const BubbleMenu = () => {
@@ -16,10 +17,10 @@ const BubbleMenu = () => {
         <Divider orientation="horizontal" />
         <div className="flex-center w-full">
           <NodeSelector />
-          {/* <Divider orientation="vertical" flexItem /> */}
+          // {/* <Divider orientation="vertical" flexItem /> */}
           <LinkSelector />
-          {/* <Divider orientation="vertical" flexItem /> */}
-          {/* <ColorSelector {/* /> */}
+          <Divider orientation="vertical" />
+          <ColorSelector />
         </div>
       </div>
     </div>

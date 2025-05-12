@@ -9,8 +9,8 @@ import StarterKit from "@tiptap/starter-kit";
 import { Markdown } from "tiptap-markdown";
 import GlobalDragHandle from "tiptap-extension-global-drag-handle";
 // import TiptapImage from "@tiptap/extension-image";
-// import { Color } from "@tiptap/extension-color";
-// import Highlight from "@tiptap/extension-highlight";
+import { Color } from "@tiptap/extension-color";
+import Highlight from "@tiptap/extension-highlight";
 import TiptapLink from "@tiptap/extension-link";
 
 export const starterKit = StarterKit.configure({
@@ -53,5 +53,7 @@ export const extensions = [
   TextStyle,
   TiptapUnderline,
   starterKit,
-  TiptapLink
+  TiptapLink,
+  Color,
+  Highlight,
 ]

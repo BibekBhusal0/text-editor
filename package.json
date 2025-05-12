@@ -14,6 +14,8 @@
     "@heroui/use-theme": "^2.1.8",
     "@react-aria/visually-hidden": "3.8.22",
     "@react-types/shared": "3.29.0",
+    "@tiptap/extension-color": "^2.12.0",
+    "@tiptap/extension-highlight": "^2.12.0",
     "@tiptap/extension-placeholder": "^2.12.0",
     "@tiptap/extension-task-item": "^2.12.0",
     "@tiptap/extension-task-list": "^2.12.0",
