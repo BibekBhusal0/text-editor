@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .between {
+    @apply flex justify-between items-center;
+  }
+
+  .full-between {
+    @apply between w-full gap-4;
+  }
+
+  .horizontal-center {
+    @apply absolute left-1/2 -translate-x-1/2;
+  }
+
+  .vertical-center {
+    @apply absolute top-1/2 -translate-y-1/2;
+  }
+
+  .absolute-center {
+    @apply horizontal-center vertical-center;
+  }
+}
