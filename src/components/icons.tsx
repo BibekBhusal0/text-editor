@@ -26,7 +26,8 @@ export const allIcons: Record<string, IconDefinition> = {
 };
 
 export const Icon = ({ size, icon, ...props }: IconSvgProps) => {
-  const i = allIcons[icon || 'default']
+  const ic = allIcons[icon || 'default']
+  const i = ic ? ic : allIcons['default']
   if (typeof i === 'string') return <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size || "1em"}

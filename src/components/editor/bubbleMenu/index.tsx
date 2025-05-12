@@ -2,6 +2,7 @@ import { BubbleMenu as BubbleMenuPremitive, useCurrentEditor } from '@tiptap/rea
 import { Divider } from "@heroui/divider"
 import { TextButtons } from './textButtons';
 import { NodeSelector } from './nodeSelector';
+import { LinkSelector } from './link-selector';
 
 
 const BubbleMenu = () => {
@@ -16,7 +17,7 @@ const BubbleMenu = () => {
         <div className="flex-center w-full">
           <NodeSelector />
           {/* <Divider orientation="vertical" flexItem /> */}
-          {/* <LinkSelector /> */}
+          <LinkSelector />
           {/* <Divider orientation="vertical" flexItem /> */}
           {/* <ColorSelector {/* /> */}
         </div>
