@@ -3,6 +3,7 @@ import { useCurrentEditor } from '@tiptap/react'
 import { Tooltip } from "@heroui/tooltip"
 import { Button, ButtonGroup } from "@heroui/button"
 import { Icon } from '@/components/icons';
+import { cn } from '@heroui/theme';
 
 
 
@@ -25,13 +26,13 @@ export const TextButtons = () => {
       icon: "italic",
       shortcut: "I",
     },
-    // {
-    //   name: "underline",
-    //   isActive: () => editor.isActive("underline"),
-    //   command: () => editor.chain().focus().toggleUnderline().run(),
-    //   icon: "gravity-ui:underline",
-    //   shortcut: "U",
-    // },
+    {
+      name: "underline",
+      isActive: () => editor.isActive("underline"),
+      command: () => editor.chain().focus().toggleUnderline().run(),
+      icon: "underline",
+      shortcut: "U",
+    },
     {
       name: "strike",
       isActive: () => editor.isActive("strike"),
@@ -46,53 +47,46 @@ export const TextButtons = () => {
       icon: "code",
       shortcut: "E",
     },
-    // {
-    //   name: "Math Formula",
-    //   isActive: () => editor.isActive("math"),
-    //   command: () => {
-    //     if (editor.isActive("math")) {
-    //       editor.chain().focus().unsetLatex().run();
-    //     } else {
-    //       const { from, to } = editor.state.selection;
-    //       const latex = editor.state.doc.textBetween(from, to);
-    //
-    //       if (!latex) return;
-    //
-    //       editor.chain().focus().setLatex({ latex }).run();
-    //     }
-    //   },
-    //   icon: "gravity-ui:curly-brackets-function",
-    //   shortcut: "M",
-    // },
   ];
 
   return (
-    <ButtonGroup variant="bordered" className="p-2">
+    <ButtonGroup
+      variant="solid"
+      color='primary'
+      className="p-2"
+    >
       {items.map(({ command, icon, isActive, name, shortcut }, index) => (
         <Tooltip
           key={index}
           placement="top"
+          size='sm'
+          className='backdrop-blur-sm'
+          classNames={{
+          }}
+          shouldCloseOnBlur={false}
           content={
-            <div className="flex-center flex-col gap-2">
+            < >
               <div className="text-md capitalize">{name}</div>
               {shortcut && (
                 <div className="flex-center gap-1">
-                  <Icon icon="mingcute:command-line" className="size-4" />
+                  <Icon icon="command" className="size-4" />
                   <div className="text-sm">+ {shortcut}</div>
                 </div>
               )}
-            </div>
+            </>
           }>
           <Button
-            size="md"
-            onPress={() => command()}
-            // sx={{
-            //   color: isActive() ? "primary.main" : "text.primary",
-            //   backgroundColor: isActive() ? "var(--primary-3)" : "transparent",
-            //   paddingX: "0",
-            // }}
-            variant="bordered">
-            <Icon icon={icon} className="size-4" />
+            size="sm"
+            radius='sm'
+            onPress={command}
+            className={cn(
+              'min-w-7 border-1 border-primary-400 bg-primary-400',
+              isActive() ? 'bg-opacity-80 hover:bg-opacity-90 text-foreground' : 'bg-opacity-20 hover:bg-opacity-30 text-primary-400'
+            )}
+          // variant={isActive() ? 'solid' : 'bordered'}
+          // variant={isActive() ? 'flat' : 'light'}
+          >
+            <Icon icon={icon} size={15} />
           </Button>
         </Tooltip>
       ))}
