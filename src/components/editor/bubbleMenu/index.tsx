@@ -1,4 +1,3 @@
-// import { BubbleMenu as BubbleMenuPremitive} from '@tiptap/react'
 import { Divider } from "@heroui/divider"
 import { TextButtons } from './textButtons';
 import { NodeSelector } from './nodeSelector';
@@ -11,9 +10,7 @@ import { EditorBubble } from "novel";
 
 const BubbleMenu = () => {
   return <EditorBubble >
-
     <BubbleMenuContent />
-
   </EditorBubble>
 }
 export default BubbleMenu
@@ -36,6 +33,5 @@ export const BubbleMenuContent = () => {
         <ColorSelector />
       </div>
     </div>
-    {/* </div> */}
   </Card>
 }

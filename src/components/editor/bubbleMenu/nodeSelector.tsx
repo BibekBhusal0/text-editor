@@ -72,7 +72,6 @@ export const NodeSelector = () => {
   return (
     <Popover
       placement='bottom-start'
-      defaultOpen
       classNames={{ content: 'm-0 p-0' }
       }
     >

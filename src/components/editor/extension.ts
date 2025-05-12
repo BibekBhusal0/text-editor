@@ -1,21 +1,24 @@
 import { Extensions } from "@tiptap/core";
 import {
-  TiptapLink,
-  TaskList,
-  TaskItem,
-  StarterKit,
-  Placeholder,
-  TiptapUnderline,
+  // CodeBlockLowlight,
   Color,
-  TextStyle,
+  Command,
+  CustomKeymap,
+  GlobalDragHandle,
   HighlightExtension,
   Mathematics,
-  CustomKeymap,
+  Placeholder,
+  renderItems,
+  StarterKit,
+  TaskItem,
+  TaskList,
+  TextStyle,
   TiptapImage,
-  GlobalDragHandle,
-  // CodeBlockLowlight,
+  TiptapLink,
+  TiptapUnderline,
 } from "novel";
 import { Markdown as MarkdownExtension } from "tiptap-markdown";
+import { slashCommandItems } from "./slashCommand/items";
 // import {
 //   NodeViewContent,
 //   NodeViewWrapper,
@@ -67,6 +70,13 @@ export const MathExtension = Mathematics.extend({
   },
 });
 
+export const slashCommand = Command.configure({
+  suggestion: {
+    items: () => slashCommandItems,
+    render: renderItems,
+  },
+});
+
 
 export const extensions: Extensions = [
   starterKit,
@@ -83,4 +93,5 @@ export const extensions: Extensions = [
   markdownExtension,
   CustomKeymap,
   TiptapImage,
+  slashCommand
 ]
