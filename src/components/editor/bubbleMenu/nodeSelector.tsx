@@ -2,17 +2,15 @@
 import { useCurrentEditor } from '@tiptap/react'
 import { Icon } from '@/components/icons';
 import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
-
+import { Listbox, ListboxItem } from "@heroui/listbox";
 
 export const NodeSelector = () => {
-  // const [key, setKey] = useState(1);
-  // const handleClose = () => setKey(key + 1);
   const { editor } = useCurrentEditor();
   if (!editor) return null;
   const items = [
     {
       name: "Text",
-      icon: "gravity-ui:text",
+      icon: "text",
       command: () => editor.chain().focus().clearNodes().run(),
       isActive: () =>
         editor.isActive("paragraph") &&
@@ -21,92 +19,95 @@ export const NodeSelector = () => {
     },
     {
       name: "Heading 1",
-      icon: "gravity-ui:heading-1",
+      icon: "heading1",
       command: () => editor.chain().focus().clearNodes().toggleHeading({ level: 1 }).run(),
       isActive: () => editor.isActive("heading", { level: 1 }),
     },
     {
       name: "Heading 2",
-      icon: "gravity-ui:heading-2",
+      icon: "heading2",
       command: () => editor.chain().focus().clearNodes().toggleHeading({ level: 2 }).run(),
       isActive: () => editor.isActive("heading", { level: 2 }),
     },
     {
       name: "Heading 3",
-      icon: "gravity-ui:heading-3",
+      icon: "heading3",
       command: () => editor.chain().focus().clearNodes().toggleHeading({ level: 3 }).run(),
       isActive: () => editor.isActive("heading", { level: 3 }),
     },
-    // {
-    //   name: "To-do List",
-    //   icon: "gravity-ui:square-check",
-    //   command: () => editor.chain().focus().clearNodes().toggleTaskList().run(),
-    //   isActive: () => editor.isActive("taskItem"),
-    // },
+    {
+      name: "To-do List",
+      icon: "todo_list",
+      command: () => editor.chain().focus().clearNodes().toggleTaskList().run(),
+      isActive: () => editor.isActive("taskItem"),
+    },
     {
       name: "Bullet List",
-      icon: "gravity-ui:list-ul",
+      icon: "bullet_list",
       command: () => editor.chain().focus().clearNodes().toggleBulletList().run(),
       isActive: () => editor.isActive("bulletList"),
     },
     {
       name: "Numbered List",
-      icon: "gravity-ui:list-ol",
+      icon: "number_list",
       command: () => editor.chain().focus().clearNodes().toggleOrderedList().run(),
       isActive: () => editor.isActive("orderedList"),
     },
     {
       name: "Quote",
-      icon: "gravity-ui:quote-open",
+      icon: "quote",
       command: () => editor.chain().focus().clearNodes().toggleBlockquote().run(),
       isActive: () => editor.isActive("blockquote"),
     },
     {
       name: "Code",
-      icon: "gravity-ui:code",
+      icon: "code",
       command: () => editor.chain().focus().clearNodes().toggleCodeBlock().run(),
       isActive: () => editor.isActive("codeBlock"),
     },
   ];
 
-  const activeItem = items.filter((item) => item.isActive()).pop() ?? {
-    name: "Multiple",
-  };
+  const activeItem = items.filter((item) => item.isActive()).pop() ?? { name: "Multiple" };
 
   return (
     <Popover
       placement='bottom-start'
-    // icon={
-    //   <div className="flex-center icon-sm size-full gap-2">
-    //     <div className="text-sm">{activeItem.name}</div>
-    //     <Icon2RN icon="ri:arrow-down-s-line" className="size-4" />
-    //   </div>
-    // }
-    //
+      defaultOpen
+      classNames={{ content: 'm-0 p-0' }
+      }
     >
-      <PopoverTrigger>
-        {activeItem.name}
+
+      <PopoverTrigger >
+        <div className="flex-center size-full gap-2">
+          <div className="text-sm">{activeItem.name}</div>
+          <Icon icon="arrow_down" className="size-4" />
+        </div>
       </PopoverTrigger>
 
-      <PopoverContent>
-        {items.map((i) => {
-          return (
-            <div
-              key={i.name}
-              onClick={() => {
-                i.command();
-                // handleClose();
-              }}
-              // selected={activeItem.name === i.name}
-              className="gap-2 px-3 py-2">
-              <Icon icon={i.icon} className="size-6 rounded-md border p-1" />
+      <PopoverContent >
+        <Listbox
+          classNames={{ base: 'max-h-80 overflow-auto' }}
+          aria-label='Select notes'
+          selectedKeys={new Set([activeItem.name])}
+          selectionMode="single"
+          variant="shadow"
+          color='primary'
+        >{items.map((i) =>
 
-              <div>{i.name}</div>
-            </div>
-          );
-        })}
+          <ListboxItem
+            key={i.name}
+            onClick={() => {
+              i.command();
+            }}
+            // selected={activeItem.name === i.name}
+            startContent={<Icon icon={i.icon} size={27} className="rounded-md border p-1" />}
+            className="gap-2 px-3 py-2">
+            {i.name}
+          </ListboxItem>
+
+        )}</Listbox>
 
       </PopoverContent>
-    </Popover>
+    </Popover >
   );
 };
