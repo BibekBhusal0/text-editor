@@ -1,11 +1,11 @@
 
-import { useCurrentEditor } from '@tiptap/react'
+import { useEditor } from "novel";
 import { Icon } from '@/components/icons';
 import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
 import { Listbox, ListboxItem } from "@heroui/listbox";
 
 export const NodeSelector = () => {
-  const { editor } = useCurrentEditor();
+  const { editor } = useEditor();
   if (!editor) return null;
   const items = [
     {

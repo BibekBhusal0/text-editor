@@ -1,10 +1,10 @@
 import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
-import { useCurrentEditor } from '@tiptap/react'
 import { Icon } from '@/components/icons';
+import { useEditor } from "novel";
 
 
 export const AICommands = () => {
-  const { editor } = useCurrentEditor();
+  const { editor } = useEditor();
 
   if (!editor) return null;
 

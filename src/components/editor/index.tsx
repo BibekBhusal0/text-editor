@@ -1,4 +1,5 @@
-import { EditorProvider } from '@tiptap/react'
+// import { EditorProvider } from '@tiptap/react'
+import { EditorRoot, EditorContent, ImageResizer, } from "novel";
 import { extensions } from './extension'
 import BubbleMenu, { BubbleMenuContent } from './bubbleMenu'
 import '@/styles/editor.css'
@@ -8,8 +9,9 @@ const content = '<h1>Heading 1</h1><p>Lorem ipsum dolor sit amet consectetur adi
 
 const Tiptap = () => {
   return (
-    <div className='max-w-full w-full h-full editor outline-0'>
-      <EditorProvider
+    <EditorRoot><div className='size-full editor'>
+      <EditorContent
+        autofocus
         editorProps={{
           attributes: {
             class: "prose dark:prose-invert max-w-full min-h-[250px]",
@@ -17,12 +19,14 @@ const Tiptap = () => {
           }
         }}
         extensions={extensions}
-        content={content}
+        //@ts-ignore
+        initialContent={content}
+        slotAfter={<ImageResizer />}
       >
         <BubbleMenu />
         <BubbleMenuContent />
-      </EditorProvider>
-    </div>
+      </EditorContent>
+    </div></EditorRoot>
   )
 }
 

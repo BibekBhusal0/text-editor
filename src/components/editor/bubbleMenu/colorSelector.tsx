@@ -1,18 +1,7 @@
-// import { useEditor } from "novel";
-// import { useState } from "react";
-// import MenuPopover from "@/components/popoverMenu";
-// import MenuItem from "@mui/material/MenuItem";
-// import { ScrollArea } from "@/components/scrollarea";
-// import { Icon2RN } from "@/theme/icons";
-
+import { useEditor } from "novel";
 import { useState } from "react";
 import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
-import { useCurrentEditor } from '@tiptap/react'
-// import { Tooltip } from "@heroui/tooltip"
 import { Icon } from '@/components/icons';
-// import { Button, } from "@heroui/button"
-// import { Input } from "@heroui/input";
-// import { cn } from "@heroui/react";
 
 
 
@@ -44,7 +33,7 @@ const HIGHLIGHT_COLORS: BubbleColorMenuItem[] = [
 export const ColorSelector = () => {
   const [key, setKey] = useState(1);
   const handleClose = () => setKey(key + 1);
-  const { editor } = useCurrentEditor();
+  const { editor } = useEditor();
 
   if (!editor) return null;
   // const activeColorItem = TEXT_COLORS.find(({ color }) => editor.isActive("textStyle", { color }));

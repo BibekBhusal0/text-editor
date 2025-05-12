@@ -1,5 +1,5 @@
 
-import { useCurrentEditor } from '@tiptap/react'
+import { useEditor } from "novel";
 import { Tooltip } from "@heroui/tooltip"
 import { Button, ButtonGroup } from "@heroui/button"
 import { Icon } from '@/components/icons';
@@ -8,7 +8,7 @@ import { cn } from '@heroui/theme';
 
 
 export const TextButtons = () => {
-  const { editor } = useCurrentEditor();
+  const { editor } = useEditor();
   if (!editor) return null;
 
   const items = [

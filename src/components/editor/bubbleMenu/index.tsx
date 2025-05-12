@@ -1,4 +1,4 @@
-import { BubbleMenu as BubbleMenuPremitive, useCurrentEditor } from '@tiptap/react'
+// import { BubbleMenu as BubbleMenuPremitive} from '@tiptap/react'
 import { Divider } from "@heroui/divider"
 import { TextButtons } from './textButtons';
 import { NodeSelector } from './nodeSelector';
@@ -6,16 +6,15 @@ import { LinkSelector } from './link-selector';
 import { ColorSelector } from './colorSelector';
 import { AICommands } from './aiCommands';
 import { Card } from '@heroui/card';
+import { EditorBubble } from "novel";
 
 
 const BubbleMenu = () => {
-  const { editor } = useCurrentEditor()
-  if (!editor) return
-  return <BubbleMenuPremitive editor={editor}>
+  return <EditorBubble >
 
     <BubbleMenuContent />
 
-  </BubbleMenuPremitive>
+  </EditorBubble>
 }
 export default BubbleMenu
 

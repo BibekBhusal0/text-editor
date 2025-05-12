@@ -1,17 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
-import { useCurrentEditor } from '@tiptap/react'
 import { Button, } from "@heroui/button"
 import { Icon } from '@/components/icons';
 import { Input } from "@heroui/input";
 import { cn } from "@heroui/theme";
 import { getUrlFromString } from "@/utils/getUrlFromString";
-
+import { useEditor } from "novel";
 
 
 export const LinkSelector = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { editor } = useCurrentEditor();
+  const { editor } = useEditor();
 
   useEffect(() => {
     inputRef.current && inputRef.current?.focus();
