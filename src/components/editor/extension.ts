@@ -1,6 +1,6 @@
 import { Extensions } from "@tiptap/core";
 import {
-  // CodeBlockLowlight,
+  CodeBlockLowlight,
   Color,
   Command,
   CustomKeymap,
@@ -18,17 +18,24 @@ import {
   TiptapUnderline,
 } from "novel";
 import { Markdown as MarkdownExtension } from "tiptap-markdown";
+import { createLowlight, all } from "lowlight";
 import { slashCommandItems } from "./slashCommand/items";
-// import {
-//   NodeViewContent,
-//   NodeViewWrapper,
-//   NodeViewProps,
-//   ReactNodeViewRenderer,
-// } from "@tiptap/react";
+import { ReactNodeViewRenderer } from "@tiptap/react";
+import { CodeBlockComponent } from "./customComponents/codeBlock";
+
+
+export const codeBlockLowlight = CodeBlockLowlight.extend({
+  addNodeView() {
+    return ReactNodeViewRenderer(CodeBlockComponent);
+  },
+}).configure({
+  lowlight: createLowlight(all),
+  defaultLanguage: "auto",
+});
 
 export const starterKit = StarterKit.configure({
   dropcursor: { color: "hsl(var(--heroui-default-400)))", width: 3 },
-  codeBlock: {},
+  codeBlock: false,
   code: { HTMLAttributes: { spellcheck: "false" } },
 });
 
@@ -79,19 +86,20 @@ export const slashCommand = Command.configure({
 
 
 export const extensions: Extensions = [
-  starterKit,
-  placeholderExtension,
-  TiptapLink,
-  TaskList,
-  taskItem,
-  TiptapUnderline,
   Color,
-  TextStyle,
-  HighlightExtension,
-  GlobalDragHandle,
-  MathExtension,
-  markdownExtension,
   CustomKeymap,
+  GlobalDragHandle,
+  HighlightExtension,
+  MathExtension,
+  TaskList,
+  TextStyle,
   TiptapImage,
-  slashCommand
+  TiptapLink,
+  TiptapUnderline,
+  codeBlockLowlight,
+  markdownExtension,
+  placeholderExtension,
+  slashCommand,
+  starterKit,
+  taskItem,
 ]

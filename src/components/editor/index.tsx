@@ -17,7 +17,7 @@ const Tiptap = () => {
             keydown: (_view, event) => handleCommandNavigation(event),
           },
           attributes: {
-            class: "prose dark:prose-invert max-w-full min-h-[250px]",
+            class: "prose dark:prose-invert prose-sm prose-headings:font-title prose-pre:m-0 max-w-full min-h-[250px]",
             spellcheck: 'false',
           }
         }}
