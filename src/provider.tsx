@@ -1,4 +1,5 @@
 import type { NavigateOptions } from "react-router-dom";
+
 import { HeroUIProvider } from "@heroui/system";
 
 declare module "@react-types/shared" {

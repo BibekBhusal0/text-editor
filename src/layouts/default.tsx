@@ -1,4 +1,5 @@
 import { Link } from "@heroui/link";
+
 import { ThemeSwitch } from "@/components/theme-switch";
 
 export default function DefaultLayout({ children }: { children: React.ReactNode }) {

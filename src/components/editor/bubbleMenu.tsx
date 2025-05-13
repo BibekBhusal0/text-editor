@@ -1,11 +1,12 @@
 import { Divider } from "@heroui/divider";
+import { Card } from "@heroui/card";
+import { EditorBubble } from "novel";
+
 import { TextButtons } from "./textButtons";
 import { NodeSelector } from "./nodeSelector";
 import { LinkSelector } from "./link-selector";
 import { ColorSelector } from "./colorSelector";
 import { AICommands } from "./aiCommands";
-import { Card } from "@heroui/card";
-import { EditorBubble } from "novel";
 import { ChangeAlignment } from "./changeAlignment";
 
 const BubbleMenu = () => {
@@ -15,6 +16,7 @@ const BubbleMenu = () => {
     </EditorBubble>
   );
 };
+
 export default BubbleMenu;
 
 export const BubbleMenuContent = () => {
@@ -22,20 +24,20 @@ export const BubbleMenuContent = () => {
     <Card isBlurred className="flex w-auto flex-row" radius="sm">
       <AICommands
         className="h-auto min-w-4 px-3 text-5xl"
+        color="primary"
         radius="none"
         variant="flat"
-        color="primary"
       />
       <div className="flex flex-col border-l-1">
         <div className="flex-center flex gap-2 py-1">
           <TextButtons />
-          <ChangeAlignment type="button" isIconOnly variant="light" size="sm" className="text-lg" />
+          <ChangeAlignment isIconOnly className="text-lg" size="sm" type="button" variant="light" />
         </div>
         <Divider orientation="horizontal" />
         <div className="flex">
-          <NodeSelector className="w-[150px]" color="default" variant="flat" radius="none" />
+          <NodeSelector className="w-[150px]" color="default" radius="none" variant="flat" />
           <Divider orientation="vertical" />
-          <LinkSelector color="default" variant="flat" radius="none" />
+          <LinkSelector color="default" radius="none" variant="flat" />
           <Divider orientation="vertical" />
           <ColorSelector radius="none" />
         </div>

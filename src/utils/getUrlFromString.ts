@@ -7,6 +7,7 @@ export const isValidURL = (text: string) => {
   } catch {
     return false;
   }
+
   return true;
 };
 
@@ -25,7 +26,9 @@ export const makeUrl = (text: string) => {
 export const getUrlFromString = (text: string): string | null => {
   if (isValidURL(text)) return text;
   const url = extractURL(text)[0];
+
   if (url) return url;
   if (text.includes(" ")) return null;
+
   return makeUrl(text);
 };

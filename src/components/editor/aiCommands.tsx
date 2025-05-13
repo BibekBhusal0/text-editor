@@ -1,8 +1,9 @@
 import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
-import { Icon } from "@/components/icons";
 import { useEditor } from "novel";
 import { Button, ButtonProps } from "@heroui/button";
 import { cn } from "@heroui/theme";
+
+import { Icon } from "@/components/icons";
 
 export const AICommands = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();

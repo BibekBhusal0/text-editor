@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
 import { Button, ButtonProps } from "@heroui/button";
-import { Icon } from "@/components/icons";
 import { Input } from "@heroui/input";
 import { cn } from "@heroui/theme";
-import { getUrlFromString } from "@/utils/getUrlFromString";
 import { useEditor } from "novel";
+
+import { getUrlFromString } from "@/utils/getUrlFromString";
+import { Icon } from "@/components/icons";
 
 export const LinkSelector = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();
@@ -20,6 +21,7 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
 
   const addlink = () => {
     const url = getUrlFromString(link);
+
     if (url) {
       editor.chain().focus().setLink({ href: url }).run();
     }
@@ -31,8 +33,8 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
         <PopoverTrigger>
           <Button
             // className="icon-sm flex-center size-full gap-2"
-            startContent={<Icon icon="link" />}
             size="sm"
+            startContent={<Icon icon="link" />}
             {...props}
             className={cn("w-18 min-w-1 p-2", className)}>
             <div
@@ -47,21 +49,21 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
 
         <PopoverContent className="flex-center flex-col gap-2 p-3">
           <Input
-            size="md"
-            labelPlacement="outside"
             autoFocus
             label="Link"
+            labelPlacement="outside"
+            size="md"
+            value={link}
             variant="faded"
             onChange={(e) => setLink(e.target.value)}
-            value={link}
           />
           <Button
-            size="sm"
-            variant={l ? "bordered" : "solid"}
-            color={l ? "danger" : "success"}
-            onPress={l ? removeLink : addlink}
-            startContent={<Icon icon="add" className="size-4" />}
             children={l ? "Remove Link" : "Add Link"}
+            color={l ? "danger" : "success"}
+            size="sm"
+            startContent={<Icon className="size-4" icon="add" />}
+            variant={l ? "bordered" : "solid"}
+            onPress={l ? removeLink : addlink}
           />
         </PopoverContent>
       </Popover>

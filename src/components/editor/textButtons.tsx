@@ -1,10 +1,12 @@
 import { useEditor } from "novel";
 import { Tooltip } from "@heroui/tooltip";
 import { Button } from "@heroui/button";
+
 import { Icon } from "@/components/icons";
 
 export const TextButtons = () => {
   const { editor } = useEditor();
+
   if (!editor) return null;
 
   const items = [
@@ -50,30 +52,30 @@ export const TextButtons = () => {
       {items.map(({ command, icon, isActive, name, shortcut }, index) => (
         <Tooltip
           key={index}
-          placement="top"
-          size="sm"
           className="backdrop-blur-sm"
           classNames={{}}
-          shouldCloseOnBlur={false}
           content={
             <>
               <div className="text-md capitalize">{name}</div>
               {shortcut && (
                 <div className="flex-center gap-1">
-                  <Icon icon="command" className="size-4" />
+                  <Icon className="size-4" icon="command" />
                   <div className="text-sm">+ {shortcut}</div>
                 </div>
               )}
             </>
-          }>
+          }
+          placement="top"
+          shouldCloseOnBlur={false}
+          size="sm">
           <Button
-            size="sm"
-            radius="sm"
-            onPress={command}
             isIconOnly
+            color={isActive() ? "primary" : "default"}
+            radius="sm"
+            size="sm"
             variant={isActive() ? "flat" : "light"}
-            color={isActive() ? "primary" : "default"}>
-            <Icon icon={icon} className="text-lg" />
+            onPress={command}>
+            <Icon className="text-lg" icon={icon} />
           </Button>
         </Tooltip>
       ))}

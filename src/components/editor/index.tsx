@@ -1,4 +1,5 @@
 import { EditorRoot, EditorContent, ImageResizer, handleCommandNavigation } from "novel";
+
 import { extensions } from "./extension";
 import BubbleMenu from "./bubbleMenu";
 import "@/styles/editor.css";
@@ -11,8 +12,8 @@ const Tiptap = () => {
   return (
     <EditorRoot>
       <EditorContent
-        className="editor"
         autofocus
+        className="editor"
         editorProps={{
           handleDOMEvents: {
             keydown: (_view, event) => handleCommandNavigation(event),
@@ -23,10 +24,10 @@ const Tiptap = () => {
             spellcheck: "false",
           },
         }}
+        slotAfter={<ImageResizer />}
         extensions={extensions}
         //@ts-ignore
-        initialContent={content}
-        slotAfter={<ImageResizer />}>
+        initialContent={content}>
         <BubbleMenu />
         <SlashCommand />
       </EditorContent>

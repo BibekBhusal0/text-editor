@@ -19,10 +19,11 @@ import {
 } from "novel";
 import { Markdown as MarkdownExtension } from "tiptap-markdown";
 import { createLowlight, all } from "lowlight";
-import { slashCommandItems } from "./slashCommand/items";
 import { ReactNodeViewRenderer } from "@tiptap/react";
-import { CodeBlockComponent } from "./customComponents/codeBlock";
 import TextAlign from "@tiptap/extension-text-align";
+
+import { slashCommandItems } from "./slashCommand/items";
+import { CodeBlockComponent } from "./customComponents/codeBlock";
 
 export const codeBlockLowlight = CodeBlockLowlight.extend({
   addNodeView() {
@@ -69,7 +70,9 @@ export const MathExtension = Mathematics.extend({
         } else {
           const { from, to } = this.editor.state.selection;
           const latex = this.editor.state.doc.textBetween(from, to);
+
           if (!latex) return false;
+
           return this.editor.chain().focus().setLatex({ latex }).run();
         }
       },

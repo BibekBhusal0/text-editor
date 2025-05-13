@@ -53,14 +53,15 @@ export const allIcons: Record<string, IconDefinition> = {
   copy: "M9 2a2 2 0 0 0-2 2v2h2V4h11v11h-2v2h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM4 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z",
   link: "m17.303 9.524l3.182 3.182a5.5 5.5 0 1 1-7.778 7.778l-1.06-1.06a1.5 1.5 0 1 1 2.12-2.122l1.062 1.061a2.5 2.5 0 0 0 3.535-3.536l-3.182-3.182a2.5 2.5 0 0 0-2.681-.56q-.242.096-.454.196l-.464.217c-.62.28-1.097.4-1.704-.206c-.872-.872-.646-1.677.417-2.41a5.5 5.5 0 0 1 7.007.642m-6.01-6.01l1.06 1.06a1.5 1.5 0 0 1-2.12 2.122l-1.061-1.06A2.5 2.5 0 1 0 5.636 9.17l3.182 3.182a2.5 2.5 0 0 0 2.681.56q.242-.096.454-.196l.464-.217c.62-.28 1.098-.4 1.704.206c.872.872.646 1.677-.417 2.41a5.5 5.5 0 0 1-7.007-.642l-3.182-3.182a5.5 5.5 0 1 1 7.778-7.778Z",
   math: (
-    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+    <svg height="1em" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg">
       <path
+        d="M19 5h-7L8 19l-3-6H3m11 0l6 6m-6 0l6-6"
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={2}
-        d="M19 5h-7L8 19l-3-6H3m11 0l6 6m-6 0l6-6"></path>
+      />
     </svg>
   ),
 };
@@ -68,18 +69,20 @@ export const allIcons: Record<string, IconDefinition> = {
 export const Icon = ({ size, icon, ...props }: IconSvgProps) => {
   const ic = allIcons[icon || "default"];
   const i = ic ? ic : allIcons["default"];
+
   if (typeof i === "string")
     return (
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={size || "1em"}
         height={size || "1em"}
         viewBox="0 0 24 24"
+        width={size || "1em"}
+        xmlns="http://www.w3.org/2000/svg"
         {...props}>
-        <path fill="currentColor" d={i} />
+        <path d={i} fill="currentColor" />
       </svg>
     );
   else if (typeof i === "function") return i({ size, icon, ...props });
+
   return i;
 };
 

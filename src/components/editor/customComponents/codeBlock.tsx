@@ -2,9 +2,10 @@ import { NodeViewContent, NodeViewWrapper, NodeViewProps } from "@tiptap/react";
 import { Button, ButtonProps } from "@heroui/button";
 import { Select, SelectItem } from "@heroui/select";
 import { useState } from "react";
-import { Icon } from "@/components/icons";
 import { Tooltip } from "@heroui/tooltip";
 import { cn } from "@heroui/theme";
+
+import { Icon } from "@/components/icons";
 
 export type CopyButtonProps = Omit<ButtonProps, "children"> & {
   copyIcon?: string;
@@ -32,21 +33,22 @@ export function CopyButton({
 
   const cls = "size-5 transition-all duration-300 absolute-center";
   const button = (
-    <Button variant="flat" onPress={copyToClipboard} size="sm" className="min-w-10" {...props}>
+    <Button className="min-w-10" size="sm" variant="flat" onPress={copyToClipboard} {...props}>
       <div className="relative size-full px-0 py-2">
-        <Icon icon={copyIcon} className={cn(cls, copied ? "scale-0" : "scale-100", iconCls)} />
-        <Icon icon={copiedIcon} className={cn(cls, copied ? "scale-100" : "scale-0", iconCls)} />
+        <Icon className={cn(cls, copied ? "scale-0" : "scale-100", iconCls)} icon={copyIcon} />
+        <Icon className={cn(cls, copied ? "scale-100" : "scale-0", iconCls)} icon={copiedIcon} />
       </div>
     </Button>
   );
 
   if (!showTooltip) return button;
 
-  return <Tooltip placement="left" content={copied ? "Copied" : "Copy"} children={button} />;
+  return <Tooltip children={button} content={copied ? "Copied" : "Copy"} placement="left" />;
 }
 
 export const CodeBlockComponent = ({ node, updateAttributes, extension }: NodeViewProps) => {
   var currentLanguage = node.attrs.language || node.attrs.defaultLanguage;
+
   currentLanguage = currentLanguage === "null" ? "auto" : currentLanguage;
   const codeContent = node.textContent;
   const languages = extension.options.lowlight.listLanguages();
@@ -57,15 +59,15 @@ export const CodeBlockComponent = ({ node, updateAttributes, extension }: NodeVi
         <div className="absolute right-0 flex w-full items-center justify-end gap-4 rounded-t-lg px-4 py-3">
           <Select
             aria-label="Select language"
-            selectedKeys={[currentLanguage]}
-            onSelectionChange={(e) => {
-              if (typeof e === "string") updateAttributes({ language: e });
-              if (e.currentKey) updateAttributes({ language: e.currentKey });
-            }}
-            size="sm"
             classNames={{
               innerWrapper: "uppercase",
               base: "max-w-36",
+            }}
+            selectedKeys={[currentLanguage]}
+            size="sm"
+            onSelectionChange={(e) => {
+              if (typeof e === "string") updateAttributes({ language: e });
+              if (e.currentKey) updateAttributes({ language: e.currentKey });
             }}>
             <SelectItem key="auto">Auto</SelectItem>
             {languages.map((lang: string) => (
@@ -80,8 +82,8 @@ export const CodeBlockComponent = ({ node, updateAttributes, extension }: NodeVi
 
       <div className="overflow-x-auto rounded-lg">
         <pre
-          spellCheck={"false"}
-          className="hljs m-0 w-max min-w-full rounded-none border-none text-base">
+          className="hljs m-0 w-max min-w-full rounded-none border-none text-base"
+          spellCheck={"false"}>
           <NodeViewContent as="code" />
         </pre>
       </div>

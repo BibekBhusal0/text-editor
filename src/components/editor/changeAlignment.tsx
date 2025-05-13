@@ -1,9 +1,10 @@
 import { useEditor } from "novel";
 import { Popover, PopoverTrigger, PopoverContent, PopoverProps } from "@heroui/popover";
-import { Icon } from "@/components/icons";
 import { Button, ButtonProps } from "@heroui/button";
 import { Tabs, Tab, TabsProps } from "@heroui/tabs";
 import { Listbox, ListboxItem } from "@heroui/listbox";
+
+import { Icon } from "@/components/icons";
 import { IconSvgProps } from "@/types";
 
 // import { cn } from "@heroui/theme";
@@ -16,6 +17,7 @@ type alignemntOpts = { fullName?: boolean } & (
 
 export const ChangeAlignment = ({ type = "button", fullName = false, ...props }: alignemntOpts) => {
   const { editor } = useEditor();
+
   if (!editor) return null;
   editor.isActive({ textAlign: "right" });
   const alignments = ["left", "right", "center", "justify"];
@@ -38,8 +40,8 @@ export const ChangeAlignment = ({ type = "button", fullName = false, ...props }:
     return (
       <Tabs
         aria-label="Change Alignment"
-        variant="light"
         size="sm"
+        variant="light"
         {...(props as TabsProps)}
         selectedKey={currentAlignmet}
         onSelectionChange={(e) => setAlignment(e as string)}>
@@ -61,7 +63,7 @@ export const ChangeAlignment = ({ type = "button", fullName = false, ...props }:
           </Button>
         </PopoverTrigger>
         <PopoverContent>
-          <Listbox variant="flat" selectedKeys={[currentAlignmet]} classNames={{ base: "m-0 p-0" }}>
+          <Listbox classNames={{ base: "m-0 p-0" }} selectedKeys={[currentAlignmet]} variant="flat">
             {alignments.map((a) => (
               <ListboxItem onPress={() => setAlignment(a)}>
                 {" "}

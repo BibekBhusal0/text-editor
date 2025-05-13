@@ -1,5 +1,6 @@
-import DefaultLayout from "@/layouts/default";
 import Tiptap from "./components/editor";
+
+import DefaultLayout from "@/layouts/default";
 
 function App() {
   return (

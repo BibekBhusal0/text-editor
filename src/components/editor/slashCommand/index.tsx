@@ -1,7 +1,9 @@
-import { Icon } from "@/components/icons";
 import { EditorCommand, EditorCommandItem, EditorCommandEmpty, EditorCommandList } from "novel";
-import { slashCommandItems } from "./items";
 import { Card } from "@heroui/card";
+
+import { slashCommandItems } from "./items";
+
+import { Icon } from "@/components/icons";
 
 export const SlashCommand = () => {
   return (
@@ -11,15 +13,15 @@ export const SlashCommand = () => {
         <EditorCommandList>
           {slashCommandItems.map((item) => (
             <EditorCommandItem
+              key={item.title}
+              className="flex w-full cursor-pointer items-center gap-2 rounded-md px-2 py-1 text-sm aria-selected:bg-primary-400"
               value={[item.title, ...(item.searchTerms === undefined ? [] : item.searchTerms)].join(
                 " "
               )}
-              onCommand={(val) => item.command?.(val)}
-              className="flex w-full cursor-pointer items-center gap-2 rounded-md px-2 py-1 text-sm aria-selected:bg-primary-400"
-              key={item.title}>
+              onCommand={(val) => item.command?.(val)}>
               <Icon
-                icon={item.icon as string}
                 className="size-10 rounded-md border border-default-600 p-2"
+                icon={item.icon as string}
               />
               <div>
                 <p className="font-medium">{item.title}</p>
