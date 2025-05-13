@@ -4,7 +4,7 @@ import { ThemeSwitch } from "@/components/theme-switch";
 export default function DefaultLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative flex h-screen flex-col">
-      <div className="pt-3 pl-5">
+      <div className="pl-5 pt-3">
         {" "}
         <ThemeSwitch />{" "}
       </div>

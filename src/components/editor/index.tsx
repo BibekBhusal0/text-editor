@@ -9,9 +9,9 @@ const content =
 
 const Tiptap = () => {
   return (
-    <EditorRoot >
+    <EditorRoot>
       <EditorContent
-        className='editor'
+        className="editor"
         autofocus
         editorProps={{
           handleDOMEvents: {

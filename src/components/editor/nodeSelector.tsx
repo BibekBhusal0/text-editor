@@ -102,7 +102,7 @@ export const NodeSelector = ({ className, ...props }: ButtonProps) => {
                 <Icon
                   icon={i.icon}
                   size={27}
-                  className="border-default-500 rounded-md border p-1"
+                  className="rounded-md border border-default-500 p-1"
                 />
               }
               className="gap-2 px-3 py-2">

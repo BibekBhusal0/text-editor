@@ -15,9 +15,12 @@ export const SlashCommand = () => {
                 " "
               )}
               onCommand={(val) => item.command?.(val)}
-              className="aria-selected:bg-primary-400 flex w-full cursor-pointer items-center gap-2 rounded-md px-2 py-1 text-sm"
+              className="flex w-full cursor-pointer items-center gap-2 rounded-md px-2 py-1 text-sm aria-selected:bg-primary-400"
               key={item.title}>
-              <Icon icon={item.icon as string} className="size-10 rounded-md border border-default-600 p-2" />
+              <Icon
+                icon={item.icon as string}
+                className="size-10 rounded-md border border-default-600 p-2"
+              />
               <div>
                 <p className="font-medium">{item.title}</p>
                 <p className="text-xs">{item.description}</p>

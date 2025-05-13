@@ -73,7 +73,7 @@ export const TextButtons = () => {
             isIconOnly
             variant={isActive() ? "flat" : "light"}
             color={isActive() ? "primary" : "default"}>
-            <Icon icon={icon} className='text-lg' />
+            <Icon icon={icon} className="text-lg" />
           </Button>
         </Tooltip>
       ))}

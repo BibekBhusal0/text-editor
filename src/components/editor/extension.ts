@@ -22,7 +22,7 @@ import { createLowlight, all } from "lowlight";
 import { slashCommandItems } from "./slashCommand/items";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 import { CodeBlockComponent } from "./customComponents/codeBlock";
-import TextAlign from '@tiptap/extension-text-align'
+import TextAlign from "@tiptap/extension-text-align";
 
 export const codeBlockLowlight = CodeBlockLowlight.extend({
   addNodeView() {
@@ -101,5 +101,5 @@ export const extensions: Extensions = [
   slashCommand,
   starterKit,
   taskItem,
-  TextAlign.configure({ types: ['heading', 'paragraph'], })
+  TextAlign.configure({ types: ["heading", "paragraph"] }),
 ];

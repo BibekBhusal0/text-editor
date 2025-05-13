@@ -27,9 +27,9 @@ export const BubbleMenuContent = () => {
         color="primary"
       />
       <div className="flex flex-col border-l-1">
-        <div className="py-1 flex gap-2 flex-center">
+        <div className="flex-center flex gap-2 py-1">
           <TextButtons />
-          <ChangeAlignment type='button' isIconOnly  variant='light' size='sm' className='text-lg' />
+          <ChangeAlignment type="button" isIconOnly variant="light" size="sm" className="text-lg" />
         </div>
         <Divider orientation="horizontal" />
         <div className="flex">

@@ -1,13 +1,12 @@
 .ProseMirror {
-
   .is-editor-empty:first-child::before {
     content: attr(data-placeholder);
-    @apply float-left pointer-events-none h-0 text-default-200;
+    @apply pointer-events-none float-left h-0 text-default-200;
   }
 
   .is-empty::before {
     content: attr(data-placeholder);
-    @apply float-left text-default-200 pointer-events-none h-0;
+    @apply pointer-events-none float-left h-0 text-default-200;
   }
 
   outline: none !important;
@@ -23,11 +22,11 @@
   }
 
   hr {
-    @apply mt-4 mb-6 border-2;
+    @apply mb-6 mt-4 border-2;
   }
 
   li {
-    @apply marker:text-divider leading-normal;
+    @apply leading-normal marker:text-divider;
   }
 
   ol,
@@ -44,7 +43,7 @@
   }
 
   a {
-    @apply hover:text-primary cursor-pointer underline underline-offset-[3px] transition-colors;
+    @apply cursor-pointer underline underline-offset-[3px] transition-colors hover:text-primary;
     @apply cursor-pointer underline underline-offset-[3px] transition-colors;
   }
 
@@ -54,11 +53,11 @@
     li {
       @apply flex items-start gap-2;
 
-      >label {
+      > label {
         user-select: none;
 
         input[type="checkbox"] {
-          @apply rounded-md border-primary-400 hover:bg-primary-100 active:bg-primary-200 checked:bg-primary-400 checked:hover:bg-primary-200 relative m-0 grid size-5 cursor-pointer appearance-none place-content-center border-2 bg-transparent;
+          @apply relative m-0 grid size-5 cursor-pointer appearance-none place-content-center rounded-md border-2 border-primary-400 bg-transparent checked:bg-primary-400 hover:bg-primary-100 checked:hover:bg-primary-200 active:bg-primary-200;
           @apply text-foreground before:size-3 before:origin-center before:scale-0 before:transition-transform before:duration-100 before:ease-in-out before:content-[''] checked:before:scale-100;
 
           &::before {
@@ -68,12 +67,12 @@
         }
       }
 
-      &[data-checked="true"]>div>p {
+      &[data-checked="true"] > div > p {
         @apply text-default-400 line-through;
         text-decoration-thickness: 1px;
       }
 
-      >div>p {
+      > div > p {
         @apply m-0;
       }
     }
@@ -89,11 +88,11 @@
     box-shadow: none;
   }
 
-  span[style]>strong {
+  span[style] > strong {
     color: inherit;
   }
 
-  mark[style]>strong {
+  mark[style] > strong {
     color: inherit;
   }
 }
