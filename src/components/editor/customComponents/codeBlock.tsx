@@ -3,17 +3,8 @@ import {
   NodeViewWrapper,
   NodeViewProps,
 } from "@tiptap/react";
-// import { CopyButton } from "../copyButton";
-// import { createLowlight, all } from "lowlight";
-// import Select from "@mui/material/Select";
-// import Button from "@mui/material/Button";
-// import MenuItem from "@mui/material/MenuItem";
-// import { ScrollArea } from "../scrollarea";
-// import { Icon2RN } from "@/theme/icons";
 import { Button, ButtonProps } from '@heroui/button'
 import { Select, SelectItem } from '@heroui/select'
-
-
 import { useState } from "react";
 import { Icon } from "@/components/icons";
 import { Tooltip } from "@heroui/tooltip";
@@ -28,8 +19,8 @@ export type CopyButtonProps = Omit<ButtonProps, "children"> & {
 };
 
 export function CopyButton({
-  copyIcon = "gravity-ui:copy",
-  copiedIcon = "mingcute:check-fill",
+  copyIcon = "copy",
+  copiedIcon = "check",
   showTooltip = true,
   iconCls,
   ...props
@@ -37,6 +28,7 @@ export function CopyButton({
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
+    console.log('ccc')
     navigator.clipboard.writeText(props.children);
     setCopied(true);
     setTimeout(() => setCopied(false), 3000);
@@ -45,14 +37,10 @@ export function CopyButton({
   const cls = "size-5 transition-all duration-300 absolute-center";
   const button = (
     <Button
-      variant="bordered"
-      onPess={copyToClipboard}
-      // sx={{
-      //   minWidth: "30px",
-      //   padding: "8px 15px",
-      //   border: "1.7px solid",
-      //   ...props.sx,
-      // }}
+      variant="flat"
+      onPress={copyToClipboard}
+      size='sm'
+      className='min-w-10'
       {...props}>
       <div className="relative size-full px-0 py-2">
         <Icon icon={copyIcon} className={cn(cls, copied ? "scale-0" : "scale-100", iconCls)} />
@@ -72,7 +60,6 @@ export function CopyButton({
   );
 }
 
-
 export const CodeBlockComponent = ({
   node,
   updateAttributes,
@@ -86,7 +73,7 @@ export const CodeBlockComponent = ({
   return (
     <NodeViewWrapper className="mx-2 my-4 rounded-lg border relative">
       <div className="sticky top-0 z-10 h-0 w-full">
-        <div className="absolute right-0 flex items-center w-full justify-end gap-4 px-4 py-1 rounded-t-lg">
+        <div className="absolute right-0 flex items-center w-full justify-end gap-4 px-4 py-3 rounded-t-lg">
           <Select
             aria-label="Select language"
             selectedKeys={[currentLanguage]}

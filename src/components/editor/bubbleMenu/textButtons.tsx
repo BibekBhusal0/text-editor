@@ -1,11 +1,8 @@
-
 import { useEditor } from "novel";
 import { Tooltip } from "@heroui/tooltip"
-import { Button, ButtonGroup } from "@heroui/button"
+import { Button, } from "@heroui/button"
 import { Icon } from '@/components/icons';
 import { cn } from '@heroui/theme';
-
-
 
 export const TextButtons = () => {
   const { editor } = useEditor();
@@ -50,11 +47,7 @@ export const TextButtons = () => {
   ];
 
   return (
-    <ButtonGroup
-      variant="solid"
-      color='primary'
-      className="p-2"
-    >
+    <div className="p-2 flex-center gap-2">
       {items.map(({ command, icon, isActive, name, shortcut }, index) => (
         <Tooltip
           key={index}
@@ -80,16 +73,18 @@ export const TextButtons = () => {
             radius='sm'
             onPress={command}
             className={cn(
-              'min-w-7 border-1 border-primary-400 bg-primary-400',
-              isActive() ? 'bg-opacity-80 hover:bg-opacity-90 text-foreground' : 'bg-opacity-20 hover:bg-opacity-30 text-primary-400'
+              'min-w-5 px-2',
+              // "border-1 border-primary-400 bg-primary-400",
+              // isActive() ? 'bg-opacity-80 hover:bg-opacity-90 text-foreground' : 'bg-opacity-20 hover:bg-opacity-30 text-primary-400'
             )}
-          // variant={isActive() ? 'solid' : 'bordered'}
-          // variant={isActive() ? 'flat' : 'light'}
+            // variant={isActive() ? 'solid' : 'bordered'}
+            variant={isActive() ? 'flat' : 'light'}
+            color={isActive() ? 'primary' : 'default'}
           >
             <Icon icon={icon} size={15} />
           </Button>
         </Tooltip>
       ))}
-    </ButtonGroup>
+    </div>
   );
 };
