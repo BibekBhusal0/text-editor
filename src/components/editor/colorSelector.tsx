@@ -61,6 +61,7 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
           A{" "}
         </Button>
       </PopoverTrigger>
+
       <PopoverContent>
         <Listbox
           aria-label="Select Colors"
@@ -69,6 +70,7 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
           selectedKeys={selectedKeys}
           selectionMode="multiple"
           variant="bordered">
+
           <ListboxSection showDivider title="Colors">
             {TEXT_COLORS.map(({ name, color }) => (
               <ListboxItem
@@ -115,6 +117,7 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
               </ListboxItem>
             ))}
           </ListboxSection>
+
         </Listbox>
       </PopoverContent>
     </Popover>
