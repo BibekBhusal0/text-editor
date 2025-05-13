@@ -18,15 +18,15 @@ export default BubbleMenu
 export const BubbleMenuContent = () => {
   return <Card
     isBlurred
-    className="flex flex-row max-w-80"
+    className="flex flex-row w-auto"
     radius='sm'
   >
-    <AICommands />
-    <div className="flex flex-col">
+    <AICommands size={50} />
+    <div className="flex flex-col border-l-1">
       <TextButtons />
       <Divider orientation="horizontal" />
-      <div className="flex flex-row w-full">
-        <NodeSelector />
+      <div className="flex ">
+        <NodeSelector className='w-[300px]' color='default' variant='flat' radius='none' />
         <Divider orientation="vertical" />
         <LinkSelector />
         <Divider orientation="vertical" />

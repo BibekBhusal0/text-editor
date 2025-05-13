@@ -1,10 +1,11 @@
-
 import { useEditor } from "novel";
 import { Icon } from '@/components/icons';
 import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
 import { Listbox, ListboxItem } from "@heroui/listbox";
+import { Button, ButtonProps } from "@heroui/button";
+import { cn } from "@heroui/theme";
 
-export const NodeSelector = () => {
+export const NodeSelector = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();
   if (!editor) return null;
   const items = [
@@ -77,13 +78,19 @@ export const NodeSelector = () => {
     >
 
       <PopoverTrigger >
-        <div className="flex-center size-full gap-2">
-          <div className="text-sm">{activeItem.name}</div>
-          <Icon icon="arrow_down" className="size-4" />
-        </div>
+        <Button
+          endContent={<Icon icon="arrow_down" className="size-5 pt-1" />}
+          color='primary'
+          {...props}
+          className={cn('max-w-80 w-52 flex-grow-0', className)}
+        >
+          {activeItem.name}
+        </Button>
       </PopoverTrigger>
 
       <PopoverContent >
+
+        <Icon icon="arrow_down" className="size-4" />
         <Listbox
           classNames={{ base: 'max-h-80 overflow-auto' }}
           aria-label='Select notes'

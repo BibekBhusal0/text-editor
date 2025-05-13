@@ -3,15 +3,16 @@ import { Icon } from '@/components/icons';
 import { useEditor } from "novel";
 
 
-export const AICommands = () => {
+type AICommandProps = { size?: number }
+export const AICommands = ({ size }: AICommandProps) => {
   const { editor } = useEditor();
 
   if (!editor) return null;
 
   return (
     <Popover>
-      <PopoverTrigger className="flex-center w-full gap-2 text-center text-sm"><div>
-        <Icon icon="ai" size={50} /></div>
+      <PopoverTrigger className="">
+        <Icon icon="ai" size={size} />
       </PopoverTrigger>
       <PopoverContent
       >

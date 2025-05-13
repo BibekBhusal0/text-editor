@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  @apply border-default-100
+}
 
 @layer components {
   .flex-center {
