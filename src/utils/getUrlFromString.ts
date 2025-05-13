@@ -16,7 +16,7 @@ export const makeUrl = (text: string) => {
     if (text.includes(".") && !text.includes(" ")) {
       return new URL(`https://${text}`).toString();
     }
-  } catch (e) {
+  } catch {
     return null;
   }
 

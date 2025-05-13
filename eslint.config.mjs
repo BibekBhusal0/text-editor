@@ -167,6 +167,7 @@ export default defineConfig([
           next: ["const", "let", "var"],
         },
       ],
+      "jsx-a11y/no-autofocus": "off",
     },
   },
 ]);

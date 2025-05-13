@@ -18,7 +18,6 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
   const removeLink = () => {
     editor.chain().focus().unsetLink().run();
   };
-
   const addlink = () => {
     const url = getUrlFromString(link);
 
@@ -57,14 +56,15 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
             variant="faded"
             onChange={(e) => setLink(e.target.value)}
           />
+
           <Button
-            children={l ? "Remove Link" : "Add Link"}
             color={l ? "danger" : "success"}
             size="sm"
             startContent={<Icon className="size-4" icon="add" />}
             variant={l ? "bordered" : "solid"}
-            onPress={l ? removeLink : addlink}
-          />
+            onPress={l ? removeLink : addlink}>
+            {l ? "Remove Link" : "Add Link"}
+          </Button>
         </PopoverContent>
       </Popover>
     </>

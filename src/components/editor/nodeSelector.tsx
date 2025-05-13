@@ -96,18 +96,16 @@ export const NodeSelector = ({ className, ...props }: ButtonProps) => {
           {items.map((i) => (
             <ListboxItem
               key={i.name}
-              onClick={() => {
-                i.command();
-              }}
-              // selected={activeItem.name === i.name}
-              className="gap-2 px-3 py-2"
               startContent={
                 <Icon
+                  className="rounded-md border border-default-500 p-1"
                   icon={i.icon}
                   size={27}
-                  className="rounded-md border border-default-500 p-1"
                 />
-              }>
+              }
+              className="gap-2 px-3 py-2"
+              onClick={() => i.command()}
+            >
               {i.name}
             </ListboxItem>
           ))}

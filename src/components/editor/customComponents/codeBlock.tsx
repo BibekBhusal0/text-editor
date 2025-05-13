@@ -25,7 +25,6 @@ export function CopyButton({
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
-    console.log("ccc");
     navigator.clipboard.writeText(props.children);
     setCopied(true);
     setTimeout(() => setCopied(false), 3000);
@@ -43,7 +42,11 @@ export function CopyButton({
 
   if (!showTooltip) return button;
 
-  return <Tooltip children={button} content={copied ? "Copied" : "Copy"} placement="left" />;
+  return (
+    <Tooltip content={copied ? "Copied" : "Copy"} placement="left">
+      {button}
+    </Tooltip>
+  );
 }
 
 export const CodeBlockComponent = ({ node, updateAttributes, extension }: NodeViewProps) => {
@@ -76,7 +79,7 @@ export const CodeBlockComponent = ({ node, updateAttributes, extension }: NodeVi
               </SelectItem>
             ))}
           </Select>
-          <CopyButton children={codeContent} />
+          <CopyButton>{codeContent}</CopyButton>
         </div>
       </div>
 

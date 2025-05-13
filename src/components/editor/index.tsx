@@ -15,19 +15,17 @@ const Tiptap = () => {
         autofocus
         className="editor"
         editorProps={{
-          handleDOMEvents: {
-            keydown: (_view, event) => handleCommandNavigation(event),
-          },
+          handleDOMEvents: { keydown: (_view, event) => handleCommandNavigation(event) },
           attributes: {
             class:
               "prose dark:prose-invert editor prose-sm prose-headings:font-title prose-pre:m-0 max-w-full min-h-[250px]",
             spellcheck: "false",
           },
         }}
-        slotAfter={<ImageResizer />}
         extensions={extensions}
         //@ts-ignore
-        initialContent={content}>
+        initialContent={content}
+        slotAfter={<ImageResizer />}>
         <BubbleMenu />
         <SlashCommand />
       </EditorContent>

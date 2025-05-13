@@ -65,8 +65,7 @@ export const ChangeAlignment = ({ type = "button", fullName = false, ...props }:
         <PopoverContent>
           <Listbox classNames={{ base: "m-0 p-0" }} selectedKeys={[currentAlignmet]} variant="flat">
             {alignments.map((a) => (
-              <ListboxItem onPress={() => setAlignment(a)}>
-                {" "}
+              <ListboxItem key={a} onPress={() => setAlignment(a)}>
                 <AlignmentItem icon={a} />
               </ListboxItem>
             ))}
