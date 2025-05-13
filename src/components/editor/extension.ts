@@ -23,7 +23,6 @@ import { slashCommandItems } from "./slashCommand/items";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 import { CodeBlockComponent } from "./customComponents/codeBlock";
 
-
 export const codeBlockLowlight = CodeBlockLowlight.extend({
   addNodeView() {
     return ReactNodeViewRenderer(CodeBlockComponent);
@@ -84,7 +83,6 @@ export const slashCommand = Command.configure({
   },
 });
 
-
 export const extensions: Extensions = [
   Color,
   CustomKeymap,
@@ -102,4 +100,4 @@ export const extensions: Extensions = [
   slashCommand,
   starterKit,
   taskItem,
-]
+];

@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
+import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
 import { Button, ButtonProps } from "@heroui/button";
-import { Icon } from '@/components/icons';
+import { Icon } from "@/components/icons";
 import { Input } from "@heroui/input";
 import { cn } from "@heroui/theme";
 import { getUrlFromString } from "@/utils/getUrlFromString";
 import { useEditor } from "novel";
-
 
 export const LinkSelector = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();
@@ -28,19 +27,14 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
 
   return (
     <>
-      <Popover
-        placement='bottom-start'
-      >
+      <Popover placement="bottom-start">
         <PopoverTrigger>
           <Button
             // className="icon-sm flex-center size-full gap-2"
-            startContent={
-              <Icon icon="link" />
-            }
-            size='sm'
+            startContent={<Icon icon="link" />}
+            size="sm"
             {...props}
-            className={cn('min-w-1 w-18 p-2', className)}
-          >
+            className={cn("w-18 min-w-1 p-2", className)}>
             <div
               className={cn(
                 "text-sm underline decoration-stone-400 underline-offset-4",
@@ -51,7 +45,7 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
           </Button>
         </PopoverTrigger>
 
-        <PopoverContent className='flex-center flex-col gap-2 p-3'>
+        <PopoverContent className="flex-center flex-col gap-2 p-3">
           <Input
             size="md"
             labelPlacement="outside"
@@ -66,9 +60,7 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
             variant={l ? "bordered" : "solid"}
             color={l ? "danger" : "success"}
             onPress={l ? removeLink : addlink}
-            startContent={
-              <Icon icon='add' className="size-4" />
-            }
+            startContent={<Icon icon="add" className="size-4" />}
             children={l ? "Remove Link" : "Add Link"}
           />
         </PopoverContent>

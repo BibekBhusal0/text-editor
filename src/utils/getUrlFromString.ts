@@ -3,10 +3,12 @@ export const extractURL = (text: string) => text.match(urlPattern) || [];
 
 export const isValidURL = (text: string) => {
   try {
-    new URL(text)
-  } catch { return false }
-  return true
-}
+    new URL(text);
+  } catch {
+    return false;
+  }
+  return true;
+};
 
 export const makeUrl = (text: string) => {
   try {
@@ -17,13 +19,13 @@ export const makeUrl = (text: string) => {
     return null;
   }
 
-  return null
-}
+  return null;
+};
 
 export const getUrlFromString = (text: string): string | null => {
-  if (isValidURL(text)) return text
-  const url = extractURL(text)[0]
-  if (url) return url
+  if (isValidURL(text)) return text;
+  const url = extractURL(text)[0];
+  if (url) return url;
   if (text.includes(" ")) return null;
-  return makeUrl(text)
+  return makeUrl(text);
 };

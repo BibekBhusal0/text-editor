@@ -1,6 +1,6 @@
 import { useEditor } from "novel";
-import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
-import { Icon } from '@/components/icons';
+import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
+import { Icon } from "@/components/icons";
 import { Listbox, ListboxItem, ListboxSection } from "@heroui/listbox";
 import { Button, ButtonProps } from "@heroui/button";
 import { cn } from "@heroui/theme";
@@ -40,44 +40,37 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
   );
   const cls = "rounded-xs  border-default-500 border px-[6px] py-0 font-medium";
   const selectedKeys = new Set([
-    'color' + (activeColorItem?.name || 'Default'),
-    'highlight' + (activeHighlightItem?.name || 'Default'),
-  ])
+    "color" + (activeColorItem?.name || "Default"),
+    "highlight" + (activeHighlightItem?.name || "Default"),
+  ]);
   return (
-    <Popover
-      classNames={{ content: 'm-0 p-0' }}
-    >
-
-      <PopoverTrigger className="flex-center  w-full gap-2 text-center text-sm">
+    <Popover classNames={{ content: "m-0 p-0" }}>
+      <PopoverTrigger className="flex-center w-full gap-2 text-center text-sm">
         <Button
-          size='sm'
+          size="sm"
           endContent={<Icon icon="arrow_down" className="size-5 pt-1" />}
           {...props}
           style={{
             color: activeColorItem?.color,
-            backgroundColor: activeHighlightItem?.color || 'transparent',
-            ...props.style
+            backgroundColor: activeHighlightItem?.color || "transparent",
+            ...props.style,
           }}
-          className={cn('min-w-1 w-12 p-2 m-0', className)}
-        >
-          A </Button>
+          className={cn("m-0 w-12 min-w-1 p-2", className)}>
+          A{" "}
+        </Button>
       </PopoverTrigger>
-      <PopoverContent
-      >
-
+      <PopoverContent>
         <Listbox
-          classNames={{ base: 'max-h-80 w-36 h-auto overflow-auto' }}
-          aria-label='Select Colors'
+          classNames={{ base: "max-h-80 w-36 h-auto overflow-auto" }}
+          aria-label="Select Colors"
           selectedKeys={selectedKeys}
           selectionMode="multiple"
           variant="bordered"
-          color='primary'
-        >
-
-          <ListboxSection showDivider title='Colors' >
-            {TEXT_COLORS.map(({ name, color, }) =>
+          color="primary">
+          <ListboxSection showDivider title="Colors">
+            {TEXT_COLORS.map(({ name, color }) => (
               <ListboxItem
-                key={'color' + name}
+                key={"color" + name}
                 onClick={() => {
                   if (name === "Default") {
                     editor.commands.unsetColor();
@@ -89,36 +82,38 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
                       .run();
                   }
                 }}
-                classNames={{ title: 'text-foreground' }}
+                classNames={{ title: "text-foreground" }}
                 startContent={
-                  <div className={cls} style={{ color }}>A</div>
-                }
-              >
+                  <div className={cls} style={{ color }}>
+                    A
+                  </div>
+                }>
                 {name}
               </ListboxItem>
-            )}
+            ))}
           </ListboxSection>
 
-          <ListboxSection title='Highlight'>
-            {HIGHLIGHT_COLORS.map(({ name, color },) => (
+          <ListboxSection title="Highlight">
+            {HIGHLIGHT_COLORS.map(({ name, color }) => (
               <ListboxItem
-                key={'highlight' + name}
+                key={"highlight" + name}
                 onClick={() => {
                   editor.commands.unsetHighlight();
                   name !== "Default" && editor.chain().focus().setHighlight({ color }).run();
                 }}
-                classNames={{ title: 'text-foreground' }}
-                startContent={<div className={cn(cls, 'text-foreground')} style={{ backgroundColor: color || 'transparent' }}>
-                  A
-                </div>}
-              >
+                classNames={{ title: "text-foreground" }}
+                startContent={
+                  <div
+                    className={cn(cls, "text-foreground")}
+                    style={{ backgroundColor: color || "transparent" }}>
+                    A
+                  </div>
+                }>
                 {name}
               </ListboxItem>
             ))}
           </ListboxSection>
         </Listbox>
-
-
       </PopoverContent>
     </Popover>
   );

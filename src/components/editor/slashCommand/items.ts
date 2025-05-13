@@ -87,4 +87,3 @@ export const slashCommandItems: SuggestionItem[] = [
       editor.chain().focus().deleteRange(range).toggleCodeBlock().run(),
   },
 ];
-

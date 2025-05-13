@@ -46,7 +46,7 @@
     li {
       @apply flex items-start gap-2;
 
-      >label {
+      > label {
         user-select: none;
 
         input[type="checkbox"] {
@@ -60,12 +60,12 @@
         }
       }
 
-      &[data-checked="true"]>div>p {
+      &[data-checked="true"] > div > p {
         /* @apply text-text-disabled line-through; */
         text-decoration-thickness: 1px;
       }
 
-      >div>p {
+      > div > p {
         @apply m-0;
       }
     }
@@ -81,11 +81,11 @@
     box-shadow: none;
   }
 
-  span[style]>strong {
+  span[style] > strong {
     color: inherit;
   }
 
-  mark[style]>strong {
+  mark[style] > strong {
     color: inherit;
   }
 }

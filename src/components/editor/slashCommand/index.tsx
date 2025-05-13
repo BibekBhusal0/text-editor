@@ -5,9 +5,9 @@ import { Card } from "@heroui/card";
 
 export const SlashCommand = () => {
   return (
-    <EditorCommand className=" rounded-themed z-50 w-[250px] px-1 py-3">
+    <EditorCommand className="rounded-themed z-50 w-[250px] px-1 py-3">
       <Card isBlurred className="h-auto max-h-[300px]">
-        <EditorCommandEmpty className=" qpx-2">No results</EditorCommandEmpty>
+        <EditorCommandEmpty className="qpx-2">No results</EditorCommandEmpty>
         <EditorCommandList>
           {slashCommandItems.map((item) => (
             <EditorCommandItem
@@ -29,4 +29,3 @@ export const SlashCommand = () => {
     </EditorCommand>
   );
 };
-

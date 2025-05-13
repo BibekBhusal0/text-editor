@@ -1,6 +1,6 @@
 import { useEditor } from "novel";
-import { Icon } from '@/components/icons';
-import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
+import { Icon } from "@/components/icons";
+import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
 import { Listbox, ListboxItem } from "@heroui/listbox";
 import { Button, ButtonProps } from "@heroui/button";
 import { cn } from "@heroui/theme";
@@ -71,46 +71,46 @@ export const NodeSelector = ({ className, ...props }: ButtonProps) => {
   const activeItem = items.filter((item) => item.isActive()).pop() ?? { name: "Multiple" };
 
   return (
-    <Popover
-      placement='bottom-start'
-      classNames={{ content: 'm-0 p-0' }}
-    >
-
-      <PopoverTrigger >
+    <Popover placement="bottom-start" classNames={{ content: "m-0 p-0" }}>
+      <PopoverTrigger>
         <Button
-          size='sm'
+          size="sm"
           endContent={<Icon icon="arrow_down" className="size-5 pt-1" />}
-          color='primary'
+          color="primary"
           {...props}
-          className={cn('max-w-80 w-52 flex-grow-0', className)}
-        >
+          className={cn("w-52 max-w-80 flex-grow-0", className)}>
           {activeItem.name}
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent >
+      <PopoverContent>
         <Listbox
-          classNames={{ base: 'max-h-80 overflow-auto' }}
-          aria-label='Select notes'
+          classNames={{ base: "max-h-80 overflow-auto" }}
+          aria-label="Select notes"
           selectedKeys={new Set([activeItem.name])}
           selectionMode="single"
           variant="shadow"
-          color='primary'
-        >{items.map((i) =>
-          <ListboxItem
-            key={i.name}
-            onClick={() => {
-              i.command();
-            }}
-            // selected={activeItem.name === i.name}
-            startContent={<Icon icon={i.icon} size={27} className="rounded-md border border-default-500 p-1" />}
-            className="gap-2 px-3 py-2">
-            {i.name}
-          </ListboxItem>
-
-        )}</Listbox>
-
+          color="primary">
+          {items.map((i) => (
+            <ListboxItem
+              key={i.name}
+              onClick={() => {
+                i.command();
+              }}
+              // selected={activeItem.name === i.name}
+              startContent={
+                <Icon
+                  icon={i.icon}
+                  size={27}
+                  className="border-default-500 rounded-md border p-1"
+                />
+              }
+              className="gap-2 px-3 py-2">
+              {i.name}
+            </ListboxItem>
+          ))}
+        </Listbox>
       </PopoverContent>
-    </Popover >
+    </Popover>
   );
 };

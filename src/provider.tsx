@@ -8,10 +8,5 @@ declare module "@react-types/shared" {
 }
 
 export function Provider({ children }: { children: React.ReactNode }) {
-
-  return (
-    <HeroUIProvider >
-      {children}
-    </HeroUIProvider>
-  );
+  return <HeroUIProvider>{children}</HeroUIProvider>;
 }
