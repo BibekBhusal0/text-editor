@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
-import { Button, } from "@heroui/button"
+import { Button, ButtonProps } from "@heroui/button";
 import { Icon } from '@/components/icons';
 import { Input } from "@heroui/input";
 import { cn } from "@heroui/theme";
@@ -8,13 +8,8 @@ import { getUrlFromString } from "@/utils/getUrlFromString";
 import { useEditor } from "novel";
 
 
-export const LinkSelector = () => {
-  const inputRef = useRef<HTMLInputElement>(null);
+export const LinkSelector = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();
-
-  useEffect(() => {
-    inputRef.current && inputRef.current?.focus();
-  });
   const l = editor?.getAttributes("link").href;
   const [link, setLink] = useState(l || "");
 
@@ -37,8 +32,14 @@ export const LinkSelector = () => {
         placement='bottom-start'
       >
         <PopoverTrigger>
-          <div className="icon-sm flex-center size-full gap-2">
-            <Icon icon="link" />
+          <Button 
+            // className="icon-sm flex-center size-full gap-2"
+            startContent={
+              <Icon icon="link" />
+            }
+            {...props}
+          className={cn('min-w-1 w-20 p-2 m-0', className)}
+          >
             <div
               className={cn(
                 "text-sm underline decoration-stone-400 underline-offset-4",
@@ -46,14 +47,16 @@ export const LinkSelector = () => {
               )}>
               Link
             </div>
-          </div>
-
+          </Button>
         </PopoverTrigger>
-        <PopoverContent><div className="flex-center flex-col gap-2 px-2 py-1">
+
+        <PopoverContent className='flex-center flex-col gap-2 p-3'>
           <Input
-            size="sm"
+            size="md"
+            labelPlacement="outside"
+            autoFocus
             label="Link"
-            variant="bordered"
+            variant="faded"
             onChange={(e) => setLink(e.target.value)}
             value={link}
           />
@@ -67,7 +70,7 @@ export const LinkSelector = () => {
             }
             children={l ? "Remove Link" : "Add Link"}
           />
-        </div></PopoverContent>
+        </PopoverContent>
       </Popover>
     </>
   );

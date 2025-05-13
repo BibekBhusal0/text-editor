@@ -54,7 +54,7 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
             backgroundColor: activeHighlightItem?.color || 'transparent',
             ...props.style
           }}
-          className={cn('min-w-1 w-20 p-2 m-0', className)}
+          className={cn('min-w-1 w-12 p-2 m-0', className)}
         >
           A </Button>
       </PopoverTrigger>

@@ -25,10 +25,10 @@ export const BubbleMenuContent = () => {
     <div className="flex flex-col border-l-1">
       <TextButtons />
       <Divider orientation="horizontal" />
-      <div className="flex ">
-        <NodeSelector className='w-[300px]' color='default' variant='flat' radius='none' />
+      <div className="flex">
+        <NodeSelector className='w-[150px]' color='default' variant='flat' radius='none' />
         <Divider orientation="vertical" />
-        <LinkSelector />
+        <LinkSelector color='default' variant='flat' radius='none' />
         <Divider orientation="vertical" />
         <ColorSelector radius='none' />
       </div>
