@@ -2,7 +2,6 @@ import { useEditor } from "novel";
 import { Tooltip } from "@heroui/tooltip";
 import { Button } from "@heroui/button";
 import { Icon } from "@/components/icons";
-import { cn } from "@heroui/theme";
 
 export const TextButtons = () => {
   const { editor } = useEditor();
@@ -71,15 +70,10 @@ export const TextButtons = () => {
             size="sm"
             radius="sm"
             onPress={command}
-            className={cn(
-              "min-w-5 px-2"
-              // "border-1 border-primary-400 bg-primary-400",
-              // isActive() ? 'bg-opacity-80 hover:bg-opacity-90 text-foreground' : 'bg-opacity-20 hover:bg-opacity-30 text-primary-400'
-            )}
-            // variant={isActive() ? 'solid' : 'bordered'}
+            isIconOnly
             variant={isActive() ? "flat" : "light"}
             color={isActive() ? "primary" : "default"}>
-            <Icon icon={icon} size={15} />
+            <Icon icon={icon} className='text-lg' />
           </Button>
         </Tooltip>
       ))}

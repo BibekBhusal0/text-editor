@@ -6,6 +6,7 @@ import { ColorSelector } from "./colorSelector";
 import { AICommands } from "./aiCommands";
 import { Card } from "@heroui/card";
 import { EditorBubble } from "novel";
+import { ChangeAlignment } from "./changeAlignment";
 
 const BubbleMenu = () => {
   return (
@@ -26,8 +27,9 @@ export const BubbleMenuContent = () => {
         color="primary"
       />
       <div className="flex flex-col border-l-1">
-        <div className="py-1">
+        <div className="py-1 flex gap-2 flex-center">
           <TextButtons />
+          <ChangeAlignment type='button' isIconOnly  variant='light' size='sm' className='text-lg' />
         </div>
         <Divider orientation="horizontal" />
         <div className="flex">

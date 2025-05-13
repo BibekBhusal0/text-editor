@@ -3,7 +3,6 @@ import { extensions } from "./extension";
 import BubbleMenu from "./bubbleMenu";
 import "@/styles/editor.css";
 import { SlashCommand } from "./slashCommand";
-// import FloatingMenu from './floatingMenu'
 
 const content =
   "<h1>Heading 1</h1><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora eos soluta fuga quas, ullam quod tenetur ex non, magni fugit autem repellendus! Nihil porro, velit unde quam doloribus repellendus? dolor elit dolor ipsum incididunt magna eiusmod sed dolore lorem magna dolore sed sed sit elit consectetur do et do eiusmod tempor ipsum labore incididunt labore ipsum sit sed adipiscing ut tempor tempor adipiscing et labore dolor aliqua incididunt elit consectetur aliqua magna consectetur consectetur ut aliqua tempor sed amet dolor dolor labore tempor dolore dolor aliqua ipsum elit sed do ipsum eiusmod elit do labore dolor et aliqua sit incididunt consectetur dolore et magna lorem sit eiusmod et elit aliqua amet aliqua et incididunt tempor lorem dolor do labore aliqua sit labore elit amet dolor magna magna et eiusmod </p><h2>Heading 2</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, ex explicabo. Sapiente quas iusto aliquid error iste sit! Sint aperiam fugit tempore. Dolor eos a magnam? Nisi quod at quibusdam. </p><p></p>";
@@ -30,7 +29,6 @@ const Tiptap = () => {
         slotAfter={<ImageResizer />}>
         <BubbleMenu />
         <SlashCommand />
-        {/* <BubbleMenuContent /> */}
       </EditorContent>
     </EditorRoot>
   );
