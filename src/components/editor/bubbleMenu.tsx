@@ -21,9 +21,9 @@ export const BubbleMenuContent = () => {
     className="flex flex-row w-auto"
     radius='sm'
   >
-    <AICommands size={50} />
+    <AICommands className='h-auto text-5xl px-3 min-w-4' radius='none' variant='flat' color='primary' />
     <div className="flex flex-col border-l-1">
-      <TextButtons />
+      <div className='py-1'><TextButtons /></div>
       <Divider orientation="horizontal" />
       <div className="flex">
         <NodeSelector className='w-[150px]' color='default' variant='flat' radius='none' />

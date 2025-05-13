@@ -78,6 +78,7 @@ export const NodeSelector = ({ className, ...props }: ButtonProps) => {
 
       <PopoverTrigger >
         <Button
+          size='sm'
           endContent={<Icon icon="arrow_down" className="size-5 pt-1" />}
           color='primary'
           {...props}

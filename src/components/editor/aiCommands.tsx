@@ -1,18 +1,18 @@
 import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
 import { Icon } from '@/components/icons';
 import { useEditor } from "novel";
+import { Button, ButtonProps } from "@heroui/button";
+import { cn } from "@heroui/theme";
 
-
-type AICommandProps = { size?: number }
-export const AICommands = ({ size }: AICommandProps) => {
+export const AICommands = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();
 
   if (!editor) return null;
 
   return (
     <Popover>
-      <PopoverTrigger className="">
-        <Icon icon="ai" size={size} />
+      <PopoverTrigger>
+        <Button className={cn('', className)} {...props}><Icon icon="ai" /></Button>
       </PopoverTrigger>
       <PopoverContent
       >

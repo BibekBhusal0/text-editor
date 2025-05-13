@@ -32,13 +32,14 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
         placement='bottom-start'
       >
         <PopoverTrigger>
-          <Button 
+          <Button
             // className="icon-sm flex-center size-full gap-2"
             startContent={
               <Icon icon="link" />
             }
+            size='sm'
             {...props}
-          className={cn('min-w-1 w-20 p-2 m-0', className)}
+            className={cn('min-w-1 w-18 p-2', className)}
           >
             <div
               className={cn(

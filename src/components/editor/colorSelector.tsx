@@ -39,7 +39,10 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
     editor.isActive("highlight", { color })
   );
   const cls = "rounded-xs  border-default-500 border px-[6px] py-0 font-medium";
-
+  const selectedKeys = new Set([
+    'color' + (activeColorItem?.name || 'Default'),
+    'highlight' + (activeHighlightItem?.name || 'Default'),
+  ])
   return (
     <Popover
       classNames={{ content: 'm-0 p-0' }}
@@ -47,6 +50,7 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
 
       <PopoverTrigger className="flex-center  w-full gap-2 text-center text-sm">
         <Button
+          size='sm'
           endContent={<Icon icon="arrow_down" className="size-5 pt-1" />}
           {...props}
           style={{
@@ -64,7 +68,7 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
         <Listbox
           classNames={{ base: 'max-h-80 w-36 h-auto overflow-auto' }}
           aria-label='Select Colors'
-          selectedKeys={new Set([activeColorItem?.name || 'Default', activeColorItem?.color || 'Default'])}
+          selectedKeys={selectedKeys}
           selectionMode="multiple"
           variant="bordered"
           color='primary'
@@ -73,7 +77,7 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
           <ListboxSection showDivider title='Colors' >
             {TEXT_COLORS.map(({ name, color, }) =>
               <ListboxItem
-                key={name}
+                key={'color' + name}
                 onClick={() => {
                   if (name === "Default") {
                     editor.commands.unsetColor();
@@ -98,7 +102,7 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
           <ListboxSection title='Highlight'>
             {HIGHLIGHT_COLORS.map(({ name, color },) => (
               <ListboxItem
-                key={name}
+                key={'highlight' + name}
                 onClick={() => {
                   editor.commands.unsetHighlight();
                   name !== "Default" && editor.chain().focus().setHighlight({ color }).run();

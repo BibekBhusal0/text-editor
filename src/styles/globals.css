@@ -6,6 +6,10 @@
   @apply border-default-100
 }
 
+svg {
+  max-width: 400px !important
+}
+
 @layer components {
   .flex-center {
     @apply flex justify-center items-center;

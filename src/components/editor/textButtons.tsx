@@ -47,7 +47,7 @@ export const TextButtons = () => {
   ];
 
   return (
-    <div className="p-2 flex-center gap-2">
+    <div className="flex-center gap-2">
       {items.map(({ command, icon, isActive, name, shortcut }, index) => (
         <Tooltip
           key={index}
