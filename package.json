@@ -4,9 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "build": "vite build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "format": "prettier --write .",
     "lint": "eslint --fix",
+    "predeploy": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
