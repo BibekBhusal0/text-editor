@@ -33,7 +33,7 @@ export const codeBlockLowlight = CodeBlockLowlight.extend({
 });
 
 export const starterKit = StarterKit.configure({
-  dropcursor: { color: "hsl(var(--heroui-default-400)))", width: 3 },
+  dropcursor: { color: "hsl(var(--heroui-default-400))", width: 3 },
   codeBlock: false,
   code: { HTMLAttributes: { spellcheck: "false" } },
 });

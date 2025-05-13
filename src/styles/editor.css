@@ -1,4 +1,15 @@
 .ProseMirror {
+
+  .is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    @apply float-left pointer-events-none h-0 text-default-200;
+  }
+
+  .is-empty::before {
+    content: attr(data-placeholder);
+    @apply float-left text-default-200 pointer-events-none h-0;
+  }
+
   outline: none !important;
 
   @apply p-2 pl-5;
@@ -19,12 +30,9 @@
     @apply marker:text-divider leading-normal;
   }
 
-  ol {
-    @apply list-outside list-decimal leading-3;
-  }
-
+  ol,
   ul {
-    @apply list-outside list-disc leading-3;
+    @apply list-outside list-decimal leading-3;
   }
 
   pre {
@@ -36,7 +44,7 @@
   }
 
   a {
-    /* @apply hover:text-primary-main cursor-pointer underline underline-offset-[3px] transition-colors; */
+    @apply hover:text-primary cursor-pointer underline underline-offset-[3px] transition-colors;
     @apply cursor-pointer underline underline-offset-[3px] transition-colors;
   }
 
@@ -46,12 +54,12 @@
     li {
       @apply flex items-start gap-2;
 
-      > label {
+      >label {
         user-select: none;
 
         input[type="checkbox"] {
-          /* @apply rounded-themed border-primary-main hover:bg-primary-3 active:bg-primary-5 checked:bg-primary-main checked:hover:bg-primary-main relative m-0 grid size-5 cursor-pointer appearance-none place-content-center border-2 bg-transparent; */
-          /* @apply text-primary-contrast-text before:size-3 before:origin-center before:scale-0 before:transition-transform before:duration-100 before:ease-in-out before:content-[''] checked:before:scale-100; */
+          @apply rounded-md border-primary-400 hover:bg-primary-100 active:bg-primary-200 checked:bg-primary-400 checked:hover:bg-primary-200 relative m-0 grid size-5 cursor-pointer appearance-none place-content-center border-2 bg-transparent;
+          @apply text-foreground before:size-3 before:origin-center before:scale-0 before:transition-transform before:duration-100 before:ease-in-out before:content-[''] checked:before:scale-100;
 
           &::before {
             box-shadow: inset 1em 1em;
@@ -60,12 +68,12 @@
         }
       }
 
-      &[data-checked="true"] > div > p {
-        /* @apply text-text-disabled line-through; */
+      &[data-checked="true"]>div>p {
+        @apply text-default-400 line-through;
         text-decoration-thickness: 1px;
       }
 
-      > div > p {
+      >div>p {
         @apply m-0;
       }
     }
@@ -81,11 +89,11 @@
     box-shadow: none;
   }
 
-  span[style] > strong {
+  span[style]>strong {
     color: inherit;
   }
 
-  mark[style] > strong {
+  mark[style]>strong {
     color: inherit;
   }
 }

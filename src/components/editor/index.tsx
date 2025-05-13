@@ -1,8 +1,8 @@
 import { EditorRoot, EditorContent, ImageResizer, handleCommandNavigation } from "novel";
 import { extensions } from "./extension";
-import BubbleMenu, { BubbleMenuContent } from "./bubbleMenu";
+import BubbleMenu from "./bubbleMenu";
 import "@/styles/editor.css";
-import { SlashCommand } from "./slashCommand/index";
+import { SlashCommand } from "./slashCommand";
 // import FloatingMenu from './floatingMenu'
 
 const content =
@@ -10,8 +10,9 @@ const content =
 
 const Tiptap = () => {
   return (
-    <EditorRoot>
+    <EditorRoot >
       <EditorContent
+        className='editor'
         autofocus
         editorProps={{
           handleDOMEvents: {
@@ -19,7 +20,7 @@ const Tiptap = () => {
           },
           attributes: {
             class:
-              "prose dark:prose-invert prose-sm prose-headings:font-title prose-pre:m-0 max-w-full min-h-[250px]",
+              "prose dark:prose-invert editor prose-sm prose-headings:font-title prose-pre:m-0 max-w-full min-h-[250px]",
             spellcheck: "false",
           },
         }}
@@ -29,7 +30,7 @@ const Tiptap = () => {
         slotAfter={<ImageResizer />}>
         <BubbleMenu />
         <SlashCommand />
-        <BubbleMenuContent />
+        {/* <BubbleMenuContent /> */}
       </EditorContent>
     </EditorRoot>
   );
