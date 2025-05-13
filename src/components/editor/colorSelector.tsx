@@ -57,7 +57,8 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
             color: activeColorItem?.color,
             backgroundColor: activeHighlightItem?.color || "transparent",
             ...props.style,
-          }}>
+          }}
+        >
           A{" "}
         </Button>
       </PopoverTrigger>
@@ -69,8 +70,8 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
           color="primary"
           selectedKeys={selectedKeys}
           selectionMode="multiple"
-          variant="bordered">
-
+          variant="bordered"
+        >
           <ListboxSection showDivider title="Colors">
             {TEXT_COLORS.map(({ name, color }) => (
               <ListboxItem
@@ -91,7 +92,8 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
                       .setColor(color || "")
                       .run();
                   }
-                }}>
+                }}
+              >
                 {name}
               </ListboxItem>
             ))}
@@ -105,19 +107,20 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
                 startContent={
                   <div
                     className={cn(cls, "text-foreground")}
-                    style={{ backgroundColor: color || "transparent" }}>
+                    style={{ backgroundColor: color || "transparent" }}
+                  >
                     A
                   </div>
                 }
                 onClick={() => {
                   editor.commands.unsetHighlight();
                   name !== "Default" && editor.chain().focus().setHighlight({ color }).run();
-                }}>
+                }}
+              >
                 {name}
               </ListboxItem>
             ))}
           </ListboxSection>
-
         </Listbox>
       </PopoverContent>
     </Popover>

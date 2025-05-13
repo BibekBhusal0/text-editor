@@ -77,7 +77,8 @@ export const Icon = ({ size, icon, ...props }: IconSvgProps) => {
         viewBox="0 0 24 24"
         width={size || "1em"}
         xmlns="http://www.w3.org/2000/svg"
-        {...props}>
+        {...props}
+      >
         <path d={i} fill="currentColor" />
       </svg>
     );

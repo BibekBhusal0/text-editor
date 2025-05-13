@@ -80,7 +80,8 @@ export const NodeSelector = ({ className, ...props }: ButtonProps) => {
           endContent={<Icon className="size-5 pt-1" icon="arrow_down" />}
           size="sm"
           {...props}
-          className={cn("w-52 max-w-80 flex-grow-0", className)}>
+          className={cn("w-52 max-w-80 flex-grow-0", className)}
+        >
           {activeItem.name}
         </Button>
       </PopoverTrigger>
@@ -92,7 +93,8 @@ export const NodeSelector = ({ className, ...props }: ButtonProps) => {
           color="primary"
           selectedKeys={new Set([activeItem.name])}
           selectionMode="single"
-          variant="shadow">
+          variant="shadow"
+        >
           {items.map((i) => (
             <ListboxItem
               key={i.name}

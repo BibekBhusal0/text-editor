@@ -71,7 +71,8 @@ export const CodeBlockComponent = ({ node, updateAttributes, extension }: NodeVi
             onSelectionChange={(e) => {
               if (typeof e === "string") updateAttributes({ language: e });
               if (e.currentKey) updateAttributes({ language: e.currentKey });
-            }}>
+            }}
+          >
             <SelectItem key="auto">Auto</SelectItem>
             {languages.map((lang: string) => (
               <SelectItem key={lang} className="uppercase">
@@ -86,7 +87,8 @@ export const CodeBlockComponent = ({ node, updateAttributes, extension }: NodeVi
       <div className="overflow-x-auto rounded-lg">
         <pre
           className="hljs m-0 w-max min-w-full rounded-none border-none text-base"
-          spellCheck={"false"}>
+          spellCheck={"false"}
+        >
           <NodeViewContent as="code" />
         </pre>
       </div>

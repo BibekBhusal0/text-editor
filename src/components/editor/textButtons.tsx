@@ -67,14 +67,16 @@ export const TextButtons = () => {
           }
           placement="top"
           shouldCloseOnBlur={false}
-          size="sm">
+          size="sm"
+        >
           <Button
             isIconOnly
             color={isActive() ? "primary" : "default"}
             radius="sm"
             size="sm"
             variant={isActive() ? "flat" : "light"}
-            onPress={command}>
+            onPress={command}
+          >
             <Icon className="text-lg" icon={icon} />
           </Button>
         </Tooltip>

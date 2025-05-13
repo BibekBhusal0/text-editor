@@ -37,7 +37,8 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => 
           className,
           classNames?.base
         ),
-      })}>
+      })}
+    >
       <VisuallyHidden>
         <input {...getInputProps()} />
       </VisuallyHidden>
@@ -58,7 +59,8 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => 
             ],
             classNames?.wrapper
           ),
-        })}>
+        })}
+      >
         <Icon icon={isSelected ? "sun" : "moon"} size={22} />
       </div>
     </Component>

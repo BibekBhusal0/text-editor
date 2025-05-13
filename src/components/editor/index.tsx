@@ -25,7 +25,8 @@ const Tiptap = () => {
         extensions={extensions}
         //@ts-ignore
         initialContent={content}
-        slotAfter={<ImageResizer />}>
+        slotAfter={<ImageResizer />}
+      >
         <BubbleMenu />
         <SlashCommand />
       </EditorContent>

@@ -35,12 +35,14 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
             size="sm"
             startContent={<Icon icon="link" />}
             {...props}
-            className={cn("w-18 min-w-1 p-2", className)}>
+            className={cn("w-18 min-w-1 p-2", className)}
+          >
             <div
               className={cn(
                 "text-sm underline decoration-stone-400 underline-offset-4",
                 editor.isActive("link") && "text-blue-500"
-              )}>
+              )}
+            >
               Link
             </div>
           </Button>
@@ -62,7 +64,8 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
             size="sm"
             startContent={<Icon className="size-4" icon="add" />}
             variant={l ? "bordered" : "solid"}
-            onPress={l ? removeLink : addlink}>
+            onPress={l ? removeLink : addlink}
+          >
             {l ? "Remove Link" : "Add Link"}
           </Button>
         </PopoverContent>

@@ -44,7 +44,8 @@ export const ChangeAlignment = ({ type = "button", fullName = false, ...props }:
         variant="light"
         {...(props as TabsProps)}
         selectedKey={currentAlignmet}
-        onSelectionChange={(e) => setAlignment(e as string)}>
+        onSelectionChange={(e) => setAlignment(e as string)}
+      >
         {alignments.map((a) => (
           <Tab key={a} title={<AlignmentItem icon={a} />} />
         ))}
@@ -83,7 +84,8 @@ export const ChangeAlignment = ({ type = "button", fullName = false, ...props }:
           setAlignment(
             alignments[(alignments.findIndex((e) => e === currentAlignmet) + 1) % alignments.length]
           );
-        }}>
+        }}
+      >
         <AlignmentItem />{" "}
       </Button>
     );

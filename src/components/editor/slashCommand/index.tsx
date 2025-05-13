@@ -18,7 +18,8 @@ export const SlashCommand = () => {
               value={[item.title, ...(item.searchTerms === undefined ? [] : item.searchTerms)].join(
                 " "
               )}
-              onCommand={(val) => item.command?.(val)}>
+              onCommand={(val) => item.command?.(val)}
+            >
               <Icon
                 className="size-10 rounded-md border border-default-600 p-2"
                 icon={item.icon as string}
