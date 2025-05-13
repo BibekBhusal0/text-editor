@@ -30,7 +30,7 @@ export const BubbleMenuContent = () => {
         <Divider orientation="vertical" />
         <LinkSelector />
         <Divider orientation="vertical" />
-        <ColorSelector />
+        <ColorSelector radius='none' />
       </div>
     </div>
   </Card>

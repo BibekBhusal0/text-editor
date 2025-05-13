@@ -73,8 +73,7 @@ export const NodeSelector = ({ className, ...props }: ButtonProps) => {
   return (
     <Popover
       placement='bottom-start'
-      classNames={{ content: 'm-0 p-0' }
-      }
+      classNames={{ content: 'm-0 p-0' }}
     >
 
       <PopoverTrigger >
@@ -89,8 +88,6 @@ export const NodeSelector = ({ className, ...props }: ButtonProps) => {
       </PopoverTrigger>
 
       <PopoverContent >
-
-        <Icon icon="arrow_down" className="size-4" />
         <Listbox
           classNames={{ base: 'max-h-80 overflow-auto' }}
           aria-label='Select notes'
@@ -99,14 +96,13 @@ export const NodeSelector = ({ className, ...props }: ButtonProps) => {
           variant="shadow"
           color='primary'
         >{items.map((i) =>
-
           <ListboxItem
             key={i.name}
             onClick={() => {
               i.command();
             }}
             // selected={activeItem.name === i.name}
-            startContent={<Icon icon={i.icon} size={27} className="rounded-md border p-1" />}
+            startContent={<Icon icon={i.icon} size={27} className="rounded-md border border-default-500 p-1" />}
             className="gap-2 px-3 py-2">
             {i.name}
           </ListboxItem>

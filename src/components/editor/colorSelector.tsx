@@ -1,9 +1,9 @@
 import { useEditor } from "novel";
-import { useState } from "react";
 import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
 import { Icon } from '@/components/icons';
-
-
+import { Listbox, ListboxItem, ListboxSection } from "@heroui/listbox";
+import { Button, ButtonProps } from "@heroui/button";
+import { cn } from "@heroui/theme";
 
 export interface BubbleColorMenuItem {
   name: string;
@@ -30,84 +30,91 @@ const HIGHLIGHT_COLORS: BubbleColorMenuItem[] = [
   { name: "Yellow", color: "#F5A52466" },
 ];
 
-export const ColorSelector = () => {
-  const [key, setKey] = useState(1);
-  const handleClose = () => setKey(key + 1);
+export const ColorSelector = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();
 
   if (!editor) return null;
-  // const activeColorItem = TEXT_COLORS.find(({ color }) => editor.isActive("textStyle", { color }));
-  //
-  // const activeHighlightItem = HIGHLIGHT_COLORS.find(({ color }) =>
-  //   editor.isActive("highlight", { color })
-  // );
-  const cls = "rounded-xs border px-[6px] py-0 font-medium";
+  const activeColorItem = TEXT_COLORS.find(({ color }) => editor.isActive("textStyle", { color }));
+  const activeHighlightItem = HIGHLIGHT_COLORS.find(({ color }) =>
+    editor.isActive("highlight", { color })
+  );
+  const cls = "rounded-xs  border-default-500 border px-[6px] py-0 font-medium";
 
   return (
     <Popover
-    // buttonProps={{
-    //   sx: {
-    //     color: activeColorItem?.color,
-    //     backgroundColor: activeHighlightItem?.color,
-    //   },
-    // }}
+      classNames={{ content: 'm-0 p-0' }}
     >
-      <PopoverTrigger className="flex-center w-full gap-2 text-center text-sm"><div>
 
-        A <Icon icon="ri:arrow-down-s-line" className="size-4" /></div>
+      <PopoverTrigger className="flex-center  w-full gap-2 text-center text-sm">
+        <Button
+          endContent={<Icon icon="arrow_down" className="size-5 pt-1" />}
+          {...props}
+          style={{
+            color: activeColorItem?.color,
+            backgroundColor: activeHighlightItem?.color || 'transparent',
+            ...props.style
+          }}
+          className={cn('min-w-1 w-20 p-2 m-0', className)}
+        >
+          A </Button>
       </PopoverTrigger>
       <PopoverContent
-      // viewPortProps={{ className: "h-auto max-h-[200px]" }}
-      // scrollBarProps={{ className: "w-2" }}
       >
-        <div className="flex flex-col">
-          <div className="my-1 px-2 text-lg font-semibold">Color</div>
-          {TEXT_COLORS.map(({ name, color }, i) => (
-            <div
-              key={i}
-              onClick={() => {
-                if (name === "Default") {
-                  editor.commands.unsetColor();
-                } else {
-                  editor
-                    .chain()
-                    .focus()
-                    .setColor(color || "")
-                    .run();
+
+        <Listbox
+          classNames={{ base: 'max-h-80 w-36 h-auto overflow-auto' }}
+          aria-label='Select Colors'
+          selectedKeys={new Set([activeColorItem?.name || 'Default', activeColorItem?.color || 'Default'])}
+          selectionMode="multiple"
+          variant="bordered"
+          color='primary'
+        >
+
+          <ListboxSection showDivider title='Colors' >
+            {TEXT_COLORS.map(({ name, color, }) =>
+              <ListboxItem
+                key={name}
+                onClick={() => {
+                  if (name === "Default") {
+                    editor.commands.unsetColor();
+                  } else {
+                    editor
+                      .chain()
+                      .focus()
+                      .setColor(color || "")
+                      .run();
+                  }
+                }}
+                classNames={{ title: 'text-foreground' }}
+                startContent={
+                  <div className={cls} style={{ color }}>A</div>
                 }
-                handleClose();
-              }}
-              // selected={name === activeColorItem?.name}
-              className="gap-3 px-3 py-2">
-              <div className={cls} style={{ color }}>
-                A
-              </div>
-              <div className="text-sm">{name}</div>{" "}
-            </div>
-          ))}
-        </div>
-        <div>
-          <div className="border-t-border my-1 border-t-2 px-2 pt-1 text-lg font-semibold">
-            Highlight
-          </div>
-          {HIGHLIGHT_COLORS.map(({ name, color }, i) => (
-            <div
-              key={i}
-              onClick={() => {
-                editor.commands.unsetHighlight();
-                name !== "Default" && editor.chain().focus().setHighlight({ color }).run();
-                handleClose();
-              }}
-              className="gap-3 px-3 py-2"
-            // selected={name === activeHighlightItem?.name}
-            >
-              <div className={cls} style={{ backgroundColor: color }}>
-                A
-              </div>
-              <div className="text-sm">{name}</div>
-            </div>
-          ))}
-        </div>
+              >
+                {name}
+              </ListboxItem>
+            )}
+          </ListboxSection>
+
+          <ListboxSection title='Highlight'>
+            {HIGHLIGHT_COLORS.map(({ name, color },) => (
+              <ListboxItem
+                key={name}
+                onClick={() => {
+                  editor.commands.unsetHighlight();
+                  name !== "Default" && editor.chain().focus().setHighlight({ color }).run();
+                }}
+                classNames={{ title: 'text-foreground' }}
+                startContent={<div className={cn(cls, 'text-foreground')} style={{ backgroundColor: color || 'transparent' }}>
+                  A
+                </div>}
+              >
+                {name}
+              </ListboxItem>
+            ))}
+          </ListboxSection>
+        </Listbox>
+
+
       </PopoverContent>
     </Popover>
   );
