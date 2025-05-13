@@ -1,5 +1,8 @@
 name: Type check and Linting
 
+permissions:
+  contents: write 
+
 on:
   push:
     branches: main
@@ -27,3 +30,11 @@ jobs:
 
     - name: Run ESLint
       run: npm run lint 
+
+    - name: Commit changes
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "Linting"
+        commit_user_name: "github-actions[bot]"
+        commit_user_email: "github-actions[bot]@users.noreply.github.com"
+        commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
