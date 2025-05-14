@@ -3,7 +3,6 @@ import { extensions } from "./extension";
 import "@/styles/editor.css";
 import { cn } from "@heroui/theme";
 
-
 const MinimalEditor = ({ className, ...props }: EditorContentProps) => {
   return (
     <EditorRoot>
@@ -19,12 +18,12 @@ const MinimalEditor = ({ className, ...props }: EditorContentProps) => {
             ...props.editorProps?.attributes,
             class: cn(
               "prose dark:prose-invert prose-sm prose-headings:font-title prose-pre:m-0",
-              "max-w-full "
+              //@ts-ignore
+              "max-w-full ", props.editorProps?.attributes?.class
             ),
           },
         }}
       />
-
     </EditorRoot>
   );
 };

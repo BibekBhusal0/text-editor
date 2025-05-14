@@ -12,17 +12,17 @@ const MainEditor = () => {
   return (
     <MinimalEditor
       autofocus
-      className="overflow-hidden rounded-md border-1 pt-16"
+      className="rounded-md border-1 pt-16"
       editorProps={{
         attributes: {
-          class: "min-h-[250px]",
+          class: "min-h-[250px] max-h-[900px] overflow-auto",
           spellcheck: 'false',
         },
       }}
       //@ts-ignore
       initialContent={content}
     >
-      <div className="absolute top-0 h-20 w-full">
+      <div className="absolute top-0 rounded-t-md overflow-hidden h-20 w-full">
         <EditorHeader />
       </div>
       <BubbleMenu />
