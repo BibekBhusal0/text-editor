@@ -66,7 +66,7 @@ export const NodeSelector = ({ className, ...props }: ButtonProps) => {
       name: "Code",
       icon: "code",
       // command: () => editor.chain().focus().clearNodes().toggleCodeBlock().run(),
-      command: () => editor.chain().insertContent('',).run(),
+      command: () => editor.chain().insertContent("").run(),
       isActive: () => editor.isActive("codeBlock"),
     },
   ];

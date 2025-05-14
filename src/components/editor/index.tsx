@@ -18,13 +18,14 @@ const Tiptap = () => {
         editorProps={{
           handleDOMEvents: { keydown: (_view, event) => handleCommandNavigation(event) },
           attributes: {
-            class:
-              cn("prose dark:prose-invert prose-sm prose-headings:font-title prose-pre:m-0",
-                "max-w-full min-h-[250px]"),
+            class: cn(
+              "prose dark:prose-invert prose-sm prose-headings:font-title prose-pre:m-0",
+              "max-w-full min-h-[250px]"
+            ),
             spellcheck: "false",
           },
         }}
-        className='border-1 relative rounded-md pt-16 overflow-hidden'
+        className="relative overflow-hidden rounded-md border-1 pt-16"
         extensions={extensions}
         //@ts-ignore
         initialContent={content}

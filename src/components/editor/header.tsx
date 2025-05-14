@@ -5,18 +5,13 @@ import { ChangeAlignment } from "./changeAlignment";
 
 const EditorHeader = () => {
   return (
-    <div className='flex bg-default-100 flex-row items-center'>
-      <AICommands
-        className="min-w-4 px-3 text-2xl"
-        color="primary"
-        radius="none"
-        variant="flat"
-      />
+    <div className="flex flex-row items-center bg-default-100">
+      <AICommands className="min-w-4 px-3 text-2xl" color="primary" radius="none" variant="flat" />
       <ChangeAlignment
-        type='tabs'
+        type="tabs"
         variant="light"
         classNames={{
-          tab: 'text-md'
+          tab: "text-md",
         }}
       />
       <Divider orientation="vertical" />
@@ -25,4 +20,4 @@ const EditorHeader = () => {
   );
 };
 
-export default EditorHeader
+export default EditorHeader;
