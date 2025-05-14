@@ -76,6 +76,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Pull Git Changes
+        run: git pull
+
       - name: Run ESLint
         run: npm run lint
 
