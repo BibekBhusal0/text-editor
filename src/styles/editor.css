@@ -29,9 +29,12 @@
     @apply leading-normal marker:text-divider;
   }
 
-  ol,
+  ol {
+    @apply list-decimal list-outside leading-3;
+  }
+
   ul {
-    @apply list-outside list-decimal leading-3;
+    @apply list-disc list-outside leading-3;
   }
 
   pre {
@@ -53,7 +56,7 @@
     li {
       @apply flex items-start gap-2;
 
-      > label {
+      >label {
         user-select: none;
 
         input[type="checkbox"] {
@@ -67,12 +70,12 @@
         }
       }
 
-      &[data-checked="true"] > div > p {
+      &[data-checked="true"]>div>p {
         @apply text-default-400 line-through;
         text-decoration-thickness: 1px;
       }
 
-      > div > p {
+      >div>p {
         @apply m-0;
       }
     }
@@ -88,11 +91,11 @@
     box-shadow: none;
   }
 
-  span[style] > strong {
+  span[style]>strong {
     color: inherit;
   }
 
-  mark[style] > strong {
+  mark[style]>strong {
     color: inherit;
   }
 }
