@@ -9,9 +9,6 @@ const EditorHeader = () => {
     <div className="flex flex-row items-center bg-default-100">
       <AICommands className="min-w-4 px-3 text-2xl" color="primary" radius="none" variant="flat" />
       <ChangeAlignment
-        classNames={{
-          tab: "text-md",
-        }}
         type="tabs"
         variant="light"
       />

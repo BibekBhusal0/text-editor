@@ -44,6 +44,11 @@ export const ChangeAlignment = ({ type = "button", fullName = false, ...props }:
         variant="light"
         {...(props as TabsProps)}
         selectedKey={currentAlignmet}
+        classNames={{
+          tab: ["text-md p-2", (props as TabsProps).classNames?.tab],
+          tabList: ["gap-0", (props as TabsProps).classNames?.tabList],
+          ...(props as TabsProps).classNames,
+        }}
         onSelectionChange={(e) => setAlignment(e as string)}
       >
         {alignments.map((a) => (
@@ -52,9 +57,6 @@ export const ChangeAlignment = ({ type = "button", fullName = false, ...props }:
       </Tabs>
     );
 
-  {
-    /* <Button isIconOnly onPress={() => setAlignment(a)}><AlignmentItem icon={a} /></Button> */
-  }
   if (type === "popover")
     return (
       <Popover {...(props as { popoverProps?: PopoverProps }).popoverProps}>
