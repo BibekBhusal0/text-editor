@@ -21,7 +21,7 @@ export default BubbleMenu;
 
 export const BubbleMenuContent = () => {
   return (
-    <Card isBlurred className="flex w-auto flex-row" radius="sm">
+    <Card className="flex-row" radius="sm">
       <AICommands
         className="h-auto min-w-4 px-3 text-5xl"
         color="primary"

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Command as CommandPrimitive } from "cmdk";
 import { cn } from "@heroui/theme";
+import { Command as CommandPrimitive } from "cmdk";
 
 import { Icon } from "../icons";
 

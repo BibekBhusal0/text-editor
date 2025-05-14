@@ -68,9 +68,9 @@ export const TextButtons = () => {
           classNames={{}}
           content={
             <>
-              <div className="text-lg capitalize">{name}</div>
+              <div className="text-md capitalize">{name}</div>
               {shortcut && (
-                <Kbd className="text-xl uppercase" keys={shortcut.modifiers}>
+                <Kbd className="text-md uppercase" keys={shortcut.modifiers}>
                   {shortcut.key}
                 </Kbd>
               )}
