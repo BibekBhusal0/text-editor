@@ -4,7 +4,9 @@ import { extensions } from "./extension";
 import BubbleMenu from "./bubbleMenu";
 import "@/styles/editor.css";
 import { SlashCommand } from "./slashCommand";
+
 import { cn } from "@heroui/theme";
+
 import EditorHeader from "./header";
 
 const content =
@@ -15,6 +17,7 @@ const Tiptap = () => {
     <EditorRoot>
       <EditorContent
         autofocus
+        className="relative overflow-hidden rounded-md border-1 pt-16"
         editorProps={{
           handleDOMEvents: { keydown: (_view, event) => handleCommandNavigation(event) },
           attributes: {
@@ -25,11 +28,10 @@ const Tiptap = () => {
             spellcheck: "false",
           },
         }}
-        className="relative overflow-hidden rounded-md border-1 pt-16"
+        slotAfter={<ImageResizer />}
         extensions={extensions}
         //@ts-ignore
         initialContent={content}
-        slotAfter={<ImageResizer />}
       >
         <div className="absolute top-0 h-20 w-full">
           <EditorHeader />

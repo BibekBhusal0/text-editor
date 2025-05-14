@@ -2,6 +2,7 @@ import { useEditor } from "novel";
 import { Tooltip } from "@heroui/tooltip";
 import { Button } from "@heroui/button";
 import { Kbd, KbdKey } from "@heroui/kbd";
+
 import { Icon } from "@/components/icons";
 
 type commandItemType = {
