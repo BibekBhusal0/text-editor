@@ -1,5 +1,5 @@
 .ProseMirror {
-  .is-editor-empty:first-child::before {
+  [data-placeholder]:not(li):not(ul):not(ol)::before {
     content: attr(data-placeholder);
     @apply pointer-events-none float-left h-0 text-default-200;
   }
