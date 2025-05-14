@@ -5,15 +5,15 @@ import { Kbd, KbdKey } from "@heroui/kbd";
 import { Icon } from "@/components/icons";
 
 type commandItemType = {
-  name: string,
-  icon: string,
-  isActive: () => boolean,
-  command: () => void,
+  name: string;
+  icon: string;
+  isActive: () => boolean;
+  command: () => void;
   shortcut?: {
-    modifiers: KbdKey | KbdKey[],
-    key: string
-  }
-}
+    modifiers: KbdKey | KbdKey[];
+    key: string;
+  };
+};
 
 export const TextButtons = () => {
   const { editor } = useEditor();
@@ -27,35 +27,35 @@ export const TextButtons = () => {
       command: () => editor.chain().focus().toggleBold().run(),
       icon: "bold",
       // shortcut: ['command', 'b'],
-      shortcut: { modifiers: 'command', key: 'b' },
+      shortcut: { modifiers: "command", key: "b" },
     },
     {
       name: "italic",
       isActive: () => editor.isActive("italic"),
       command: () => editor.chain().focus().toggleItalic().run(),
       icon: "italic",
-      shortcut: { modifiers: 'command', key: 'b' },
+      shortcut: { modifiers: "command", key: "b" },
     },
     {
       name: "underline",
       isActive: () => editor.isActive("underline"),
       command: () => editor.chain().focus().toggleUnderline().run(),
       icon: "underline",
-      shortcut: { modifiers: 'command', key: 'u' },
+      shortcut: { modifiers: "command", key: "u" },
     },
     {
       name: "strike",
       isActive: () => editor.isActive("strike"),
       command: () => editor.chain().focus().toggleStrike().run(),
       icon: "strike",
-      shortcut: { modifiers: ['command', 'shift'], key: 's' },
+      shortcut: { modifiers: ["command", "shift"], key: "s" },
     },
     {
       name: "code",
       isActive: () => editor.isActive("code"),
       command: () => editor.chain().focus().toggleCode().run(),
       icon: "code",
-      shortcut: { modifiers: ['command', 'shift'], key: 'E' },
+      shortcut: { modifiers: ["command", "shift"], key: "E" },
     },
   ];
 
@@ -70,7 +70,9 @@ export const TextButtons = () => {
             <>
               <div className="text-lg capitalize">{name}</div>
               {shortcut && (
-                <Kbd className='text-xl uppercase' keys={shortcut.modifiers}>{shortcut.key}</Kbd>
+                <Kbd className="text-xl uppercase" keys={shortcut.modifiers}>
+                  {shortcut.key}
+                </Kbd>
               )}
             </>
           }
@@ -78,7 +80,6 @@ export const TextButtons = () => {
           shouldCloseOnBlur={false}
           size="sm"
         >
-
           <Button
             isIconOnly
             color={isActive() ? "primary" : "default"}
@@ -89,7 +90,6 @@ export const TextButtons = () => {
           >
             <Icon className="text-lg" icon={icon} />
           </Button>
-
         </Tooltip>
       ))}
     </div>
