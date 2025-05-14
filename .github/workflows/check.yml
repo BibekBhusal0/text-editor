@@ -12,7 +12,7 @@ on:
       - main
 
 jobs:
-  format:
+  format-check-and-lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -39,42 +39,8 @@ jobs:
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
           commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
 
-  type-check:
-    runs-on: ubuntu-latest
-    needs: format
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20.x"
-
-      - name: Install dependencies
-        run: npm install
-
       - name: Run TypeScript type check
         run: tsc --build
-
-  lint:
-    runs-on: ubuntu-latest
-    needs: format
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20.x"
-
-      - name: Install dependencies
-        run: npm install
 
       - name: Pull Git Changes
         run: git pull
