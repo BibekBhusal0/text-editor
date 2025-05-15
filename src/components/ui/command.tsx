@@ -1,6 +1,7 @@
 import * as React from "react";
 import { cn } from "@heroui/theme";
 import { Command as CommandPrimitive } from "cmdk";
+import { listboxItem } from "@heroui/theme";
 
 import { Icon } from "../icons";
 

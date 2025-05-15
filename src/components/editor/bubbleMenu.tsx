@@ -19,15 +19,16 @@ export const BubbleMenu = () => {
   return (
     <EditorBubble
       tippyOptions={{
-        onHidden: () => {
-          setAIOpen(false);
-        },
+        placement: aiOpen ? "bottom-start" : "top",
+        onHidden: () => setAIOpen(false),
       }}
     >
       <Card className="flex-row" radius="sm">
+
         {aiOpen ? (
           <AICommands />
         ) : (
+
           <>
             <Button
               className="h-auto min-w-4 px-3 text-5xl"
@@ -38,6 +39,7 @@ export const BubbleMenu = () => {
             >
               <Icon icon="ai" />{" "}
             </Button>
+
             <div className="flex flex-col border-l-1">
               <div className="flex-center flex gap-2 py-1">
                 <TextButtons />
@@ -50,6 +52,7 @@ export const BubbleMenu = () => {
                 />
               </div>
               <Divider orientation="horizontal" />
+
               <div className="flex">
                 <NodeSelector className="w-[150px]" color="default" radius="none" variant="flat" />
                 <Divider orientation="vertical" />
@@ -57,6 +60,7 @@ export const BubbleMenu = () => {
                 <Divider orientation="vertical" />
                 <ColorSelector radius="none" />
               </div>
+
             </div>
           </>
         )}
