@@ -1,6 +1,5 @@
 import { getPrevText, useEditor } from "novel";
-import { useState } from "react";
-
+import { useState, } from "react";
 import {
   Command,
   CommandGroup,
@@ -9,6 +8,7 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 import { Icon } from "@/components/icons";
+import { useDummyCompletion } from "@/components/hook/useCompletion";
 
 const options = [
   {
@@ -37,11 +37,12 @@ interface AISelectorCommandsProps {
   onSelect?: (value: string, option: string) => void;
 }
 
+
 const AISelectorCommands = ({ onSelect = () => { } }: AISelectorCommandsProps) => {
   const { editor } = useEditor();
-  // const [inputValue, setInputValue] = useState("");
-  const [completion, setCompletion] = useState("");
-  const hasCompletion = completion.trim() !== ''
+  const [inputValue, setInputValue] = useState("");
+  const { completion, loading, getAiText, setCompletion } = useDummyCompletion();
+  const hasCompletion = completion.trim() !== '';
 
 
   if (!editor) return null;
@@ -52,46 +53,102 @@ const AISelectorCommands = ({ onSelect = () => { } }: AISelectorCommandsProps) =
       <CommandInput
         autoFocus
         placeholder="this is ai editor "
-      // value={inputValue}
-      // onValueChange={setInputValue}
+        value={inputValue}
       />
-      <CommandGroup heading="Edit or review selection">
-        {options.map((option) => (
-          <CommandItem
-            onSelect={(value) => {
-              const slice = editor.state.selection.content();
-              const text = editor.storage.markdown.serializer.serialize(slice.content);
-              onSelect(text, value);
-            }}
-            className="flex gap-2 px-4 border-2 "
-            key={option.value}
-          >
-            <Icon
-              icon={option.icon}
-              size={30}
-            />
-            <div>
-              {option.label}
-            </div>
-          </CommandItem>
-        ))}
-      </CommandGroup>
-      <CommandSeparator />
+      {!hasCompletion && !loading && (
+        <>
+          <CommandGroup heading="Edit or review selection">
+            {options.map((option) => (
+              <CommandItem
+                onSelect={async (value) => {
+                  const slice = editor.state.selection.content();
+                  const text = editor.storage.markdown.serializer.serialize(slice.content);
+                  await getAiText()
+                  setInputValue("");
+                  onSelect(text, value);
+                }}
+                className="flex gap-2 px-4 border-2 "
+                key={option.value}
+              >
+                <Icon
+                  icon={option.icon}
+                  size={30}
+                />
+                <div>
+                  {option.label}
+                </div>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+          <CommandSeparator />
 
-      <CommandGroup heading="Use AI to do more">
-        <CommandItem
-          className="gap-2 px-4"
-          value="continue"
-          onSelect={() => {
-            const pos = editor.state.selection.from;
-            const text = getPrevText(editor, pos);
-            onSelect(text, "continue");
-          }}
-        >
-          <Icon className="h-4 w-4 text-primary-500" />
-          Continue writing
-        </CommandItem>
-      </CommandGroup>
+          <CommandGroup heading="Use AI to do more">
+            <CommandItem
+              className="gap-2 px-4"
+              value="continue"
+              onSelect={async () => {
+                const pos = editor.state.selection.from;
+                const text = getPrevText(editor, pos);
+                await getAiText()
+                setInputValue("");
+                onSelect(text, "continue");
+              }}
+            >
+              <Icon className="h-4 w-4 text-primary-500" />
+              Continue writing
+            </CommandItem>
+          </CommandGroup>
+        </>
+      )}
+
+      {hasCompletion && !loading && (
+        <>
+          <div>{completion}</div>
+          <CommandGroup heading="Completion actions">
+            <CommandItem
+              onSelect={() => {
+                setCompletion("");
+              }}
+            >
+              Dismiss
+            </CommandItem>
+            <CommandItem
+              onSelect={() => {
+                if (!editor) return;
+                const selection = editor.view.state.selection;
+                editor
+                  .chain()
+                  .focus()
+                  .insertContentAt(selection.to + 1, completion)
+                  .run();
+              }}
+            >
+              Insert
+            </CommandItem>
+            <CommandItem
+              onSelect={() => {
+                if (!editor) return;
+                const selection = editor.view.state.selection;
+                editor
+                  .chain()
+                  .focus()
+                  .insertContentAt(
+                    {
+                      from: selection.from,
+                      to: selection.to,
+                    },
+                    completion,
+                  )
+                  .run();
+              }}
+            >
+              Replace
+            </CommandItem>
+          </CommandGroup>
+        </>
+      )}
+
+      {loading && <div>Loading...</div>}
     </Command>
   );
 };
