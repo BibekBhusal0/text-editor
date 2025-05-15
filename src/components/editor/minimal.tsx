@@ -1,4 +1,10 @@
-import { EditorRoot, EditorContent, ImageResizer, handleCommandNavigation, EditorContentProps } from "novel";
+import {
+  EditorRoot,
+  EditorContent,
+  ImageResizer,
+  handleCommandNavigation,
+  EditorContentProps,
+} from "novel";
 import { extensions } from "./extension";
 import "@/styles/editor.css";
 import { cn } from "@heroui/theme";
@@ -19,7 +25,8 @@ const MinimalEditor = ({ className, ...props }: EditorContentProps) => {
             class: cn(
               "prose dark:prose-invert prose-sm prose-headings:font-title prose-pre:m-0",
               //@ts-ignore
-              "max-w-full ", props.editorProps?.attributes?.class
+              "max-w-full ",
+              props.editorProps?.attributes?.class
             ),
           },
         }}

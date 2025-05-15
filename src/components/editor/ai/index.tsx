@@ -16,9 +16,7 @@ export const AIButton = ({ className, ...props }: ButtonProps) => {
           <Icon icon="ai" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent>
-        this is supposed to be a ai editor
-      </PopoverContent>
+      <PopoverContent>this is supposed to be a ai editor</PopoverContent>
     </Popover>
   );
 };

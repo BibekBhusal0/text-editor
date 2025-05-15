@@ -106,5 +106,5 @@ export const extensions: Extensions = [
   starterKit,
   taskItem,
   TextAlign.configure({ types: ["heading", "paragraph"] }),
-  AIHighlight
+  AIHighlight,
 ];

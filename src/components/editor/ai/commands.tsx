@@ -1,5 +1,11 @@
 import { Icon } from "@/components/icons";
-import { Command, CommandGroup, CommandInput, CommandItem, CommandSeparator } from "@/components/ui/command";
+import {
+  Command,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandSeparator,
+} from "@/components/ui/command";
 import { listboxItem } from "@heroui/theme";
 import { getPrevText, useEditor } from "novel";
 import { useState } from "react";
@@ -8,12 +14,12 @@ const options = [
   {
     value: "improve",
     label: "Improve writing",
-    icon: 'ai',
+    icon: "ai",
   },
   {
     value: "fix",
     label: "Fix grammar",
-    icon: 'todo_list',
+    icon: "todo_list",
   },
   {
     value: "shorter",
@@ -23,7 +29,7 @@ const options = [
   {
     value: "longer",
     label: "Make longer",
-    icon: 'heading1',
+    icon: "heading1",
   },
 ];
 
@@ -31,15 +37,15 @@ interface AISelectorCommandsProps {
   onSelect?: (value: string, option: string) => void;
 }
 
-const AISelectorCommands = ({ onSelect = () => { } }: AISelectorCommandsProps) => {
+const AISelectorCommands = ({ onSelect = () => {} }: AISelectorCommandsProps) => {
   const { editor } = useEditor();
   const [inputValue, setInputValue] = useState("");
-  if (!editor) return null
-  const slots = listboxItem({ variant: 'flat', color: 'primary' })
+  if (!editor) return null;
+  const slots = listboxItem({ variant: "flat", color: "primary" });
 
   for (const key in slots) {
     // @ts-ignore
-    if (typeof slots[key] === 'function') {
+    if (typeof slots[key] === "function") {
       // @ts-ignore
       console.log(`${key}:`, slots[key]());
     }
@@ -48,11 +54,11 @@ const AISelectorCommands = ({ onSelect = () => { } }: AISelectorCommandsProps) =
   return (
     <Command>
       <CommandInput
-
         value={inputValue}
         onValueChange={setInputValue}
         autoFocus
-        placeholder='this is ai editor ' />
+        placeholder="this is ai editor "
+      />
       <CommandGroup heading="Edit or review selection">
         {options.map((option) => (
           <CommandItem
@@ -62,16 +68,16 @@ const AISelectorCommands = ({ onSelect = () => { } }: AISelectorCommandsProps) =
               onSelect(text, value);
             }}
             // className="flex gap-2 px-4 border-2 "
-            className={slots.base({ className: 'border-2' })}
+            className={slots.base({ className: "border-2" })}
             key={option.value}
-          // value={option.value}
-          // startContent = 
+            // value={option.value}
+            // startContent =
           >
             {/* <Icon icon={option.icon} className="h-4 w-4 text-primary-500" /> */}
             <Icon
               icon={option.icon}
               size={30}
-            // className={slots.shortcut({ className: 'text-primary-500' })}
+              // className={slots.shortcut({ className: 'text-primary-500' })}
             />
             <div
             // className={slots.title()}
@@ -101,7 +107,7 @@ const AISelectorCommands = ({ onSelect = () => { } }: AISelectorCommandsProps) =
 };
 
 export default AISelectorCommands;
-export const AICommands = AISelectorCommands
+export const AICommands = AISelectorCommands;
 
 // export const AICommands = () => {
 //   const { editor } = useEditor();

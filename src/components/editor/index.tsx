@@ -16,13 +16,13 @@ const MainEditor = () => {
       editorProps={{
         attributes: {
           class: "min-h-[250px] max-h-[580px] overflow-auto",
-          spellcheck: 'false',
+          spellcheck: "false",
         },
       }}
       //@ts-ignore
       initialContent={content}
     >
-      <div className="absolute top-0 rounded-t-md overflow-hidden h-20 w-full">
+      <div className="absolute top-0 h-20 w-full overflow-hidden rounded-t-md">
         <EditorHeader />
       </div>
       <BubbleMenu />
