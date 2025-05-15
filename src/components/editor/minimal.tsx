@@ -24,8 +24,8 @@ const MinimalEditor = ({ className, ...props }: EditorContentProps) => {
             ...props.editorProps?.attributes,
             class: cn(
               "prose dark:prose-invert prose-sm prose-headings:font-title prose-pre:m-0",
-              //@ts-ignore
               "max-w-full ",
+              //@ts-ignore
               props.editorProps?.attributes?.class
             ),
           },
