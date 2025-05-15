@@ -16,6 +16,7 @@ import {
   TiptapImage,
   TiptapLink,
   TiptapUnderline,
+  AIHighlight,
 } from "novel";
 import { Markdown as MarkdownExtension } from "tiptap-markdown";
 import { createLowlight, all } from "lowlight";
@@ -105,4 +106,5 @@ export const extensions: Extensions = [
   starterKit,
   taskItem,
   TextAlign.configure({ types: ["heading", "paragraph"] }),
+  AIHighlight
 ];
