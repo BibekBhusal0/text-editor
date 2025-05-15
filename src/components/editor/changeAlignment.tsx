@@ -43,12 +43,12 @@ export const ChangeAlignment = ({ type = "button", fullName = false, ...props }:
         size="sm"
         variant="light"
         {...(props as TabsProps)}
-        selectedKey={currentAlignmet}
         classNames={{
           tab: ["text-md p-2", (props as TabsProps).classNames?.tab],
           tabList: ["gap-0", (props as TabsProps).classNames?.tabList],
           ...(props as TabsProps).classNames,
         }}
+        selectedKey={currentAlignmet}
         onSelectionChange={(e) => setAlignment(e as string)}
       >
         {alignments.map((a) => (

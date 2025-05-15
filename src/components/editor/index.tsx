@@ -1,7 +1,6 @@
 import BubbleMenu from "./bubbleMenu";
 import "@/styles/editor.css";
 import { SlashCommand } from "./slashCommand";
-
 import EditorHeader from "./header";
 import MinimalEditor from "./minimal";
 import { AICommands } from "./ai/commands";

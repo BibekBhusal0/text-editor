@@ -72,8 +72,10 @@ export const generateLoremIpsum = (words: number) => {
   ];
 
   let text = "Lorem ipsum ";
+
   for (let i = 2; i < words; i++) {
     text += loremIpsumWords[Math.floor(Math.random() * loremIpsumWords.length)] + " ";
   }
+
   return text.trim();
 };

@@ -1,4 +1,7 @@
-import { Icon } from "@/components/icons";
+import { listboxItem } from "@heroui/theme";
+import { getPrevText, useEditor } from "novel";
+import { useState } from "react";
+
 import {
   Command,
   CommandGroup,
@@ -6,9 +9,7 @@ import {
   CommandItem,
   CommandSeparator,
 } from "@/components/ui/command";
-import { listboxItem } from "@heroui/theme";
-import { getPrevText, useEditor } from "novel";
-import { useState } from "react";
+import { Icon } from "@/components/icons";
 
 const options = [
   {
@@ -40,6 +41,7 @@ interface AISelectorCommandsProps {
 const AISelectorCommands = ({ onSelect = () => {} }: AISelectorCommandsProps) => {
   const { editor } = useEditor();
   const [inputValue, setInputValue] = useState("");
+
   if (!editor) return null;
   const slots = listboxItem({ variant: "flat", color: "primary" });
 
@@ -54,10 +56,10 @@ const AISelectorCommands = ({ onSelect = () => {} }: AISelectorCommandsProps) =>
   return (
     <Command>
       <CommandInput
-        value={inputValue}
-        onValueChange={setInputValue}
         autoFocus
         placeholder="this is ai editor "
+        value={inputValue}
+        onValueChange={setInputValue}
       />
       <CommandGroup heading="Edit or review selection">
         {options.map((option) => (
@@ -65,6 +67,7 @@ const AISelectorCommands = ({ onSelect = () => {} }: AISelectorCommandsProps) =>
             onSelect={(value) => {
               const slice = editor.state.selection.content();
               const text = editor.storage.markdown.serializer.serialize(slice.content);
+
               onSelect(text, value);
             }}
             // className="flex gap-2 px-4 border-2 "
@@ -90,13 +93,14 @@ const AISelectorCommands = ({ onSelect = () => {} }: AISelectorCommandsProps) =>
       <CommandSeparator />
       <CommandGroup heading="Use AI to do more">
         <CommandItem
+          className="gap-2 px-4"
+          value="continue"
           onSelect={() => {
             const pos = editor.state.selection.from;
             const text = getPrevText(editor, pos);
+
             onSelect(text, "continue");
           }}
-          value="continue"
-          className="gap-2 px-4"
         >
           <Icon className="h-4 w-4 text-primary-500" />
           Continue writing

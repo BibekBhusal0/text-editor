@@ -1,18 +1,21 @@
 import { Divider } from "@heroui/divider";
 import { Card } from "@heroui/card";
 import { EditorBubble } from "novel";
+import { Button } from "@heroui/button";
+import { useState } from "react";
+
+import { Icon } from "../icons";
+
 import { TextButtons } from "./textButtons";
 import { NodeSelector } from "./nodeSelector";
 import { LinkSelector } from "./link-selector";
 import { ColorSelector } from "./colorSelector";
 import { ChangeAlignment } from "./changeAlignment";
-import { Button } from "@heroui/button";
-import { Icon } from "../icons";
-import { useState } from "react";
 import { AICommands } from "./ai/commands";
 
 export const BubbleMenu = () => {
   const [aiOpen, setAIOpen] = useState(false);
+
   return (
     <EditorBubble
       tippyOptions={{
@@ -29,9 +32,9 @@ export const BubbleMenu = () => {
             <Button
               className="h-auto min-w-4 px-3 text-5xl"
               color="primary"
-              onPress={() => setAIOpen(true)}
               radius="none"
               variant="flat"
+              onPress={() => setAIOpen(true)}
             >
               <Icon icon="ai" />{" "}
             </Button>
