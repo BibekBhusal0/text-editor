@@ -11,7 +11,7 @@ const MainEditor = () => {
   return (
     <MinimalEditor
       autofocus
-      className="rounded-md editor border-1 pt-16"
+      className="editor rounded-md border-1 pt-16"
       editorProps={{
         attributes: {
           class: "min-h-[250px] max-h-[580px] overflow-auto pl-6",

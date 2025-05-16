@@ -1,7 +1,6 @@
 import { useState, useCallback } from "react";
 import { generateLoremIpsum as generateLoremIpsumOriginal } from "@/utils/lorem";
 
-
 export const useDummyCompletion = () => {
   const [completion, setCompletion] = useState("");
   const [loading, setLoading] = useState(false);
@@ -15,7 +14,7 @@ export const useDummyCompletion = () => {
         }, 2000);
       });
     },
-    [generateLoremIpsumOriginal],
+    [generateLoremIpsumOriginal]
   );
 
   const getAiText = useCallback(async () => {
@@ -30,4 +29,3 @@ export const useDummyCompletion = () => {
 
   return { completion, loading, getAiText, setCompletion };
 };
-

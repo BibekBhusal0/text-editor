@@ -52,31 +52,75 @@ export const allIcons: Record<string, IconDefinition> = {
     "M21.546 5.111a1.5 1.5 0 0 1 0 2.121L10.303 18.475a1.6 1.6 0 0 1-2.263 0L2.454 12.89a1.5 1.5 0 1 1 2.121-2.121l4.596 4.596L19.424 5.111a1.5 1.5 0 0 1 2.122 0",
   copy: "M9 2a2 2 0 0 0-2 2v2h2V4h11v11h-2v2h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM4 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z",
   link: "m17.303 9.524l3.182 3.182a5.5 5.5 0 1 1-7.778 7.778l-1.06-1.06a1.5 1.5 0 1 1 2.12-2.122l1.062 1.061a2.5 2.5 0 0 0 3.535-3.536l-3.182-3.182a2.5 2.5 0 0 0-2.681-.56q-.242.096-.454.196l-.464.217c-.62.28-1.097.4-1.704-.206c-.872-.872-.646-1.677.417-2.41a5.5 5.5 0 0 1 7.007.642m-6.01-6.01l1.06 1.06a1.5 1.5 0 0 1-2.12 2.122l-1.061-1.06A2.5 2.5 0 1 0 5.636 9.17l3.182 3.182a2.5 2.5 0 0 0 2.681.56q.242-.096.454-.196l.464-.217c.62-.28 1.098-.4 1.704.206c.872.872.646 1.677-.417 2.41a5.5 5.5 0 0 1-7.007-.642l-3.182-3.182a5.5 5.5 0 1 1 7.778-7.778Z",
-  undo: <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-    <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2}>
-      <path d="M9 14L4 9l5-5"></path>
-      <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"></path>
-    </g>
-  </svg>,
-  redo: <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-    <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2}>
-      <path d="m15 14l5-5l-5-5"></path>
-      <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5A5.5 5.5 0 0 0 9.5 20H13"></path>
-    </g>
-  </svg>,
-  download: "M20 14.5a1.5 1.5 0 0 1 1.5 1.5v4a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 20v-4a1.5 1.5 0 0 1 3 0v3.5h13V16a1.5 1.5 0 0 1 1.5-1.5m-8-13A1.5 1.5 0 0 1 13.5 3v9.036l1.682-1.682a1.5 1.5 0 0 1 2.121 2.12l-4.066 4.067a1.75 1.75 0 0 1-2.474 0l-4.066-4.066a1.5 1.5 0 0 1 2.121-2.121l1.682 1.682V3A1.5 1.5 0 0 1 12 1.5",
-  markdown: "M20 5a2 2 0 0 1 1.995 1.85L22 7v10a2 2 0 0 1-1.85 1.995L20 19H4a2 2 0 0 1-1.995-1.85L2 17V7a2 2 0 0 1 1.85-1.995L4 5zm0 2H4v10h16zM6.833 9a1 1 0 0 1 .81.413l.064.101l.793 1.427l.793-1.427a1 1 0 0 1 .754-.507l.12-.007H11a1 1 0 0 1 .993.883L12 10v4a1 1 0 0 1-1.993.117L10 14v-1.64l-.626 1.126a1 1 0 0 1-1.684.1l-.064-.1L7 12.359V14a1 1 0 0 1-1.993.117L5 14v-4a1 1 0 0 1 .883-.993L6 9zM16 9a1 1 0 0 1 1 1v1.634a1 1 0 0 1 1.207 1.573l-1.5 1.5a1 1 0 0 1-1.414 0l-1.5-1.5A1 1 0 0 1 15 11.634V10a1 1 0 0 1 1-1",
-  loading: <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-    <circle cx={18} cy={12} r={0} fill="currentColor">
-      <animate attributeName="r" begin={0.67} calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"></animate>
-    </circle>
-    <circle cx={12} cy={12} r={0} fill="currentColor">
-      <animate attributeName="r" begin={0.33} calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"></animate>
-    </circle>
-    <circle cx={6} cy={12} r={0} fill="currentColor">
-      <animate attributeName="r" begin={0} calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"></animate>
-    </circle>
-  </svg>
+  undo: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2.2}
+      >
+        <path d="M9 14L4 9l5-5"></path>
+        <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"></path>
+      </g>
+    </svg>
+  ),
+  redo: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2.2}
+      >
+        <path d="m15 14l5-5l-5-5"></path>
+        <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5A5.5 5.5 0 0 0 9.5 20H13"></path>
+      </g>
+    </svg>
+  ),
+  download:
+    "M20 14.5a1.5 1.5 0 0 1 1.5 1.5v4a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 20v-4a1.5 1.5 0 0 1 3 0v3.5h13V16a1.5 1.5 0 0 1 1.5-1.5m-8-13A1.5 1.5 0 0 1 13.5 3v9.036l1.682-1.682a1.5 1.5 0 0 1 2.121 2.12l-4.066 4.067a1.75 1.75 0 0 1-2.474 0l-4.066-4.066a1.5 1.5 0 0 1 2.121-2.121l1.682 1.682V3A1.5 1.5 0 0 1 12 1.5",
+  markdown:
+    "M20 5a2 2 0 0 1 1.995 1.85L22 7v10a2 2 0 0 1-1.85 1.995L20 19H4a2 2 0 0 1-1.995-1.85L2 17V7a2 2 0 0 1 1.85-1.995L4 5zm0 2H4v10h16zM6.833 9a1 1 0 0 1 .81.413l.064.101l.793 1.427l.793-1.427a1 1 0 0 1 .754-.507l.12-.007H11a1 1 0 0 1 .993.883L12 10v4a1 1 0 0 1-1.993.117L10 14v-1.64l-.626 1.126a1 1 0 0 1-1.684.1l-.064-.1L7 12.359V14a1 1 0 0 1-1.993.117L5 14v-4a1 1 0 0 1 .883-.993L6 9zM16 9a1 1 0 0 1 1 1v1.634a1 1 0 0 1 1.207 1.573l-1.5 1.5a1 1 0 0 1-1.414 0l-1.5-1.5A1 1 0 0 1 15 11.634V10a1 1 0 0 1 1-1",
+  loading: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+      <circle cx={18} cy={12} r={0} fill="currentColor">
+        <animate
+          attributeName="r"
+          begin={0.67}
+          calcMode="spline"
+          dur="1.5s"
+          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+          repeatCount="indefinite"
+          values="0;2;0;0"
+        ></animate>
+      </circle>
+      <circle cx={12} cy={12} r={0} fill="currentColor">
+        <animate
+          attributeName="r"
+          begin={0.33}
+          calcMode="spline"
+          dur="1.5s"
+          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+          repeatCount="indefinite"
+          values="0;2;0;0"
+        ></animate>
+      </circle>
+      <circle cx={6} cy={12} r={0} fill="currentColor">
+        <animate
+          attributeName="r"
+          begin={0}
+          calcMode="spline"
+          dur="1.5s"
+          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+          repeatCount="indefinite"
+          values="0;2;0;0"
+        ></animate>
+      </circle>
+    </svg>
+  ),
 };
 
 export const Icon = ({ size, icon, ...props }: IconSvgProps) => {

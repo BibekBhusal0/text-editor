@@ -53,8 +53,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
           children={"Download"}
           {...props}
           className={cn("max-w-80 flex-grow-0", className)}
-        >
-        </Button>
+        ></Button>
       </PopoverTrigger>
 
       <PopoverContent>
@@ -63,7 +62,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
           classNames={{ base: "max-h-80 overflow-auto" }}
           color="primary"
           selectionMode="single"
-          onSelectionChange={() => { }}
+          onSelectionChange={() => {}}
           selectedKeys={[]}
           variant="shadow"
         >

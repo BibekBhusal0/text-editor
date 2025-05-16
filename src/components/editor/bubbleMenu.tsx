@@ -24,11 +24,9 @@ export const BubbleMenu = () => {
       }}
     >
       <Card className="flex-row" radius="sm">
-
         {aiOpen ? (
           <AICommands />
         ) : (
-
           <>
             <Button
               className="h-auto min-w-4 px-3 text-5xl"
@@ -60,7 +58,6 @@ export const BubbleMenu = () => {
                 <Divider orientation="vertical" />
                 <ColorSelector radius="none" />
               </div>
-
             </div>
           </>
         )}
