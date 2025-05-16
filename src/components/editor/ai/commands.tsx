@@ -36,6 +36,7 @@ const AISelectorCommands = () => {
   if (!editor) return null;
 
   return (
+
     <Command className="w-80">
       <CommandInput
         autoFocus
@@ -43,27 +44,14 @@ const AISelectorCommands = () => {
         value={inputValue}
         onValueChange={setInputValue}
       />
-      {loading ? (
+
+      {
+        loading ? 
         <Icon icon="loading" />
-      ) : (
+       : (
+
         <>
           {hasCompletion ? (
-            <CommandGroup heading="AI commands">
-              {options.map((option) => (
-                <CommandItem
-                  onSelect={async () => {
-                    await getAiText();
-                    setInputValue("");
-                  }}
-                  className="flex gap-2 px-4"
-                  key={option.value}
-                >
-                  <Icon className="text-foreground" icon={option.icon} size={30} />
-                  {option.label}
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          ) : (
             <>
               <div>{completion}</div>
               <CommandGroup heading="Completion actions">
@@ -108,6 +96,22 @@ const AISelectorCommands = () => {
                 </CommandItem>
               </CommandGroup>
             </>
+          ) : (
+            <CommandGroup heading="AI commands">
+              {options.map((option) => (
+                <CommandItem
+                  onSelect={async () => {
+                    await getAiText();
+                    setInputValue("");
+                  }}
+                  className="flex gap-2 px-4"
+                  key={option.value}
+                >
+                  <Icon className="text-foreground" icon={option.icon} size={30} />
+                  {option.label}
+                </CommandItem>
+              ))}
+            </CommandGroup>
           )}
         </>
       )}
