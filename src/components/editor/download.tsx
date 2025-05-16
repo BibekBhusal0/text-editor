@@ -48,7 +48,6 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
     <Popover classNames={{ content: "m-0 p-0" }} placement="bottom-start">
       <PopoverTrigger>
         <Button
-          color="primary"
           startContent={<Icon className="size-5 pt-1" icon="download" />}
           size="sm"
           children={"Download"}

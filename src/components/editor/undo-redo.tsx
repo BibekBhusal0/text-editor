@@ -10,13 +10,13 @@ export function UndoRedo({ className, ...props }: ButtonProps) {
     variant: 'flat', size: 'sm', isIconOnly: true, className: 'text-lg',
   }
   return (
-    <div className='flex-center p-2 gap-2'>
+    <>
       <Button {...defaultProps} {...props} className={cn(defaultProps.className, className)} onPress={() => editor.chain().focus().undo().run()} >
         <Icon icon='undo' />
       </Button>
       <Button {...defaultProps} {...props} className={cn(defaultProps.className, className)} onPress={() => editor.chain().focus().redo().run()} >
         <Icon icon='redo' />
       </Button>
-    </div>
+    </>
   )
 }
