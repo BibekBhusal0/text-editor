@@ -26,7 +26,7 @@ const MainEditor = () => {
       </div>
       <BubbleMenu />
       <SlashCommand />
-      <AICommands onSelect={(text, value) => console.log(text, value)} />
+      <AICommands />
     </MinimalEditor>
   );
 };
