@@ -66,6 +66,17 @@ export const allIcons: Record<string, IconDefinition> = {
   </svg>,
   download: "M20 14.5a1.5 1.5 0 0 1 1.5 1.5v4a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 20v-4a1.5 1.5 0 0 1 3 0v3.5h13V16a1.5 1.5 0 0 1 1.5-1.5m-8-13A1.5 1.5 0 0 1 13.5 3v9.036l1.682-1.682a1.5 1.5 0 0 1 2.121 2.12l-4.066 4.067a1.75 1.75 0 0 1-2.474 0l-4.066-4.066a1.5 1.5 0 0 1 2.121-2.121l1.682 1.682V3A1.5 1.5 0 0 1 12 1.5",
   markdown: "M20 5a2 2 0 0 1 1.995 1.85L22 7v10a2 2 0 0 1-1.85 1.995L20 19H4a2 2 0 0 1-1.995-1.85L2 17V7a2 2 0 0 1 1.85-1.995L4 5zm0 2H4v10h16zM6.833 9a1 1 0 0 1 .81.413l.064.101l.793 1.427l.793-1.427a1 1 0 0 1 .754-.507l.12-.007H11a1 1 0 0 1 .993.883L12 10v4a1 1 0 0 1-1.993.117L10 14v-1.64l-.626 1.126a1 1 0 0 1-1.684.1l-.064-.1L7 12.359V14a1 1 0 0 1-1.993.117L5 14v-4a1 1 0 0 1 .883-.993L6 9zM16 9a1 1 0 0 1 1 1v1.634a1 1 0 0 1 1.207 1.573l-1.5 1.5a1 1 0 0 1-1.414 0l-1.5-1.5A1 1 0 0 1 15 11.634V10a1 1 0 0 1 1-1",
+  loading: <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+    <circle cx={18} cy={12} r={0} fill="currentColor">
+      <animate attributeName="r" begin={0.67} calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"></animate>
+    </circle>
+    <circle cx={12} cy={12} r={0} fill="currentColor">
+      <animate attributeName="r" begin={0.33} calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"></animate>
+    </circle>
+    <circle cx={6} cy={12} r={0} fill="currentColor">
+      <animate attributeName="r" begin={0} calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"></animate>
+    </circle>
+  </svg>
 };
 
 export const Icon = ({ size, icon, ...props }: IconSvgProps) => {
