@@ -54,6 +54,7 @@ const AISelectorCommands = ({ onSelect = () => { } }: AISelectorCommandsProps) =
         autoFocus
         placeholder="this is ai editor "
         value={inputValue}
+      // onChange={setInputValue}
       />
       {!hasCompletion && !loading && (
         <>
