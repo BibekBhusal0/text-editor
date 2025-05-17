@@ -43,6 +43,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       },
     },
   ];
+  props.children = props.children === undefined ? 'Download' : props.children
 
   return (
     <Popover classNames={{ content: "m-0 p-0" }} placement="bottom-start">
@@ -50,7 +51,6 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
         <Button
           startContent={<Icon className="size-5 pt-1" icon="download" />}
           size="sm"
-          children={"Download"}
           {...props}
           className={cn("max-w-80 flex-grow-0", className)}
         />
@@ -62,7 +62,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
           classNames={{ base: "max-h-80 overflow-auto" }}
           color="primary"
           selectionMode="single"
-          onSelectionChange={() => {}}
+          onSelectionChange={() => { }}
           selectedKeys={[]}
           variant="shadow"
         >
