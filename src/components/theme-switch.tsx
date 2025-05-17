@@ -1,7 +1,8 @@
-import { Icon } from "@/components/icons";
 import { useRef, useEffect } from "react";
 import { useTheme } from "@heroui/use-theme";
 import { Button } from "@heroui/react";
+
+import { Icon } from "@/components/icons";
 
 function ThemeSwitch() {
   const firstRender = useRef(true);
@@ -22,12 +23,12 @@ function ThemeSwitch() {
 
   return (
     <Button
-      onPress={handleClick}
       isIconOnly
       className="text-lg"
+      radius="full"
       size="sm"
       variant="light"
-      radius="full"
+      onPress={handleClick}
     >
       <Icon key={theme} icon={firstRender.current ? startIcon : transitionIcon} />
     </Button>

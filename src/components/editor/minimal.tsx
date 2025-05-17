@@ -5,8 +5,8 @@ import {
   handleCommandNavigation,
   EditorContentProps,
 } from "novel";
-
 import { cn } from "@heroui/theme";
+
 import { extensions } from "./extension";
 import "@/styles/editor.css";
 

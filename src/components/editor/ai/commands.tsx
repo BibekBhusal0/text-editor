@@ -1,5 +1,7 @@
 import { useEditor } from "novel";
 import { useState } from "react";
+import { Button } from "@heroui/button";
+
 import {
   Command,
   CommandGroup,
@@ -9,7 +11,6 @@ import {
 } from "@/components/ui/command";
 import { Icon } from "@/components/icons";
 import { useDummyCompletion } from "@/components/hook/useCompletion";
-import { Button } from "@heroui/button";
 
 type optionType = { value: string; label: string; icon?: string; onSelect?: () => void };
 
@@ -31,6 +32,7 @@ const AISelectorCommands = () => {
   };
   const insert = () => {
     const selection = editor.view.state.selection;
+
     editor
       .chain()
       .focus()
@@ -40,6 +42,7 @@ const AISelectorCommands = () => {
   const replace = () => {
     if (!editor) return;
     const selection = editor.view.state.selection;
+
     editor
       .chain()
       .focus()
@@ -118,11 +121,11 @@ const AISelectorCommands = () => {
           className="w-max-full text-md w-56 border-b-0"
           placeholder="Command To AI"
           value={inputValue}
-          onValueChange={setInputValue}
           onKeyDown={(e) => {
             if (e.key === "Escape") {
               e.preventDefault();
               const selection = editor.view.state.selection;
+
               editor
                 .chain()
                 .focus()
@@ -134,15 +137,16 @@ const AISelectorCommands = () => {
               getCompletion();
             }
           }}
+          onValueChange={setInputValue}
         />
 
         {!loading && !hasCompletion && (
           <Button
-            size="sm"
             isIconOnly
-            variant="light"
-            color="primary"
             className="text-xl"
+            color="primary"
+            size="sm"
+            variant="light"
             onPress={() => {
               if (inputValue.trim() !== "") getCompletion();
             }}

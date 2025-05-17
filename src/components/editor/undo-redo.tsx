@@ -1,10 +1,12 @@
 import { Button, ButtonProps } from "@heroui/button";
-import { Icon } from "../icons";
 import { cn } from "@heroui/theme";
 import { useEditor } from "novel";
 
+import { Icon } from "../icons";
+
 export function UndoRedo({ className, ...props }: ButtonProps) {
   const { editor } = useEditor();
+
   if (!editor) return null;
   const defaultProps: ButtonProps = {
     variant: "flat",
@@ -12,6 +14,7 @@ export function UndoRedo({ className, ...props }: ButtonProps) {
     isIconOnly: true,
     className: "text-lg",
   };
+
   return (
     <>
       <Button

@@ -1,24 +1,26 @@
 import { Navbar as HeroNavbar, NavbarContent, NavbarItem } from "@heroui/navbar";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
+import { Modal, ModalContent, useDisclosure } from "@heroui/modal";
+
 import ThemeSwitch from "./theme-switch";
 import { Icon } from "./icons";
-import { Modal, ModalContent, useDisclosure } from "@heroui/modal";
 import { Examples } from "./examples";
 
 export const Navbar = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
     <HeroNavbar
-      isBordered
       isBlurred
+      isBordered
+      className="mb-3 h-12 p-0"
       maxWidth="xl"
       shouldHideOnScroll={false}
-      className="mb-3 h-12 p-0"
     >
       <NavbarContent className="gap-4">
         <NavbarItem>
-          <Button className="relative" onPress={onOpen} size="sm" variant="ghost">
+          <Button className="relative" size="sm" variant="ghost" onPress={onOpen}>
             More examples
           </Button>
           <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -29,13 +31,13 @@ export const Navbar = () => {
         </NavbarItem>
         <NavbarItem>
           <Button
-            as={Link}
             isExternal
             isIconOnly
-            size="sm"
-            variant="flat"
+            as={Link}
             className="text-xl"
             href="https://github.com/bibekbhusal0/text-editor"
+            size="sm"
+            variant="flat"
           >
             <Icon icon="github" />
           </Button>

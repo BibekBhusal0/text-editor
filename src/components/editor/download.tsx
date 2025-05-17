@@ -12,6 +12,7 @@ const downloadContent = (content: string, filename: string, format: DownloadForm
   const blob = new Blob([content], { type: `text/${format}` });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
+
   link.href = url;
   link.download = `${filename}.${format}`;
   document.body.appendChild(link);
@@ -31,6 +32,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       icon: "code",
       command: () => {
         const html = editor.getHTML();
+
         downloadContent(html, "document", "html");
       },
     },
@@ -39,18 +41,20 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       icon: "markdown",
       command: () => {
         const markdown = editor.storage.markdown.getMarkdown();
+
         downloadContent(markdown, "document", "md");
       },
     },
   ];
+
   props.children = props.children === undefined ? "Download" : props.children;
 
   return (
     <Popover classNames={{ content: "m-0 p-0" }} placement="bottom-start">
       <PopoverTrigger>
         <Button
-          startContent={<Icon className="size-5 pt-1" icon="download" />}
           size="sm"
+          startContent={<Icon className="size-5 pt-1" icon="download" />}
           {...props}
           className={cn("max-w-80 flex-grow-0", className)}
         />
@@ -61,10 +65,10 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
           aria-label="download types"
           classNames={{ base: "max-h-80 overflow-auto" }}
           color="primary"
-          selectionMode="single"
-          onSelectionChange={() => {}}
           selectedKeys={[]}
+          selectionMode="single"
           variant="shadow"
+          onSelectionChange={() => {}}
         >
           {items.map((i) => (
             <ListboxItem

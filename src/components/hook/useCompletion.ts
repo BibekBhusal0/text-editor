@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+
 import { generateLoremIpsum as generateLoremIpsumOriginal } from "@/utils/lorem";
 
 export const useDummyCompletion = () => {
@@ -10,6 +11,7 @@ export const useDummyCompletion = () => {
       return new Promise((resolve) => {
         setTimeout(() => {
           const loremIpsum = generateLoremIpsumOriginal(words);
+
           resolve(loremIpsum);
         }, 2000);
       });
@@ -22,6 +24,7 @@ export const useDummyCompletion = () => {
       setLoading(true);
       try {
         const newCompletion = await generateLoremIpsum(num_words || 100);
+
         setCompletion(newCompletion);
       } finally {
         setLoading(false);
