@@ -17,10 +17,10 @@ export const useDummyCompletion = () => {
     [generateLoremIpsumOriginal]
   );
 
-  const getAiText = useCallback(async () => {
+  const getAiText = useCallback(async (num_words?: number) => {
     setLoading(true);
     try {
-      const newCompletion = await generateLoremIpsum(100);
+      const newCompletion = await generateLoremIpsum(num_words || 100);
       setCompletion(newCompletion);
     } finally {
       setLoading(false);

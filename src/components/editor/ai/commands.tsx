@@ -5,14 +5,7 @@ import { Icon } from "@/components/icons";
 import { useDummyCompletion } from "@/components/hook/useCompletion";
 import { Button } from "@heroui/button";
 
-const options = [
-  { value: "shorter", label: "Summarize in bullet points", icon: "bullet_list" },
-  { value: "elaborate", label: "Elaborate and expand", icon: "ai_content" },
-  { value: "improve", label: "Improve writing", icon: "ai_quill_pen" },
-  { value: 'rephrase', label: "Rephrase", icon: 'ai_refresh' },
-  { value: 'transpate', label: "Translate", icon: 'ai_translate' },
-  { value: "emoji", label: "Add Emoji", icon: "angel_emoji" },
-];
+type optionType = { value: string, label: string, icon?: string, onSelect?: () => void }
 
 const AISelectorCommands = () => {
   const { editor } = useEditor();
@@ -21,9 +14,73 @@ const AISelectorCommands = () => {
   const hasCompletion = completion.trim() !== "";
 
   if (!editor) return null;
-  const getCompletion = async () => {
-    await getAiText();
+  const getCompletion = async (num_words?: number) => {
+    await getAiText(num_words);
     setInputValue("");
+  }
+  const dismiss = () => {
+    setCompletion("")
+    setInputValue("")
+  }
+  const insert = () => {
+    const selection = editor.view.state.selection;
+    editor
+      .chain()
+      .focus()
+      .insertContentAt(selection.to + 1, completion)
+      .run();
+  }
+
+  const replace = () => {
+    if (!editor) return;
+    const selection = editor.view.state.selection;
+    editor
+      .chain()
+      .focus()
+      .insertContentAt(
+        {
+          from: selection.from,
+          to: selection.to,
+        },
+        completion
+      )
+      .run();
+  }
+
+  const aiOptions: optionType[] = [
+    { value: "shorter", label: "Summarize in bullet points", icon: "bullet_list" },
+    { value: "elaborate", label: "Elaborate and expand", icon: "ai_content" },
+    { value: "improve", label: "Improve writing", icon: "ai_quill_pen" },
+    { value: 'rephrase', label: "Rephrase", icon: 'ai_refresh' },
+    { value: 'transpate', label: "Translate", icon: 'ai_translate' },
+    { value: "emoji", label: "Add Emoji", icon: "angel_emoji" },
+  ];
+  const complitionOptions: optionType[] = [
+    { value: 'insert', label: 'Insert', icon: "insert", onSelect: () => { insert(); dismiss(); } },
+    { value: 'add', label: 'Replace', icon: "check", onSelect: () => { replace(); dismiss(); } },
+    { value: 'dismiss', label: 'Dismiss', icon: "trash", onSelect: dismiss },
+  ]
+
+  const title = hasCompletion ? 'Completion actions' : 'AI commands'
+  const commands = hasCompletion ? complitionOptions : aiOptions
+
+  const RenderOptions = ({ options }: { options: optionType[] }) => {
+    return <>
+      {options.map((option) => (
+        <CommandItem
+          onSelect={() => {
+            if (typeof option.onSelect === 'function') option.onSelect()
+            else getCompletion()
+          }}
+          className="flex gap-2 px-4"
+          key={option.value}
+          value={option.label}
+        >
+          <Icon className="text-foreground" icon={option.icon} size={30} />
+          {option.label}
+        </CommandItem>
+      ))}
+    </>
   }
 
   return (
@@ -50,66 +107,15 @@ const AISelectorCommands = () => {
           : (
 
             <>
-              {hasCompletion ? (
-                <>
-                  <div className='h-auto max-h-40 p-2 overflow-auto'>{completion}</div>
-                  <CommandGroup heading="Completion actions">
-                    <CommandList>
+              {hasCompletion &&
+                <div className='h-auto max-h-40 p-2 overflow-auto'>{completion}</div>
+              }
 
-                      <CommandItem onSelect={() => setCompletion("")}>
-                        Dismiss
-                      </CommandItem>
-                      <CommandItem
-                        onSelect={() => {
-                          if (!editor) return;
-                          const selection = editor.view.state.selection;
-                          editor
-                            .chain()
-                            .focus()
-                            .insertContentAt(selection.to + 1, completion)
-                            .run();
-                        }}
-                      >
-                        Insert
-                      </CommandItem>
-                      <CommandItem
-                        onSelect={() => {
-                          if (!editor) return;
-                          const selection = editor.view.state.selection;
-                          editor
-                            .chain()
-                            .focus()
-                            .insertContentAt(
-                              {
-                                from: selection.from,
-                                to: selection.to,
-                              },
-                              completion
-                            )
-                            .run();
-                        }}
-                      >
-                        Replace
-                      </CommandItem>
-                    </CommandList>
-                  </CommandGroup>
-                </>
 
-              ) : (
+              <CommandGroup heading={title}>
+                <CommandList><RenderOptions options={commands} /></CommandList>
+              </CommandGroup>
 
-                <CommandGroup heading="AI commands">
-                  <CommandList>{options.map((option) => (
-                    <CommandItem
-                      onSelect={getCompletion}
-                      className="flex gap-2 px-4"
-                      key={option.value}
-                    >
-                      <Icon className="text-foreground" icon={option.icon} size={30} />
-                      {option.label}
-                    </CommandItem>
-                  ))}</CommandList>
-                </CommandGroup>
-              )}
             </>
           )}
     </Command>
