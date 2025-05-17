@@ -33,8 +33,6 @@ Live link: [https://bibekbhusal0.github.io/text-editor/](https://bibekbhusal0.gi
 ![text editor demo](https://github.com/user-attachments/assets/d1e3c148-fe85-463a-b0e7-370718bd8272)
 
 
-https://github.com/user-attachments/assets/50220cf9-d372-4523-b474-2bb3d1c8aa6f
-
 
 
 ## 📦 Tech Stack
