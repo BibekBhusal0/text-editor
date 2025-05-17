@@ -32,9 +32,6 @@ Live link: [https://bibekbhusal0.github.io/text-editor/](https://bibekbhusal0.gi
 
 ![text editor demo](https://github.com/user-attachments/assets/d1e3c148-fe85-463a-b0e7-370718bd8272)
 
-
-
-
 ## 📦 Tech Stack
 
 - Vite
