@@ -1,50 +1,55 @@
-# Vite & HeroUI Template
+**AI based text editor** made with [Novel](https://novel.sh/docs/introduction) and [HeroUI](https://www.heroui.com/).
+Live link: [https://bibekbhusal0.github.io/text-editor/](https://bibekbhusal0.github.io/text-editor/)
 
-This is a template for creating applications using Vite and HeroUI (v2).
+## ✨ Features
 
-[Try it on CodeSandbox](https://githubbox.com/frontio-ai/vite-template)
+- Built with **HeroUI** components.
+- Powered by **Vite** for blazing-fast performance.
+- Advanced text editing powered by Novel & TipTap.
+- Fully customizable with different extensions.
 
-## Technologies Used
+## ✏Editor Features
 
-- [Vite](https://vitejs.dev/guide/)
-- [HeroUI](https://heroui.com)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Framer Motion](https://www.framer.com/motion)
+- Bubble Menu
+- AI Commands
+- Slash Commands
+- Drag and Drop
+- Supports various blocks
+  - Bullet list
+  - Task List
+  - Numbered list
+  - Code Block
+  - Quote
+- **Bold**, <u>Underline</u>, *Italic,* ~~Strike Through~~, `Inline Code`.
+- Intuitive keyboard shortcuts
+- Markdown syntax
+- And more ...
 
-## How to Use
+## Screenshots
+![demo screenshot ](./screnshots/demo.png) 
 
-To clone the project, run the following command:
+## 📦 Tech Stack
+
+- Vite
+- TypeScript
+- HeroUI
+- Tailwind CSS
+- TipTap
+- Novel
+
+## 🚀 Getting Started
+
+Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/frontio-ai/vite-template.git
-```
-
-### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
-```bash
+git clone https://github.com/BibekBhusal0/text-editor
+cd text-editor
 npm install
-```
-
-### Run the development server
-
-```bash
 npm run dev
 ```
 
-### Setup pnpm (optional)
 
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
 
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
+## 📜 License
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/frontio-ai/vite-template/blob/main/LICENSE).
+MIT — Free to use and modify for personal and commercial use.
