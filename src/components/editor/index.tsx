@@ -3,7 +3,6 @@ import "@/styles/editor.css";
 import { SlashCommand } from "./slashCommand";
 import EditorHeader from "./header";
 import MinimalEditor from "./minimal";
-import { AICommands } from "./ai/commands";
 
 const content = "<h1>hello</h1>";
 
@@ -26,7 +25,6 @@ const MainEditor = () => {
       </div>
       <BubbleMenu />
       <SlashCommand />
-      <AICommands />
     </MinimalEditor>
   );
 };

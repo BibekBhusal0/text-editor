@@ -14,6 +14,7 @@ const AISelectorCommands = () => {
   const hasCompletion = completion.trim() !== "";
 
   if (!editor) return null;
+
   const getCompletion = async (num_words?: number) => {
     await getAiText(num_words);
     setInputValue("");
@@ -30,7 +31,6 @@ const AISelectorCommands = () => {
       .insertContentAt(selection.to + 1, completion)
       .run();
   }
-
   const replace = () => {
     if (!editor) return;
     const selection = editor.view.state.selection;
@@ -72,12 +72,12 @@ const AISelectorCommands = () => {
             if (typeof option.onSelect === 'function') option.onSelect()
             else getCompletion()
           }}
-          className="flex gap-2 px-4"
+          // className="flex gap-2 px-2 text-2xl"
           key={option.value}
           value={option.label}
         >
-          <Icon className="text-foreground" icon={option.icon} size={30} />
-          {option.label}
+          <Icon className="text-foreground size-9 rounded-md border border-default-600 p-2" icon={option.icon} />
+          <div className='text-lg'>{option.label}</div>
         </CommandItem>
       ))}
     </>
@@ -92,10 +92,26 @@ const AISelectorCommands = () => {
         placeholder="Command To AI"
         value={inputValue}
         onValueChange={setInputValue}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') {
+            e.preventDefault()
+            const selection = editor.view.state.selection;
+            editor
+              .chain()
+              .focus()
+              .insertContentAt(selection.to + 1, '')
+              .run();
+          }
+          if (e.key === 'Enter' && !hasCompletion && inputValue.trim() !== '') {
+            e.preventDefault()
+            getCompletion()
+          }
+
+        }}
       />
 
         {(!loading && !hasCompletion) && <Button size='sm' isIconOnly variant='light' color='primary' className='text-xl' onPress={() => {
-          if (inputValue.trim() !== '') getCompletion
+          if (inputValue.trim() !== '') getCompletion()
         }} >
           <Icon icon='send' />
         </Button>}
@@ -103,7 +119,7 @@ const AISelectorCommands = () => {
 
       {
         loading ?
-          <div className='flex items-center pl-5 gap-3 text-5xl'><Icon icon="loading" /><div className='text-lg'>Loading</div></div>
+          <div className='flex items-center p-5 gap-3 text-5xl'><Icon icon="loading" /><div className='text-lg'>Loading</div></div>
           : (
 
             <>
