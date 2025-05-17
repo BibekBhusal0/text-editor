@@ -18,7 +18,7 @@ const MainEditor = () => {
       className="editor rounded-md border-1 pt-16"
       editorProps={{
         attributes: {
-          class: "min-h-[250px] max-h-[580px] overflow-auto pl-6",
+          class: "min-h-[250px] max-h-[540px] overflow-auto pl-6",
           spellcheck: "false",
         },
       }}
