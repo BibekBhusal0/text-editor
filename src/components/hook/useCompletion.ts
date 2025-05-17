@@ -17,15 +17,18 @@ export const useDummyCompletion = () => {
     [generateLoremIpsumOriginal]
   );
 
-  const getAiText = useCallback(async (num_words?: number) => {
-    setLoading(true);
-    try {
-      const newCompletion = await generateLoremIpsum(num_words || 100);
-      setCompletion(newCompletion);
-    } finally {
-      setLoading(false);
-    }
-  }, [generateLoremIpsum]);
+  const getAiText = useCallback(
+    async (num_words?: number) => {
+      setLoading(true);
+      try {
+        const newCompletion = await generateLoremIpsum(num_words || 100);
+        setCompletion(newCompletion);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [generateLoremIpsum]
+  );
 
   return { completion, loading, getAiText, setCompletion };
 };

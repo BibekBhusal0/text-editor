@@ -1,7 +1,7 @@
 .commend-example {
   .ProseMirror {
     p {
-      @apply m-0
+      @apply m-0;
     }
 
     [data-placeholder]:not(li):not(ul):not(ol)::before {
@@ -10,7 +10,7 @@
     }
 
     [data-placeholder] {
-      @apply relative
+      @apply relative;
     }
 
     [data-placeholder].is-editor-empty::after {
@@ -78,7 +78,7 @@
     li {
       @apply flex items-start gap-2;
 
-      >label {
+      > label {
         user-select: none;
 
         input[type="checkbox"] {
@@ -92,12 +92,12 @@
         }
       }
 
-      &[data-checked="true"]>div>p {
+      &[data-checked="true"] > div > p {
         @apply text-default-400 line-through;
         text-decoration-thickness: 1px;
       }
 
-      >div>p {
+      > div > p {
         @apply m-0;
       }
     }
@@ -113,11 +113,11 @@
     box-shadow: none;
   }
 
-  span[style]>strong {
+  span[style] > strong {
     color: inherit;
   }
 
-  mark[style]>strong {
+  mark[style] > strong {
     color: inherit;
   }
 }

@@ -1,11 +1,17 @@
 import { useEditor } from "novel";
 import { useState } from "react";
-import { Command, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import {
+  Command,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import { Icon } from "@/components/icons";
 import { useDummyCompletion } from "@/components/hook/useCompletion";
 import { Button } from "@heroui/button";
 
-type optionType = { value: string, label: string, icon?: string, onSelect?: () => void }
+type optionType = { value: string; label: string; icon?: string; onSelect?: () => void };
 
 const AISelectorCommands = () => {
   const { editor } = useEditor();
@@ -18,11 +24,11 @@ const AISelectorCommands = () => {
   const getCompletion = async (num_words?: number) => {
     await getAiText(num_words);
     setInputValue("");
-  }
+  };
   const dismiss = () => {
-    setCompletion("")
-    setInputValue("")
-  }
+    setCompletion("");
+    setInputValue("");
+  };
   const insert = () => {
     const selection = editor.view.state.selection;
     editor
@@ -30,7 +36,7 @@ const AISelectorCommands = () => {
       .focus()
       .insertContentAt(selection.to + 1, completion)
       .run();
-  }
+  };
   const replace = () => {
     if (!editor) return;
     const selection = editor.view.state.selection;
@@ -45,95 +51,123 @@ const AISelectorCommands = () => {
         completion
       )
       .run();
-  }
+  };
 
   const aiOptions: optionType[] = [
     { value: "shorter", label: "Summarize in bullet points", icon: "bullet_list" },
     { value: "elaborate", label: "Elaborate and expand", icon: "ai_content" },
     { value: "improve", label: "Improve writing", icon: "ai_quill_pen" },
-    { value: 'rephrase', label: "Rephrase", icon: 'ai_refresh' },
-    { value: 'transpate', label: "Translate", icon: 'ai_translate' },
+    { value: "rephrase", label: "Rephrase", icon: "ai_refresh" },
+    { value: "transpate", label: "Translate", icon: "ai_translate" },
     { value: "emoji", label: "Add Emoji", icon: "angel_emoji" },
   ];
   const complitionOptions: optionType[] = [
-    { value: 'insert', label: 'Insert', icon: "insert", onSelect: () => { insert(); dismiss(); } },
-    { value: 'add', label: 'Replace', icon: "check", onSelect: () => { replace(); dismiss(); } },
-    { value: 'dismiss', label: 'Dismiss', icon: "trash", onSelect: dismiss },
-  ]
+    {
+      value: "insert",
+      label: "Insert",
+      icon: "insert",
+      onSelect: () => {
+        insert();
+        dismiss();
+      },
+    },
+    {
+      value: "add",
+      label: "Replace",
+      icon: "check",
+      onSelect: () => {
+        replace();
+        dismiss();
+      },
+    },
+    { value: "dismiss", label: "Dismiss", icon: "trash", onSelect: dismiss },
+  ];
 
-  const title = hasCompletion ? 'Completion actions' : 'AI commands'
-  const commands = hasCompletion ? complitionOptions : aiOptions
+  const title = hasCompletion ? "Completion actions" : "AI commands";
+  const commands = hasCompletion ? complitionOptions : aiOptions;
 
   const RenderOptions = ({ options }: { options: optionType[] }) => {
-    return <>
-      {options.map((option) => (
-        <CommandItem
-          onSelect={() => {
-            if (typeof option.onSelect === 'function') option.onSelect()
-            else getCompletion()
-          }}
-          // className="flex gap-2 px-2 text-2xl"
-          key={option.value}
-          value={option.label}
-        >
-          <Icon className="text-foreground size-9 rounded-md border border-default-600 p-2" icon={option.icon} />
-          <div className='text-lg'>{option.label}</div>
-        </CommandItem>
-      ))}
-    </>
-  }
+    return (
+      <>
+        {options.map((option) => (
+          <CommandItem
+            onSelect={() => {
+              if (typeof option.onSelect === "function") option.onSelect();
+              else getCompletion();
+            }}
+            // className="flex gap-2 px-2 text-2xl"
+            key={option.value}
+            value={option.label}
+          >
+            <Icon
+              className="size-9 rounded-md border border-default-600 p-2 text-foreground"
+              icon={option.icon}
+            />
+            <div className="text-lg">{option.label}</div>
+          </CommandItem>
+        ))}
+      </>
+    );
+  };
 
   return (
-
     <Command className="w-80">
-      <div className='flex gap-2 items-center border-b-2'><CommandInput
-        autoFocus
-        className='w-max-full w-56 border-b-0 text-md'
-        placeholder="Command To AI"
-        value={inputValue}
-        onValueChange={setInputValue}
-        onKeyDown={(e) => {
-          if (e.key === 'Escape') {
-            e.preventDefault()
-            const selection = editor.view.state.selection;
-            editor
-              .chain()
-              .focus()
-              .insertContentAt(selection.to + 1, '')
-              .run();
-          }
-          if (e.key === 'Enter' && !hasCompletion && inputValue.trim() !== '') {
-            e.preventDefault()
-            getCompletion()
-          }
+      <div className="flex items-center gap-2 border-b-2">
+        <CommandInput
+          autoFocus
+          className="w-max-full text-md w-56 border-b-0"
+          placeholder="Command To AI"
+          value={inputValue}
+          onValueChange={setInputValue}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") {
+              e.preventDefault();
+              const selection = editor.view.state.selection;
+              editor
+                .chain()
+                .focus()
+                .insertContentAt(selection.to + 1, "")
+                .run();
+            }
+            if (e.key === "Enter" && !hasCompletion && inputValue.trim() !== "") {
+              e.preventDefault();
+              getCompletion();
+            }
+          }}
+        />
 
-        }}
-      />
-
-        {(!loading && !hasCompletion) && <Button size='sm' isIconOnly variant='light' color='primary' className='text-xl' onPress={() => {
-          if (inputValue.trim() !== '') getCompletion()
-        }} >
-          <Icon icon='send' />
-        </Button>}
+        {!loading && !hasCompletion && (
+          <Button
+            size="sm"
+            isIconOnly
+            variant="light"
+            color="primary"
+            className="text-xl"
+            onPress={() => {
+              if (inputValue.trim() !== "") getCompletion();
+            }}
+          >
+            <Icon icon="send" />
+          </Button>
+        )}
       </div>
 
-      {
-        loading ?
-          <div className='flex items-center p-5 gap-3 text-5xl'><Icon icon="loading" /><div className='text-lg'>Loading</div></div>
-          : (
+      {loading ? (
+        <div className="flex items-center gap-3 p-5 text-5xl">
+          <Icon icon="loading" />
+          <div className="text-lg">Loading</div>
+        </div>
+      ) : (
+        <>
+          {hasCompletion && <div className="h-auto max-h-40 overflow-auto p-2">{completion}</div>}
 
-            <>
-              {hasCompletion &&
-                <div className='h-auto max-h-40 p-2 overflow-auto'>{completion}</div>
-              }
-
-
-              <CommandGroup heading={title}>
-                <CommandList><RenderOptions options={commands} /></CommandList>
-              </CommandGroup>
-
-            </>
-          )}
+          <CommandGroup heading={title}>
+            <CommandList>
+              <RenderOptions options={commands} />
+            </CommandList>
+          </CommandGroup>
+        </>
+      )}
     </Command>
   );
 };

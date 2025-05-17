@@ -1,15 +1,10 @@
-import {
-  Navbar as HeroNavbar,
-  NavbarContent,
-  NavbarItem,
-} from "@heroui/navbar";
-import { Button } from "@heroui/button"
-import { Link } from "@heroui/link"
+import { Navbar as HeroNavbar, NavbarContent, NavbarItem } from "@heroui/navbar";
+import { Button } from "@heroui/button";
+import { Link } from "@heroui/link";
 import ThemeSwitch from "./theme-switch";
 import { Icon } from "./icons";
 import { Modal, ModalContent, useDisclosure } from "@heroui/modal";
 import { Examples } from "./examples";
-
 
 export const Navbar = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -19,36 +14,30 @@ export const Navbar = () => {
       isBlurred
       maxWidth="xl"
       shouldHideOnScroll={false}
-      className='h-12 p-0 mb-3'
-
+      className="mb-3 h-12 p-0"
     >
-      <NavbarContent className="gap-4 " >
-        <NavbarItem  >
-          <Button
-            className="relative"
-            onPress={onOpen}
-            size='sm'
-            variant='ghost'
-          >
+      <NavbarContent className="gap-4">
+        <NavbarItem>
+          <Button className="relative" onPress={onOpen} size="sm" variant="ghost">
             More examples
           </Button>
           <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-            <ModalContent className='p-5'>
+            <ModalContent className="p-5">
               <Examples />
             </ModalContent>
           </Modal>
         </NavbarItem>
-        <NavbarItem  >
+        <NavbarItem>
           <Button
             as={Link}
             isExternal
             isIconOnly
-            size='sm'
-            variant='flat'
-            className='text-xl'
-            href='https://github.com/bibekbhusal0/text-editor'
+            size="sm"
+            variant="flat"
+            className="text-xl"
+            href="https://github.com/bibekbhusal0/text-editor"
           >
-            <Icon icon='github' />
+            <Icon icon="github" />
           </Button>
         </NavbarItem>
       </NavbarContent>
@@ -59,4 +48,3 @@ export const Navbar = () => {
     </HeroNavbar>
   );
 };
-

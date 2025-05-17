@@ -21,7 +21,14 @@ function ThemeSwitch() {
   const handleClick = () => setTheme(theme === "dark" ? "light" : "dark");
 
   return (
-    <Button onPress={handleClick} isIconOnly className='text-lg' size="sm" variant="light" radius="full">
+    <Button
+      onPress={handleClick}
+      isIconOnly
+      className="text-lg"
+      size="sm"
+      variant="light"
+      radius="full"
+    >
       <Icon key={theme} icon={firstRender.current ? startIcon : transitionIcon} />
     </Button>
   );
