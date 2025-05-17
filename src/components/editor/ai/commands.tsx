@@ -6,26 +6,12 @@ import { useDummyCompletion } from "@/components/hook/useCompletion";
 import { Button } from "@heroui/button";
 
 const options = [
-  {
-    value: "improve",
-    label: "Improve writing",
-    icon: "ai",
-  },
-  {
-    value: "fix",
-    label: "Fix grammar",
-    icon: "todo_list",
-  },
-  {
-    value: "shorter",
-    label: "Make shorter",
-    icon: "bullet_list",
-  },
-  {
-    value: "longer",
-    label: "Make longer",
-    icon: "heading1",
-  },
+  { value: "shorter", label: "Summarize in bullet points", icon: "bullet_list" },
+  { value: "elaborate", label: "Elaborate and expand", icon: "ai_content" },
+  { value: "improve", label: "Improve writing", icon: "ai_quill_pen" },
+  { value: 'rephrase', label: "Rephrase", icon: 'ai_refresh' },
+  { value: 'transpate', label: "Translate", icon: 'ai_translate' },
+  { value: "emoji", label: "Add Emoji", icon: "angel_emoji" },
 ];
 
 const AISelectorCommands = () => {
@@ -43,7 +29,7 @@ const AISelectorCommands = () => {
   return (
 
     <Command className="w-80">
-      <div className='flex bg-primary-50  gap-2 items-center'><CommandInput
+      <div className='flex bg-primary-50 gap-2 items-center'><CommandInput
         autoFocus
         className='w-max-full w-56'
         placeholder="Command To AI"
