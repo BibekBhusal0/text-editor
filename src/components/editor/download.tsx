@@ -1,28 +1,46 @@
 import { useEditor } from "novel";
-import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
+import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
 import { Listbox, ListboxItem } from "@heroui/listbox";
 import { Button, ButtonProps } from "@heroui/button";
 import { cn } from "@heroui/theme";
+import { addToast } from "@heroui/toast";
 
 import { Icon } from "@/components/icons";
+import { useState } from "react";
 
 type DownloadFormat = "html" | "md";
 
 const downloadContent = (content: string, filename: string, format: DownloadFormat) => {
-  const blob = new Blob([content], { type: `text/${format}` });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
+  try {
+    const blob = new Blob([content], { type: `text/${format}` });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
 
-  link.href = url;
-  link.download = `${filename}.${format}`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
+    link.href = url;
+    link.download = `${filename}.${format}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    addToast({
+      title: "Download Complete",
+      description: `Successfully downloaded ${filename}.${format}`,
+      color: "success",
+    });
+  } catch (error: any) {
+    addToast({
+      title: "Download Failed",
+      description: `Failed to download ${filename}.${format}: ${error.message}`,
+      color: "danger",
+    });
+  }
 };
 
 export const DownloadButton = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();
+  const [open, setOpen] = useState(false)
+  const close = () => setOpen(false)
 
   if (!editor) return null;
 
@@ -32,8 +50,8 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       icon: "code",
       command: () => {
         const html = editor.getHTML();
-
         downloadContent(html, "document", "html");
+        close();
       },
     },
     {
@@ -41,8 +59,8 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       icon: "markdown",
       command: () => {
         const markdown = editor.storage.markdown.getMarkdown();
-
         downloadContent(markdown, "document", "md");
+        close();
       },
     },
   ];
@@ -50,7 +68,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
   props.children = props.children === undefined ? "Download" : props.children;
 
   return (
-    <Popover classNames={{ content: "m-0 p-0" }} placement="bottom-start">
+    <Popover isOpen={open} onOpenChange={(open) => setOpen(open)} classNames={{ content: "m-0 p-0" }} placement="bottom-start">
       <PopoverTrigger>
         <Button
           size="sm"
@@ -68,7 +86,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
           selectedKeys={[]}
           selectionMode="single"
           variant="shadow"
-          onSelectionChange={() => {}}
+          onSelectionChange={() => { }}
         >
           {items.map((i) => (
             <ListboxItem
