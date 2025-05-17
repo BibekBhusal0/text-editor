@@ -1,8 +1,8 @@
 import { Divider } from "@heroui/divider";
 import { Card } from "@heroui/card";
-import { EditorBubble } from "novel";
+import { EditorBubble, removeAIHighlight, useEditor } from "novel";
 import { Button } from "@heroui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Icon } from "../icons";
 
@@ -16,11 +16,19 @@ import { AICommands } from "./ai/commands";
 export const BubbleMenu = () => {
   const [aiOpen, setAIOpen] = useState(false);
 
+  const { editor } = useEditor()
+
+  useEffect(() => {
+    if (!editor) return
+    if (!open) removeAIHighlight(editor);
+  }, [open]);
+  if (!editor) return null
+
   return (
     <EditorBubble
       tippyOptions={{
         placement: aiOpen ? "bottom-start" : "top",
-        onHidden: () => setAIOpen(false),
+        onHidden: () => { setAIOpen(false); editor.chain().unsetHighlight().run(); },
       }}
     >
       <Card className="flex-row" radius="sm">
