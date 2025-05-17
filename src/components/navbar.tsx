@@ -8,6 +8,7 @@ import { Link } from "@heroui/link"
 import ThemeSwitch from "./theme-switch";
 import { Icon } from "./icons";
 import { Modal, ModalContent, useDisclosure } from "@heroui/modal";
+import { Examples } from "./examples";
 
 
 export const Navbar = () => {
@@ -33,7 +34,7 @@ export const Navbar = () => {
           </Button>
           <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
             <ModalContent className='p-5'>
-              More examples will be here
+              <Examples />
             </ModalContent>
           </Modal>
         </NavbarItem>
