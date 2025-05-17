@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
 import { Button, ButtonProps } from "@heroui/button";
 import { Input } from "@heroui/input";
@@ -12,6 +12,9 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();
   const l = editor?.getAttributes("link").href;
   const [link, setLink] = useState(l || "");
+  useEffect(() => {
+    setLink(l)
+  }, [l])
 
   if (!editor) return null;
 
@@ -31,7 +34,6 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
       <Popover placement="bottom-start">
         <PopoverTrigger>
           <Button
-            // className="icon-sm flex-center size-full gap-2"
             size="sm"
             startContent={<Icon icon="link" />}
             {...props}
@@ -40,7 +42,7 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
             <div
               className={cn(
                 "text-sm underline decoration-stone-400 underline-offset-4",
-                editor.isActive("link") && "text-blue-500"
+                editor.isActive("link") && "text-primary-400"
               )}
             >
               Link
@@ -62,7 +64,7 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
           <Button
             color={l ? "danger" : "success"}
             size="sm"
-            startContent={<Icon className="size-4" icon="add" />}
+            startContent={<Icon className="size-4" icon={l ? "trash" : 'add'} />}
             variant={l ? "bordered" : "solid"}
             onPress={l ? removeLink : addlink}
           >
