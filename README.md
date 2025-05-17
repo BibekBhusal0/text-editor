@@ -20,13 +20,14 @@ Live link: [https://bibekbhusal0.github.io/text-editor/](https://bibekbhusal0.gi
   - Numbered list
   - Code Block
   - Quote
-- **Bold**, <u>Underline</u>, *Italic,* ~~Strike Through~~, `Inline Code`.
+- **Bold**, <u>Underline</u>, _Italic,_ ~~Strike Through~~, `Inline Code`.
 - Intuitive keyboard shortcuts
 - Markdown syntax
 - And more ...
 
 ## Screenshots
-![demo screenshot ](./screnshots/demo.png) 
+
+![demo screenshot ](./screnshots/demo.png)
 
 ## 📦 Tech Stack
 
@@ -47,8 +48,6 @@ cd text-editor
 npm install
 npm run dev
 ```
-
-
 
 ## 📜 License
 
