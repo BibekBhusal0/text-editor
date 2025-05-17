@@ -89,13 +89,12 @@ const AISelectorCommands = () => {
       <>
         {options.map((option) => (
           <CommandItem
+            key={option.value}
+            value={option.label}
             onSelect={() => {
               if (typeof option.onSelect === "function") option.onSelect();
               else getCompletion();
             }}
-            // className="flex gap-2 px-2 text-2xl"
-            key={option.value}
-            value={option.label}
           >
             <Icon
               className="size-9 rounded-md border border-default-600 p-2 text-foreground"
