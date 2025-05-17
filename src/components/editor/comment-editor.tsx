@@ -22,7 +22,7 @@ const CommentEditor = () => {
         TiptapUnderline,
       ]}
     >
-      <div className="flex gap-2 bg-default-200">
+      <div className="flex-center gap-2 bg-default-100 p-1">
         <TextButtons />
       </div>
     </MinimalEditor>

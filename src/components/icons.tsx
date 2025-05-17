@@ -550,7 +550,6 @@ export const IconPreview = () => {
     <div className="flex flex-wrap gap-4 text-2xl">
       {Object.entries(allIcons).map(([a, _], i) => (
         <div key={i} className="bg-defult-400 flex flex-col rounded-md border-2 p-4">
-          {" "}
           <Icon className="text-7xl" icon={a} />
           <div>{a}</div>
         </div>
