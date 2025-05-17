@@ -1,4 +1,4 @@
-import { addAIHighlight, removeAIHighlight,useEditor } from "novel";
+import { addAIHighlight, removeAIHighlight, useEditor } from "novel";
 import { useState } from "react";
 import { Button } from "@heroui/button";
 
@@ -29,16 +29,24 @@ const AISelectorCommands = () => {
   const dismiss = () => {
     setCompletion("");
     setInputValue("");
-    removeAIHighlight(editor)
+    removeAIHighlight(editor);
   };
   const insert = () => {
     const selection = editor.view.state.selection;
-    editor .chain() .focus() .insertContentAt(selection.to + 1, completion) .run();
+    editor
+      .chain()
+      .focus()
+      .insertContentAt(selection.to + 1, completion)
+      .run();
   };
   const replace = () => {
     if (!editor) return;
     const selection = editor.view.state.selection;
-    editor .chain() .focus() .insertContentAt({ from: selection.from, to: selection.to }, completion) .run();
+    editor
+      .chain()
+      .focus()
+      .insertContentAt({ from: selection.from, to: selection.to }, completion)
+      .run();
   };
 
   const aiOptions: optionType[] = [
@@ -110,7 +118,11 @@ const AISelectorCommands = () => {
           onKeyDown={(e) => {
             if (e.key === "Escape") {
               const selection = editor.view.state.selection;
-              editor.chain().focus().insertContentAt(selection.to + 1, "").run();
+              editor
+                .chain()
+                .focus()
+                .insertContentAt(selection.to + 1, "")
+                .run();
               e.preventDefault();
             }
             if (e.key === "Enter" && !hasCompletion && inputValue.trim() !== "") {

@@ -13,8 +13,8 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
   const l = editor?.getAttributes("link").href;
   const [link, setLink] = useState(l || "");
   useEffect(() => {
-    setLink(l)
-  }, [l])
+    setLink(l);
+  }, [l]);
 
   if (!editor) return null;
 
@@ -64,7 +64,7 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
           <Button
             color={l ? "danger" : "success"}
             size="sm"
-            startContent={<Icon className="size-4" icon={l ? "trash" : 'add'} />}
+            startContent={<Icon className="size-4" icon={l ? "trash" : "add"} />}
             variant={l ? "bordered" : "solid"}
             onPress={l ? removeLink : addlink}
           >
