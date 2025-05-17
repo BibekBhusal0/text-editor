@@ -5,7 +5,7 @@ import {
 } from "@heroui/navbar";
 import { Button } from "@heroui/button"
 import { Link } from "@heroui/link"
-import { ThemeSwitch } from "./theme-switch";
+import ThemeSwitch from "./theme-switch";
 import { Icon } from "./icons";
 import { Modal, ModalContent, useDisclosure } from "@heroui/modal";
 

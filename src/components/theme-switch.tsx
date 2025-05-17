@@ -1,68 +1,30 @@
-import { FC, useState, useEffect } from "react";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
-import { SwitchProps, useSwitch } from "@heroui/switch";
-import clsx from "clsx";
-import { useTheme } from "@heroui/use-theme";
-
 import { Icon } from "@/components/icons";
+import { useRef, useEffect } from "react";
+import { useTheme } from "@heroui/use-theme";
+import { Button } from "@heroui/react";
 
-export interface ThemeSwitchProps {
-  className?: string;
-  classNames?: SwitchProps["classNames"];
-}
-
-export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
+function ThemeSwitch() {
+  const firstRender = useRef(true);
   const { theme, setTheme } = useTheme();
 
-  const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } = useSwitch({
-    isSelected: theme === "light",
-    onChange: () => setTheme(theme === "light" ? "dark" : "light"),
-  });
-
   useEffect(() => {
-    setIsMounted(true);
-  }, [isMounted]);
+    setTimeout(() => (firstRender.current = false), 1);
+  }, []);
 
-  // Prevent Hydration Mismatch
-  if (!isMounted) return <div className="h-6 w-6" />;
+  if (!theme) return null;
+  const startIcon = theme === "dark" ? "line-md:moon-filled-loop" : "line-md:sunny-filled-loop";
+  const transitionIcon =
+    theme === "light"
+      ? "line-md:moon-filled-to-sunny-filled-loop-transition"
+      : "line-md:sunny-filled-loop-to-moon-filled-loop-transition";
+
+  const handleClick = () => setTheme(theme === "dark" ? "light" : "dark");
 
   return (
-    <Component
-      aria-label={isSelected ? "Switch to dark mode" : "Switch to light mode"}
-      {...getBaseProps({
-        className: clsx(
-          "px-px transition-opacity hover:opacity-80 cursor-pointer",
-          className,
-          classNames?.base
-        ),
-      })}
-    >
-      <VisuallyHidden>
-        <input {...getInputProps()} />
-      </VisuallyHidden>
-      <div
-        {...getWrapperProps()}
-        className={slots.wrapper({
-          class: clsx(
-            [
-              "h-auto w-auto",
-              "bg-transparent",
-              "rounded-lg",
-              "flex items-center justify-center",
-              "group-data-[selected=true]:bg-transparent",
-              "!text-default-500",
-              "pt-px",
-              "px-0",
-              "mx-0",
-            ],
-            classNames?.wrapper
-          ),
-        })}
-      >
-        <Icon icon={isSelected ? "sun" : "moon"} size={22} />
-      </div>
-    </Component>
+    <Button onPress={handleClick} isIconOnly className='text-lg' size="sm" variant="light" radius="full">
+      <Icon key={theme} icon={firstRender.current ? startIcon : transitionIcon} />
+    </Button>
   );
-};
+}
+
+export default ThemeSwitch;
