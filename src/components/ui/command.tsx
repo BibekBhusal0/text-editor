@@ -21,8 +21,8 @@ function CommandInput({
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.Input>) {
   return (
-    <div className="flex h-9 items-center gap-2 border-b px-3" data-slot="command-input-wrapper">
-      <Icon className="size-4 shrink-0 opacity-50" icon="ai" />
+    <div className="flex h-12 items-center gap-2 px-3" data-slot="command-input-wrapper">
+      <Icon className="size-5 shrink-0 opacity-50" icon="ai" />
       <CommandPrimitive.Input
         className={cn(
           "focus:outline-hidden bg-transparent outline-none placeholder:text-default-300 disabled:opacity-50",

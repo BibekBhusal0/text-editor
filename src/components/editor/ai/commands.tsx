@@ -1,6 +1,6 @@
 import { useEditor } from "novel";
 import { useState } from "react";
-import { Command, CommandGroup, CommandInput, CommandItem } from "@/components/ui/command";
+import { Command, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Icon } from "@/components/icons";
 import { useDummyCompletion } from "@/components/hook/useCompletion";
 import { Button } from "@heroui/button";
@@ -29,24 +29,24 @@ const AISelectorCommands = () => {
   return (
 
     <Command className="w-80">
-      <div className='flex bg-primary-50 gap-2 items-center'><CommandInput
+      <div className='flex gap-2 items-center border-b-2'><CommandInput
         autoFocus
-        className='w-max-full w-56'
+        className='w-max-full w-56 border-b-0 text-md'
         placeholder="Command To AI"
         value={inputValue}
         onValueChange={setInputValue}
       />
 
-        <Button size='sm' isIconOnly onPress={() => {
+        {(!loading && !hasCompletion) && <Button size='sm' isIconOnly variant='light' color='primary' className='text-xl' onPress={() => {
           if (inputValue.trim() !== '') getCompletion
         }} >
           <Icon icon='send' />
-        </Button>
+        </Button>}
       </div>
 
       {
         loading ?
-          <div className='flex items-center pl-5 gap-3 text-5xl '><Icon icon="loading" /><div className='text-lg'>Loading</div></div>
+          <div className='flex items-center pl-5 gap-3 text-5xl'><Icon icon="loading" /><div className='text-lg'>Loading</div></div>
           : (
 
             <>
@@ -54,48 +54,51 @@ const AISelectorCommands = () => {
                 <>
                   <div className='h-auto max-h-40 p-2 overflow-auto'>{completion}</div>
                   <CommandGroup heading="Completion actions">
-                    <CommandItem onSelect={() => setCompletion("")}>
-                      Dismiss
-                    </CommandItem>
-                    <CommandItem
-                      onSelect={() => {
-                        if (!editor) return;
-                        const selection = editor.view.state.selection;
-                        editor
-                          .chain()
-                          .focus()
-                          .insertContentAt(selection.to + 1, completion)
-                          .run();
-                      }}
-                    >
-                      Insert
-                    </CommandItem>
-                    <CommandItem
-                      onSelect={() => {
-                        if (!editor) return;
-                        const selection = editor.view.state.selection;
-                        editor
-                          .chain()
-                          .focus()
-                          .insertContentAt(
-                            {
-                              from: selection.from,
-                              to: selection.to,
-                            },
-                            completion
-                          )
-                          .run();
-                      }}
-                    >
-                      Replace
-                    </CommandItem>
+                    <CommandList>
+
+                      <CommandItem onSelect={() => setCompletion("")}>
+                        Dismiss
+                      </CommandItem>
+                      <CommandItem
+                        onSelect={() => {
+                          if (!editor) return;
+                          const selection = editor.view.state.selection;
+                          editor
+                            .chain()
+                            .focus()
+                            .insertContentAt(selection.to + 1, completion)
+                            .run();
+                        }}
+                      >
+                        Insert
+                      </CommandItem>
+                      <CommandItem
+                        onSelect={() => {
+                          if (!editor) return;
+                          const selection = editor.view.state.selection;
+                          editor
+                            .chain()
+                            .focus()
+                            .insertContentAt(
+                              {
+                                from: selection.from,
+                                to: selection.to,
+                              },
+                              completion
+                            )
+                            .run();
+                        }}
+                      >
+                        Replace
+                      </CommandItem>
+                    </CommandList>
                   </CommandGroup>
                 </>
 
               ) : (
 
                 <CommandGroup heading="AI commands">
-                  {options.map((option) => (
+                  <CommandList>{options.map((option) => (
                     <CommandItem
                       onSelect={getCompletion}
                       className="flex gap-2 px-4"
@@ -104,7 +107,7 @@ const AISelectorCommands = () => {
                       <Icon className="text-foreground" icon={option.icon} size={30} />
                       {option.label}
                     </CommandItem>
-                  ))}
+                  ))}</CommandList>
                 </CommandGroup>
               )}
             </>

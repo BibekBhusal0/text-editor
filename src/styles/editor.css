@@ -329,11 +329,3 @@
     /* purposely ignored */
   }
 }
-
-div[cmdk-group-items] > div[aria-selected="true"] {
-  @apply bg-primary-400;
-}
-
-div[cmdk-group-items]:not(:has(div[aria-selected="true"])) > div:first-child {
-  @apply bg-primary-400;
-}
