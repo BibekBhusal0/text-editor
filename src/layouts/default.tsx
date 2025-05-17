@@ -1,14 +1,10 @@
 import { Link } from "@heroui/link";
-
-import { ThemeSwitch } from "@/components/theme-switch";
+import { Navbar } from "@/components/navbar";
 
 export default function DefaultLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative flex h-screen flex-col">
-      <div className="pl-5 pt-3">
-        {" "}
-        <ThemeSwitch />{" "}
-      </div>
+      <Navbar />
       <main className="container mx-auto max-w-7xl flex-grow px-6">{children}</main>
       <footer className="flex w-full items-center justify-center py-3">
         <Link
