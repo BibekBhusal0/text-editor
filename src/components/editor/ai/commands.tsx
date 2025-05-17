@@ -33,6 +33,7 @@ const AISelectorCommands = () => {
   };
   const insert = () => {
     const selection = editor.view.state.selection;
+
     editor
       .chain()
       .focus()
@@ -42,6 +43,7 @@ const AISelectorCommands = () => {
   const replace = () => {
     if (!editor) return;
     const selection = editor.view.state.selection;
+
     editor
       .chain()
       .focus()
@@ -118,6 +120,7 @@ const AISelectorCommands = () => {
           onKeyDown={(e) => {
             if (e.key === "Escape") {
               const selection = editor.view.state.selection;
+
               editor
                 .chain()
                 .focus()

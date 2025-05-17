@@ -12,6 +12,7 @@ export const LinkSelector = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();
   const l = editor?.getAttributes("link").href;
   const [link, setLink] = useState(l || "");
+
   useEffect(() => {
     setLink(l);
   }, [l]);
