@@ -9,7 +9,7 @@ const CommentEditor = () => {
   return (
     <MinimalEditor
       autofocus
-      className="editor commend-example overflow-hidden rounded-md border-1 border-default-400 focus-within:border-primary-400"
+      className="editor commend-example border-default-400 focus-within:border-primary-400 overflow-hidden rounded-md border-1"
       editorProps={{
         attributes: {
           class: "overflow-auto h-40 p-2",
@@ -22,7 +22,7 @@ const CommentEditor = () => {
         TiptapUnderline,
       ]}
     >
-      <div className="flex-center gap-2 bg-default-100 p-1">
+      <div className="flex-center bg-default-100 gap-2 p-1">
         <TextButtons />
       </div>
     </MinimalEditor>

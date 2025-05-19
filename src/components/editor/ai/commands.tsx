@@ -97,7 +97,7 @@ const AISelectorCommands = () => {
             }}
           >
             <Icon
-              className="size-9 rounded-md border border-default-600 p-2 text-foreground"
+              className="border-default-600 text-foreground size-9 rounded-md border p-2"
               icon={option.icon}
             />
             <div className="text-lg">{option.label}</div>

@@ -5,7 +5,7 @@ import { DownloadButton } from "./download";
 
 const EditorHeader = () => {
   return (
-    <div className="flex flex-row items-center justify-between bg-default-100 p-2">
+    <div className="bg-default-100 flex flex-row items-center justify-between p-2">
       <div className="flex items-center gap-2">
         <UndoRedo />
         <ChangeAlignment type="tabs" variant="light" />
