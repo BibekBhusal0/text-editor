@@ -1,4 +1,5 @@
 **AI based text editor** made with [Novel](https://novel.sh/docs/introduction) and [HeroUI](https://www.heroui.com/).
+
 Live link: [https://bibekbhusal0.github.io/text-editor/](https://bibekbhusal0.github.io/text-editor/)
 
 ## ✨ Features
@@ -28,6 +29,8 @@ Live link: [https://bibekbhusal0.github.io/text-editor/](https://bibekbhusal0.gi
 ## Screenshots
 
 ![demo screenshot ](./screnshots/demo.png)
+
+![text editor demo](https://github.com/user-attachments/assets/d1e3c148-fe85-463a-b0e7-370718bd8272)
 
 ## 📦 Tech Stack
 
