@@ -1,6 +1,7 @@
 import { GlobalDragHandle, useEditor } from "novel";
 import Document from "@tiptap/extension-document";
 import { TaskItem, TaskList } from "novel";
+
 import { starterKit } from "./extension";
 import MinimalEditor from "./minimal";
 import "@/styles/todo.css";
@@ -33,7 +34,6 @@ const extensions = [
 export const TodoListEditor = () => {
   return (
     <MinimalEditor
-      extensions={extensions}
       className="editor todo-list group prose-xl mt-4 h-72 overflow-hidden rounded-md border-1 border-default-400 pl-2 pt-10 focus-within:border-primary-400"
       editorProps={{
         attributes: {
@@ -41,6 +41,7 @@ export const TodoListEditor = () => {
           spellcheck: "true",
         },
       }}
+      extensions={extensions}
     >
       <CaptureFocus className="absolute left-0 top-0 h-10 w-full overflow-hidden bg-default-400 text-center group-focus-within:bg-primary-400">
         Todo Editor
@@ -52,7 +53,9 @@ export const TodoListEditor = () => {
 
 const CaptureFocus = (props: React.HTMLProps<HTMLDivElement>) => {
   const { editor } = useEditor();
+
   if (!editor) return <div {...props} />;
+
   return <div {...props} onClick={() => editor.chain().focus()} />;
 };
 

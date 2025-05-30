@@ -4,9 +4,9 @@ import { Listbox, ListboxItem } from "@heroui/listbox";
 import { Button, ButtonProps } from "@heroui/button";
 import { cn } from "@heroui/theme";
 import { addToast } from "@heroui/toast";
+import { useState } from "react";
 
 import { Icon } from "@/components/icons";
-import { useState } from "react";
 
 type DownloadFormat = "html" | "md";
 
@@ -50,6 +50,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       icon: "code",
       command: () => {
         const html = editor.getHTML();
+
         downloadContent(html, "document", "html");
         close();
       },
@@ -59,6 +60,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       icon: "markdown",
       command: () => {
         const markdown = editor.storage.markdown.getMarkdown();
+
         downloadContent(markdown, "document", "md");
         close();
       },
@@ -69,10 +71,10 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
 
   return (
     <Popover
-      isOpen={open}
-      onOpenChange={(open) => setOpen(open)}
       classNames={{ content: "m-0 p-0" }}
+      isOpen={open}
       placement="bottom-start"
+      onOpenChange={(open) => setOpen(open)}
     >
       <PopoverTrigger>
         <Button
