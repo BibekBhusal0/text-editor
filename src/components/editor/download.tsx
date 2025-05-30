@@ -1,12 +1,12 @@
 import { useEditor } from "novel";
-import { Popover, PopoverTrigger, PopoverContent, } from "@heroui/popover";
+import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
 import { Listbox, ListboxItem } from "@heroui/listbox";
 import { Button, ButtonProps } from "@heroui/button";
 import { cn } from "@heroui/theme";
 import { addToast } from "@heroui/toast";
+import { useState } from "react";
 
 import { Icon } from "@/components/icons";
-import { useState } from "react";
 
 type DownloadFormat = "html" | "md";
 
@@ -39,8 +39,8 @@ const downloadContent = (content: string, filename: string, format: DownloadForm
 
 export const DownloadButton = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();
-  const [open, setOpen] = useState(false)
-  const close = () => setOpen(false)
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
 
   if (!editor) return null;
 
@@ -50,6 +50,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       icon: "code",
       command: () => {
         const html = editor.getHTML();
+
         downloadContent(html, "document", "html");
         close();
       },
@@ -59,6 +60,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       icon: "markdown",
       command: () => {
         const markdown = editor.storage.markdown.getMarkdown();
+
         downloadContent(markdown, "document", "md");
         close();
       },
@@ -68,7 +70,12 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
   props.children = props.children === undefined ? "Download" : props.children;
 
   return (
-    <Popover isOpen={open} onOpenChange={(open) => setOpen(open)} classNames={{ content: "m-0 p-0" }} placement="bottom-start">
+    <Popover
+      classNames={{ content: "m-0 p-0" }}
+      isOpen={open}
+      placement="bottom-start"
+      onOpenChange={(open) => setOpen(open)}
+    >
       <PopoverTrigger>
         <Button
           size="sm"
@@ -86,7 +93,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
           selectedKeys={[]}
           selectionMode="single"
           variant="shadow"
-          onSelectionChange={() => { }}
+          onSelectionChange={() => {}}
         >
           {items.map((i) => (
             <ListboxItem
