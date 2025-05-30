@@ -3,7 +3,7 @@ import { TodoListEditor } from "./editor/todo-editor";
 
 export const Examples = () => {
   return (
-    <div className = 'flex gap-3 flex-col' >
+    <div className="flex flex-col gap-3">
       <TodoListEditor />
       <CommentEditor />
     </div>

@@ -37,4 +37,3 @@ const MinimalEditor = ({ className, ...props }: EditorContentProps) => {
 };
 
 export default MinimalEditor;
-

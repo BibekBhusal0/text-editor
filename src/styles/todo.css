@@ -1,14 +1,14 @@
 .todo-list {
-  ul[data-type="taskList"] li[data-checked="true"]>div {
+  ul[data-type="taskList"] li[data-checked="true"] > div {
     @apply text-divider line-through;
     text-decoration-thickness: 2px;
   }
 
-  ul[data-type="taskList"] li>div {
+  ul[data-type="taskList"] li > div {
     @apply text-primary-800;
 
     &::before {
-      @apply text-divider pointer-events-none float-left h-0;
+      @apply pointer-events-none float-left h-0 text-divider;
       content: "Add a task...";
       pointer-events: none;
     }
@@ -18,7 +18,7 @@
     }
   }
 
-  ul[data-type="taskList"] li>label {
+  ul[data-type="taskList"] li > label {
     margin-right: 0.2rem;
   }
 }
