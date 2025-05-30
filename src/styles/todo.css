@@ -1,0 +1,24 @@
+.todo-list {
+  ul[data-type="taskList"] li[data-checked="true"]>div {
+    @apply text-divider line-through;
+    text-decoration-thickness: 2px;
+  }
+
+  ul[data-type="taskList"] li>div {
+    @apply text-primary-800;
+
+    &::before {
+      @apply text-divider pointer-events-none float-left h-0;
+      content: "Add a task...";
+      pointer-events: none;
+    }
+
+    &:not(:has(*))::before {
+      content: "";
+    }
+  }
+
+  ul[data-type="taskList"] li>label {
+    margin-right: 0.2rem;
+  }
+}
