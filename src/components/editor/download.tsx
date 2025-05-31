@@ -37,6 +37,7 @@ const downloadContent = (content: string, filename: string, format: DownloadForm
 
 export const DownloadButton = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();
+
   if (!editor) return null;
 
   const items = [
@@ -45,6 +46,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       icon: "code",
       command: () => {
         const html = editor.getHTML();
+
         downloadContent(html, "document", "html");
       },
     },
@@ -53,6 +55,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       icon: "markdown",
       command: () => {
         const markdown = editor.storage.markdown.getMarkdown();
+
         downloadContent(markdown, "document", "md");
       },
     },

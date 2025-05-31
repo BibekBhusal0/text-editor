@@ -69,9 +69,9 @@ export const CodeBlockComponent = ({ node, updateAttributes, extension }: NodeVi
               innerWrapper: "uppercase",
               base: "max-w-36",
             }}
+            isOpen={isSelectOpen}
             selectedKeys={[currentLanguage]}
             size="sm"
-            isOpen={isSelectOpen}
             onOpenChange={(open) => open !== isSelectOpen && setIsSelectOpen(open)}
             onSelectionChange={(e) => {
               if (typeof e === "string") updateAttributes({ language: e });
