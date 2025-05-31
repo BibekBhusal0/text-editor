@@ -21,7 +21,7 @@
 }
 
 .ProseMirror {
-  [data-placeholder]:not(li):not(ul):not(ol)::before {
+  [data-placeholder]:not(li):not(ul):not(ol):not(.node-codeBlock)::before {
     content: attr(data-placeholder);
     @apply pointer-events-none float-left h-0 text-default-200;
   }
