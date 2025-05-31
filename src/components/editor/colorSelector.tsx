@@ -1,6 +1,12 @@
 import { useEditor } from "novel";
 import { Button, ButtonProps } from "@heroui/button";
-import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, DropdownSection } from "@heroui/dropdown";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  DropdownSection,
+} from "@heroui/dropdown";
 import { cn } from "@heroui/theme";
 
 import { Icon } from "@/components/icons";
@@ -45,7 +51,7 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
   ]);
 
   return (
-    <Dropdown >
+    <Dropdown>
       <DropdownTrigger className="flex-center w-full gap-2 text-center text-sm">
         <Button
           endContent={<Icon className="size-5 pt-1" icon="arrow_down" />}

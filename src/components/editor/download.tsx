@@ -78,18 +78,14 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
         selectedKeys={[]}
         selectionMode="single"
         variant="shadow"
-        onSelectionChange={() => { }}
+        onSelectionChange={() => {}}
       >
         {items.map((i) => (
           <DropdownItem
             key={i.name}
             className="gap-2 px-3 py-2"
             startContent={
-              <Icon
-                className="rounded-md border border-default-500 p-1"
-                icon={i.icon}
-                size={27}
-              />
+              <Icon className="rounded-md border border-default-500 p-1" icon={i.icon} size={27} />
             }
             onClick={() => i.command()}
           >

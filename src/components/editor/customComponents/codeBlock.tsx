@@ -58,8 +58,10 @@ export const CodeBlockComponent = ({ node, updateAttributes, extension }: NodeVi
   const languages = extension.options.lowlight.listLanguages();
 
   return (
-    <NodeViewWrapper className="relative mx-2 my-4 rounded-lg border group">
-      <div className={cn("sticky top-0 z-10 h-0 w-full group-hover:block", !isSelectOpen && 'hidden')}>
+    <NodeViewWrapper className="group relative mx-2 my-4 rounded-lg border">
+      <div
+        className={cn("sticky top-0 z-10 h-0 w-full group-hover:block", !isSelectOpen && "hidden")}
+      >
         <div className="absolute right-0 flex w-full items-center justify-end gap-4 rounded-t-lg px-4 py-3">
           <Select
             aria-label="Select language"
