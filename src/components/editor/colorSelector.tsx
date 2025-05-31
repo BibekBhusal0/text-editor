@@ -70,7 +70,7 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
         selectionMode="multiple"
         variant="bordered"
       >
-        <DropdownSection showDivider title="Colors">
+        <DropdownSection title="Colors">
           {TEXT_COLORS.map(({ name, color }) => (
             <DropdownItem
               key={"color" + name}
@@ -97,7 +97,7 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
           ))}
         </DropdownSection>
 
-        <DropdownSection title="Highlight">
+        {/* <DropdownSection title="Highlight">
           {HIGHLIGHT_COLORS.map(({ name, color }) => (
             <DropdownItem
               key={"highlight" + name}
@@ -118,7 +118,7 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
               {name}
             </DropdownItem>
           ))}
-        </DropdownSection>
+        </DropdownSection> */}
       </DropdownMenu>
     </Dropdown>
   );
