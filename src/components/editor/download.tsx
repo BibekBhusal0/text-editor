@@ -1,10 +1,8 @@
 import { useEditor } from "novel";
-import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
-import { Listbox, ListboxItem } from "@heroui/listbox";
 import { Button, ButtonProps } from "@heroui/button";
 import { cn } from "@heroui/theme";
 import { addToast } from "@heroui/toast";
-import { useState } from "react";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@heroui/dropdown";
 
 import { Icon } from "@/components/icons";
 
@@ -39,9 +37,6 @@ const downloadContent = (content: string, filename: string, format: DownloadForm
 
 export const DownloadButton = ({ className, ...props }: ButtonProps) => {
   const { editor } = useEditor();
-  const [open, setOpen] = useState(false);
-  const close = () => setOpen(false);
-
   if (!editor) return null;
 
   const items = [
@@ -50,9 +45,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       icon: "code",
       command: () => {
         const html = editor.getHTML();
-
         downloadContent(html, "document", "html");
-        close();
       },
     },
     {
@@ -60,9 +53,7 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
       icon: "markdown",
       command: () => {
         const markdown = editor.storage.markdown.getMarkdown();
-
         downloadContent(markdown, "document", "md");
-        close();
       },
     },
   ];
@@ -70,49 +61,42 @@ export const DownloadButton = ({ className, ...props }: ButtonProps) => {
   props.children = props.children === undefined ? "Download" : props.children;
 
   return (
-    <Popover
-      classNames={{ content: "m-0 p-0" }}
-      isOpen={open}
-      placement="bottom-start"
-      onOpenChange={(open) => setOpen(open)}
-    >
-      <PopoverTrigger>
+    <Dropdown placement="bottom-start">
+      <DropdownTrigger>
         <Button
           size="sm"
           startContent={<Icon className="size-5 pt-1" icon="download" />}
           {...props}
           className={cn("max-w-80 flex-grow-0", className)}
         />
-      </PopoverTrigger>
+      </DropdownTrigger>
 
-      <PopoverContent>
-        <Listbox
-          aria-label="download types"
-          classNames={{ base: "max-h-80 overflow-auto" }}
-          color="primary"
-          selectedKeys={[]}
-          selectionMode="single"
-          variant="shadow"
-          onSelectionChange={() => {}}
-        >
-          {items.map((i) => (
-            <ListboxItem
-              key={i.name}
-              className="gap-2 px-3 py-2"
-              startContent={
-                <Icon
-                  className="rounded-md border border-default-500 p-1"
-                  icon={i.icon}
-                  size={27}
-                />
-              }
-              onClick={() => i.command()}
-            >
-              {i.name}
-            </ListboxItem>
-          ))}
-        </Listbox>
-      </PopoverContent>
-    </Popover>
+      <DropdownMenu
+        aria-label="download types"
+        classNames={{ base: "max-h-80 overflow-auto" }}
+        color="primary"
+        selectedKeys={[]}
+        selectionMode="single"
+        variant="shadow"
+        onSelectionChange={() => { }}
+      >
+        {items.map((i) => (
+          <DropdownItem
+            key={i.name}
+            className="gap-2 px-3 py-2"
+            startContent={
+              <Icon
+                className="rounded-md border border-default-500 p-1"
+                icon={i.icon}
+                size={27}
+              />
+            }
+            onClick={() => i.command()}
+          >
+            {i.name}
+          </DropdownItem>
+        ))}
+      </DropdownMenu>
+    </Dropdown>
   );
 };

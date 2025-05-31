@@ -1,7 +1,6 @@
 import { useEditor } from "novel";
-import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
-import { Listbox, ListboxItem } from "@heroui/listbox";
 import { Button, ButtonProps } from "@heroui/button";
+import { Dropdown, DropdownMenu, DropdownItem, DropdownTrigger, } from "@heroui/dropdown";
 import { cn } from "@heroui/theme";
 
 import { Icon } from "@/components/icons";
@@ -74,8 +73,8 @@ export const NodeSelector = ({ className, ...props }: ButtonProps) => {
   const activeItem = items.filter((item) => item.isActive()).pop() ?? { name: "Multiple" };
 
   return (
-    <Popover classNames={{ content: "m-0 p-0" }} placement="bottom-start">
-      <PopoverTrigger>
+    <Dropdown classNames={{ content: "m-0 p-0" }} placement="bottom-start">
+      <DropdownTrigger>
         <Button
           color="primary"
           endContent={<Icon className="size-5 pt-1" icon="arrow_down" />}
@@ -85,35 +84,33 @@ export const NodeSelector = ({ className, ...props }: ButtonProps) => {
         >
           {activeItem.name}
         </Button>
-      </PopoverTrigger>
+      </DropdownTrigger>
 
-      <PopoverContent>
-        <Listbox
-          aria-label="Select notes"
-          classNames={{ base: "max-h-80 overflow-auto" }}
-          color="primary"
-          selectedKeys={new Set([activeItem.name])}
-          selectionMode="single"
-          variant="shadow"
-        >
-          {items.map((i) => (
-            <ListboxItem
-              key={i.name}
-              className="gap-2 px-3 py-2"
-              startContent={
-                <Icon
-                  className="rounded-md border border-default-500 p-1"
-                  icon={i.icon}
-                  size={27}
-                />
-              }
-              onClick={() => i.command()}
-            >
-              {i.name}
-            </ListboxItem>
-          ))}
-        </Listbox>
-      </PopoverContent>
-    </Popover>
+      <DropdownMenu
+        aria-label="Select notes"
+        classNames={{ base: "max-h-80 overflow-auto" }}
+        color="primary"
+        selectedKeys={new Set([activeItem.name])}
+        selectionMode="single"
+        variant="shadow"
+      >
+        {items.map((i) => (
+          <DropdownItem
+            key={i.name}
+            className="gap-2 px-3 py-2"
+            startContent={
+              <Icon
+                className="rounded-md border border-default-500 p-1"
+                icon={i.icon}
+                size={27}
+              />
+            }
+            onClick={() => i.command()}
+          >
+            {i.name}
+          </DropdownItem>
+        ))}
+      </DropdownMenu>
+    </Dropdown>
   );
 };

@@ -46,7 +46,7 @@ export const BubbleMenu = () => {
               variant="flat"
               onPress={() => setAIOpen(true)}
             >
-              <Icon icon="ai" />{" "}
+              <Icon icon="ai" />
             </Button>
 
             <div className="flex flex-col border-l-1">

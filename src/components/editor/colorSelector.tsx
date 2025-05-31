@@ -1,7 +1,6 @@
 import { useEditor } from "novel";
-import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
-import { Listbox, ListboxItem, ListboxSection } from "@heroui/listbox";
 import { Button, ButtonProps } from "@heroui/button";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, DropdownSection } from "@heroui/dropdown";
 import { cn } from "@heroui/theme";
 
 import { Icon } from "@/components/icons";
@@ -46,8 +45,8 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
   ]);
 
   return (
-    <Popover classNames={{ content: "m-0 p-0" }}>
-      <PopoverTrigger className="flex-center w-full gap-2 text-center text-sm">
+    <Dropdown >
+      <DropdownTrigger className="flex-center w-full gap-2 text-center text-sm">
         <Button
           endContent={<Icon className="size-5 pt-1" icon="arrow_down" />}
           size="sm"
@@ -59,70 +58,68 @@ export const ColorSelector = ({ className, ...props }: ButtonProps) => {
             ...props.style,
           }}
         >
-          A{" "}
+          A
         </Button>
-      </PopoverTrigger>
+      </DropdownTrigger>
 
-      <PopoverContent>
-        <Listbox
-          aria-label="Select Colors"
-          classNames={{ base: "max-h-80 w-36 h-auto overflow-auto" }}
-          color="primary"
-          selectedKeys={selectedKeys}
-          selectionMode="multiple"
-          variant="bordered"
-        >
-          <ListboxSection showDivider title="Colors">
-            {TEXT_COLORS.map(({ name, color }) => (
-              <ListboxItem
-                key={"color" + name}
-                classNames={{ title: "text-foreground" }}
-                startContent={
-                  <div className={cls} style={{ color }}>
-                    A
-                  </div>
+      <DropdownMenu
+        aria-label="Select Colors"
+        classNames={{ base: "max-h-80 h-auto overflow-auto" }}
+        color="primary"
+        selectedKeys={selectedKeys}
+        selectionMode="multiple"
+        variant="bordered"
+      >
+        <DropdownSection showDivider title="Colors">
+          {TEXT_COLORS.map(({ name, color }) => (
+            <DropdownItem
+              key={"color" + name}
+              classNames={{ title: "text-foreground" }}
+              startContent={
+                <div className={cls} style={{ color }}>
+                  A
+                </div>
+              }
+              onClick={() => {
+                if (name === "Default") {
+                  editor.commands.unsetColor();
+                } else {
+                  editor
+                    .chain()
+                    .focus()
+                    .setColor(color || "")
+                    .run();
                 }
-                onClick={() => {
-                  if (name === "Default") {
-                    editor.commands.unsetColor();
-                  } else {
-                    editor
-                      .chain()
-                      .focus()
-                      .setColor(color || "")
-                      .run();
-                  }
-                }}
-              >
-                {name}
-              </ListboxItem>
-            ))}
-          </ListboxSection>
+              }}
+            >
+              {name}
+            </DropdownItem>
+          ))}
+        </DropdownSection>
 
-          <ListboxSection title="Highlight">
-            {HIGHLIGHT_COLORS.map(({ name, color }) => (
-              <ListboxItem
-                key={"highlight" + name}
-                classNames={{ title: "text-foreground" }}
-                startContent={
-                  <div
-                    className={cn(cls, "text-foreground")}
-                    style={{ backgroundColor: color || "transparent" }}
-                  >
-                    A
-                  </div>
-                }
-                onClick={() => {
-                  editor.commands.unsetHighlight();
-                  name !== "Default" && editor.chain().focus().setHighlight({ color }).run();
-                }}
-              >
-                {name}
-              </ListboxItem>
-            ))}
-          </ListboxSection>
-        </Listbox>
-      </PopoverContent>
-    </Popover>
+        <DropdownSection title="Highlight">
+          {HIGHLIGHT_COLORS.map(({ name, color }) => (
+            <DropdownItem
+              key={"highlight" + name}
+              classNames={{ title: "text-foreground" }}
+              startContent={
+                <div
+                  className={cn(cls, "text-foreground")}
+                  style={{ backgroundColor: color || "transparent" }}
+                >
+                  A
+                </div>
+              }
+              onClick={() => {
+                editor.commands.unsetHighlight();
+                name !== "Default" && editor.chain().focus().setHighlight({ color }).run();
+              }}
+            >
+              {name}
+            </DropdownItem>
+          ))}
+        </DropdownSection>
+      </DropdownMenu>
+    </Dropdown>
   );
 };
