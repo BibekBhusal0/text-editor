@@ -9,7 +9,7 @@ const CommentEditor = () => {
   return (
     <MinimalEditor
       autofocus
-      className="editor commend-example overflow-hidden rounded-md border-1 border-default-400 focus-within:border-primary-400"
+      className="editor comment-example overflow-hidden rounded-md border-1 border-default-400 focus-within:border-primary-400"
       editorProps={{
         attributes: {
           class: "overflow-auto h-40 p-2",
